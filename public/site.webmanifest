@@ -3,12 +3,12 @@
   "short_name": "Sterling Crest",
   "icons": [
     {
-      "src": "https://wkz9g1gwrhohvd99.public.blob.vercel-storage.com/images/favicon-32.png",
+      "src": "/images/favicon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "https://wkz9g1gwrhohvd99.public.blob.vercel-storage.com/images/apple-touch-icon.png",
+      "src": "/images/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }

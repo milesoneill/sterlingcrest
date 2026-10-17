@@ -1,8 +1,8 @@
 // Centralized image sources for the marketing site.
-// Owned assets are served from Vercel Blob CDN for faster edge delivery.
+// Owned assets are served unchanged from this deployment, independently of the old Blob store.
 // Stock photography uses Unsplash CDN elsewhere on the site.
 
-const CDN = "https://wkz9g1gwrhohvd99.public.blob.vercel-storage.com/images";
+const CDN = "/images";
 
 export const heroImage = `${CDN}/hero-dusk.webp`;
 export const logoImage = `${CDN}/logo-sc.webp`;
