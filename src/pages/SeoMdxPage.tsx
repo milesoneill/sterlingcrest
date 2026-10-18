@@ -1,4 +1,5 @@
-import { Navigate, useLocation } from "react-router-dom";
+import NotFound from "./NotFound";
+import { useLocation } from "react-router-dom";
 import { getSeoPageByPath } from "@/lib/seo-content";
 import BlogPage from "@/templates/BlogPage";
 import InsuranceTypePage from "@/templates/InsuranceTypePage";
@@ -9,7 +10,7 @@ const SeoMdxPage = () => {
   const page = getSeoPageByPath(pathname);
 
   if (!page) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   switch (page.frontmatter.template) {

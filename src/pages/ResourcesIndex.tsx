@@ -3,16 +3,10 @@ import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { guidesIndexHeroImage } from "@/lib/images";
-import { usePageMeta } from "@/lib/page-meta";
 import { guideHeroImage, listGuideIndexPages } from "@/lib/seo-content";
 
 const ResourcesIndex = () => {
   const pages = listGuideIndexPages();
-  usePageMeta({
-    title: "Guides",
-    description:
-      "Clear, family-focused guides on final expense insurance and related protection planning from Sterling Crest Financial Group.",
-  });
 
   return (
     <div className="min-h-screen bg-background">

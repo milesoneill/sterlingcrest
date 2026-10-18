@@ -4,13 +4,15 @@ import type { Plugin } from "vite";
 import { parseSeoMdx, publicPathForTemplate, type SeoFrontmatter } from "../src/lib/parse-seo-mdx";
 import { services } from "../src/lib/services";
 
-export const SITE_ORIGIN = "https://www.sterlingcrestfinancial.com";
+import { SITE_ORIGIN, staticRoutes, routeRedirects } from "../src/lib/site-routes";
+export { SITE_ORIGIN };
 
 export function sitemapUrls(pages: SeoFrontmatter[], serviceSlugs: string[]): string[] {
-  const paths = ["/", "/book", "/resources", "/insurance", "/privacy-policy", "/terms-of-service"];
+  const paths = [...staticRoutes];
   paths.push(...serviceSlugs.map(slug => `/services/${slug}`));
   for (const page of pages) {
     const publicPath = publicPathForTemplate(page.template, page.slug);
+    if (routeRedirects[publicPath]) continue;
     const expected = `${SITE_ORIGIN}${publicPath}`;
     if (page.canonical && page.canonical !== expected) {
       throw new Error(`Canonical does not match published route: ${page.slug}`);
