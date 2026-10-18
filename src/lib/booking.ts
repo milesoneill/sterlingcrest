@@ -1,7 +1,4 @@
 export const bookingCalendarSrc =
-  "https://api.leadconnectorhq.com/widget/booking/z5alu4wAOsoaOQwTkvAa";
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2APN_LwvkySMgeecEbzSlyFEy3ZqKTZylncBra9DM1QJ63-029qLbbHeFPP6MtwcEdrd65g5Sv?gv=true";
 
-export const bookingCalendarId = "z5alu4wAOsoaOQwTkvAa_1786721034522";
-
-export const bookingFormEmbedScript =
-  "https://api.leadconnectorhq.com/js/form_embed.js";
+export const bookingCalendarId = "sterling-crest-website-appointments";
