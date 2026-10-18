@@ -1,11 +1,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { render, routes } from "../.prerender/entry-server.js";
 const template = await fs.readFile("dist/index.html", "utf8");
 const escape = value => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const known = new Set(routes);
 for (const route of [...routes, "/404"]) {
-  const { html, meta } = render(route);
+  const { html, meta, sourceFile } = render(route);
+  const fingerprint = sourceFile ? createHash("sha256").update(await fs.readFile(path.join("content/seo", path.basename(sourceFile)))).digest("hex") : null;
   // Validate actual rendered article anchors, including body links and related links.
   if (route.startsWith("/resources/") || route.startsWith("/insurance/") || route.startsWith("/locations/")) {
     for (const match of html.matchAll(/href="([^"#]+)[^"]*"/g)) {
@@ -25,6 +27,7 @@ for (const route of [...routes, "/404"]) {
     `<meta property="og:type" content="${route.includes("/resources/") || route.includes("/locations/") || route.includes("/insurance/") ? "article" : "website"}">`,
     `<meta name="twitter:title" content="${escape(meta.title)}">`,
     `<meta name="twitter:description" content="${escape(meta.description)}">`,
+    ...(fingerprint ? [`<meta name="seo-content-sha256" content="${fingerprint}">`] : []),
     ...(meta.noindex ? ['<meta name="robots" content="noindex, follow">'] : []),
   ];
   page = page.replace("</head>", tags.join("\n") + "\n</head>");
