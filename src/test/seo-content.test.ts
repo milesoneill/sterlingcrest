@@ -31,6 +31,17 @@ People often use the names interchangeably.
 `;
 
 describe("parseSeoMdx", () => {
+  it("keeps article and FAQ schema without marking editorial guides as community Q&A", () => {
+    const raw = `---\n${JSON.stringify({
+      title: "Guide", slug: "guide", template: "blog-page",
+      schema: [{ "@type": "Article" }, { "@type": "QAPage" },
+        { "@type": ["WebPage", "QAPage"] }, { "@type": "FAQPage" }],
+    })}\n---\n\nAn editorial answer.`;
+    expect(parseSeoMdx(raw).frontmatter.schema).toEqual([
+      { "@type": "Article" }, { "@type": "FAQPage" },
+    ]);
+  });
+
   it("reads factory JSON frontmatter and template", () => {
     const parsed = parseSeoMdx(sample);
     expect(parsed.frontmatter.template).toBe("blog-page");
