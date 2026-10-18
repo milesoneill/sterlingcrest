@@ -29,7 +29,7 @@ const InsuranceTypePage = ({ page }: { page: SeoPage }) => {
         title={frontmatter.title}
       />
 
-      <GuideIntro aeoAnswer={aeoAnswer} className="pt-12 md:pt-16" />
+      <GuideIntro aeoAnswer={aeoAnswer} className="pt-12 md:pt-16" consultationCta={frontmatter.consultationCta} />
 
       <section className="pb-16 md:pb-20">
         <div className="container max-w-3xl mx-auto px-6">
@@ -52,16 +52,16 @@ const InsuranceTypePage = ({ page }: { page: SeoPage }) => {
 
       <FaqSection faq={faq} />
       <ConsultCta
-        heading={
+        heading={frontmatter.closingCta?.heading ?? (
           isFinalExpense
             ? "Ready to talk through final expense coverage?"
             : "Start with the conversation that protects your family."
-        }
-        body={
+        )}
+        body={frontmatter.closingCta?.body ?? (
           isFinalExpense
             ? "Schedule a complimentary consultation to discuss funeral costs, qualification, and coverage options — with no obligation."
             : "Most families start with final expense planning, then decide whether additional coverage belongs in the picture. A complimentary consultation can help you sort that out."
-        }
+        )}
       />
       <Disclosures items={frontmatter.disclosures} />
     </SeoChrome>
