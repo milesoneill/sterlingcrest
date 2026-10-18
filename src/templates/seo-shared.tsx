@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { scheduleConsultationHref } from "@/lib/contact";
 import { usePageMeta } from "@/lib/page-meta";
 import type { SeoPage } from "@/lib/seo-content";
-import type { SeoFaq } from "@/lib/parse-seo-mdx";
+import type { SeoConsultationCta, SeoFaq } from "@/lib/parse-seo-mdx";
 
 export function SeoChrome({
   page,
@@ -114,15 +114,14 @@ export function AeoAnswer({
   );
 }
 
-export function InlineConsultCta() {
+export function InlineConsultCta({ copy }: { copy?: SeoConsultationCta }) {
   return (
     <div className="bg-secondary text-secondary-foreground px-6 py-8 md:py-10 text-center">
       <h2 className="font-serif text-xl md:text-2xl text-white mb-3">
-        Want to see what coverage could look like for you?
+        {copy?.heading ?? "Want to see what coverage could look like for you?"}
       </h2>
       <p className="text-white/70 font-sans text-sm md:text-base mb-6 max-w-lg mx-auto">
-        Speak with a licensed specialist for a complimentary, no-obligation
-        consultation.
+        {copy?.body ?? "Speak with a licensed specialist for a complimentary, no-obligation consultation."}
       </p>
       <Link
         to={scheduleConsultationHref}
@@ -139,9 +138,11 @@ export function InlineConsultCta() {
 export function GuideIntro({
   aeoAnswer,
   className,
+  consultationCta,
 }: {
   aeoAnswer: string | null;
   className?: string;
+  consultationCta?: SeoConsultationCta;
 }) {
   return (
     <div
@@ -149,7 +150,7 @@ export function GuideIntro({
     >
       {aeoAnswer && <AeoAnswer answer={aeoAnswer} />}
       <div className={aeoAnswer ? "mt-6" : undefined}>
-        <InlineConsultCta />
+        <InlineConsultCta copy={consultationCta} />
       </div>
     </div>
   );

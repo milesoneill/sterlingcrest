@@ -25,7 +25,11 @@ const BlogPage = ({ page }: { page: SeoPage }) => {
           title={frontmatter.title}
         />
 
-        <GuideIntro aeoAnswer={aeoAnswer} className="pt-12 md:pt-16" />
+        <GuideIntro
+          aeoAnswer={aeoAnswer}
+          className="pt-12 md:pt-16"
+          consultationCta={frontmatter.consultationCta}
+        />
 
         <section className="pb-16 md:pb-20">
           <div className="container max-w-3xl mx-auto px-6">
@@ -36,8 +40,8 @@ const BlogPage = ({ page }: { page: SeoPage }) => {
 
         <FaqSection faq={faq} />
         <ConsultCta
-          heading="The right protection starts with the right conversation."
-          body="Schedule a complimentary consultation to talk through final expense coverage and any other protection your family may need."
+          heading={frontmatter.closingCta?.heading ?? "The right protection starts with the right conversation."}
+          body={frontmatter.closingCta?.body ?? "Schedule a complimentary consultation to talk through final expense coverage and any other protection your family may need."}
         />
         <Disclosures items={frontmatter.disclosures} />
       </article>
