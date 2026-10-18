@@ -349,13 +349,12 @@ export default function BookingCalendar() {
                 />
               </label>
               <label className="block text-[13px]" htmlFor="booking-last">
-                Last name
+                Last name <span className="text-muted-foreground">(optional)</span>
                 <input
                   id="booking-last"
                   name="lastName"
                   autoComplete="family-name"
                   maxLength={80}
-                  required
                   className={fieldClass}
                 />
               </label>
