@@ -75,7 +75,13 @@ function parseFrontmatter(block: string): SeoFrontmatter {
     targetKeyword: data.targetKeyword ? String(data.targetKeyword) : undefined,
     briefId: data.briefId ? String(data.briefId) : undefined,
     primaryQuestion: data.primaryQuestion ? String(data.primaryQuestion) : undefined,
-    schema: Array.isArray(data.schema) ? data.schema : undefined,
+    // Editorial guides do not accept user-submitted answers. QAPage is for
+    // community Q&A; keep the Article and FAQPage metadata instead.
+    schema: Array.isArray(data.schema) ? data.schema.filter(block => {
+      if (!block || typeof block !== "object") return true;
+      const type = (block as Record<string, unknown>)["@type"];
+      return type !== "QAPage" && !(Array.isArray(type) && type.includes("QAPage"));
+    }) : undefined,
     disclosures: Array.isArray(data.disclosures)
       ? data.disclosures.map(String)
       : undefined,
