@@ -1,5 +1,6 @@
 export type SeoSource = { label: string; url: string };
 export type SeoFaq = { question: string; answer: string };
+export type SeoConsultationCta = { heading: string; body: string };
 
 export type SeoFrontmatter = {
   title: string;
@@ -19,6 +20,8 @@ export type SeoFrontmatter = {
   generatedAt?: string;
   /** Optional hero/thumbnail image URL or Unsplash photo id from SEO Factory. */
   heroImage?: string;
+  consultationCta?: SeoConsultationCta;
+  closingCta?: SeoConsultationCta;
 };
 
 export type ParsedSeoMdx = {
@@ -93,7 +96,17 @@ function parseFrontmatter(block: string): SeoFrontmatter {
       : undefined,
     generatedAt: data.generatedAt ? String(data.generatedAt) : undefined,
     heroImage: data.heroImage ? String(data.heroImage) : undefined,
+    consultationCta: parseConsultationCta(data.consultationCta),
+    closingCta: parseConsultationCta(data.closingCta),
   };
+}
+
+function parseConsultationCta(value: unknown): SeoConsultationCta | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const { heading, body } = value as Record<string, unknown>;
+  if (typeof heading !== "string" || typeof body !== "string") return undefined;
+  if (!heading.trim() || !body.trim()) return undefined;
+  return { heading: heading.trim(), body: body.trim() };
 }
 
 function parseLooseYaml(block: string): Record<string, unknown> {
