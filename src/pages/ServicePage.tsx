@@ -1,4 +1,5 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import NotFound from "./NotFound";
+import { Link, useParams } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,7 +12,7 @@ const ServicePage = () => {
   const service = slug ? getService(slug) : undefined;
 
   if (!service) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   const Icon = service.icon;

@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingCalendar from "@/components/BookingCalendar";
+import { contactPhone, contactPhoneHref } from "@/lib/contact";
 const Book = () => (
   <div className="min-h-screen bg-background">
     <Header />
@@ -26,6 +27,8 @@ const Book = () => (
             <p className="mt-4 text-sm text-muted-foreground md:text-base">
               15-minute phone call · Monday–Friday, 9 a.m.–6 p.m. Eastern
             </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">A complimentary, no-obligation conversation about your goals, budget, and coverage questions.</p>
+            <a href={contactPhoneHref} className="mt-3 inline-block text-sm text-primary underline underline-offset-4">Prefer to call? {contactPhone}</a>
           </div>
           <div className="overflow-hidden rounded-[5px] border border-border/80 bg-white shadow-[0_14px_40px_-20px_hsl(var(--navy)/0.22)]">
             <BookingCalendar />

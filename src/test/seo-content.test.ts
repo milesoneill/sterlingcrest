@@ -136,7 +136,8 @@ describe("listSeoPages", () => {
     expect(templates.has("location-page")).toBe(true);
     expect(pages.some((p) => p.path === "/resources/what-is-final-expense-insurance")).toBe(true);
     expect(pages.some((p) => p.path === "/insurance/final-expense-insurance")).toBe(true);
-    expect(pages.some((p) => p.path === "/locations/final-expense-insurance-in-florida")).toBe(true);
+    expect(pages.some((p) => p.path === "/locations/final-expense-insurance-florida")).toBe(true);
+    expect(pages.some((p) => p.path === "/locations/final-expense-insurance-in-florida")).toBe(false);
   });
 });
 

@@ -4,7 +4,8 @@ import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { scheduleConsultationHref } from "@/lib/contact";
-import { usePageMeta } from "@/lib/page-meta";
+import { getSeoPageByPath } from "@/lib/seo-content";
+import { getService } from "@/lib/services";
 import type { SeoPage } from "@/lib/seo-content";
 import type { SeoConsultationCta, SeoFaq } from "@/lib/parse-seo-mdx";
 
@@ -16,11 +17,6 @@ export function SeoChrome({
   children: ReactNode;
 }) {
   const { frontmatter } = page;
-  usePageMeta({
-    title: frontmatter.title,
-    description: frontmatter.description,
-    canonical: frontmatter.canonical,
-  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -29,7 +25,7 @@ export function SeoChrome({
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block).replace(/</g, "\\u003c") }}
         />
       ))}
       {children}
@@ -238,7 +234,7 @@ export function RelatedLinks({ hrefs }: { hrefs?: string[] }) {
           to={href}
           className="text-xs tracking-[0.25em] uppercase font-sans text-foreground/70 hover:text-primary transition-colors"
         >
-          {href === "/book" ? "Book a consultation" : href}
+          {href === "/book" ? "Book a consultation" : getSeoPageByPath(href)?.frontmatter.title ?? getService(href.replace("/services/", ""))?.title ?? "Explore coverage"}
         </Link>
       ))}
     </nav>

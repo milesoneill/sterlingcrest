@@ -4,6 +4,8 @@ import {
   type ParsedSeoMdx,
 } from "./parse-seo-mdx";
 
+import { routeRedirects } from "./site-routes";
+
 export { guideHeroImage } from "./guide-images";
 
 const rawPages = import.meta.glob("../../content/seo/*.mdx", {
@@ -28,7 +30,7 @@ function loadPages(): SeoPage[] {
   });
 }
 
-const pages = loadPages();
+const pages = loadPages().filter(page => !routeRedirects[page.path]);
 const byPath = new Map(pages.map((p) => [p.path, p]));
 
 export function listSeoPages(): SeoPage[] {

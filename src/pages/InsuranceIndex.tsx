@@ -1,16 +1,10 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { usePageMeta } from "@/lib/page-meta";
 import { listSeoPagesByPrefix } from "@/lib/seo-content";
 
 const InsuranceIndex = () => {
   const pages = listSeoPagesByPrefix("/insurance");
-  usePageMeta({
-    title: "Insurance coverage guides",
-    description:
-      "Coverage explainers for final expense, life insurance, mortgage protection, and related planning from Sterling Crest Financial Group.",
-  });
 
   return (
     <div className="min-h-screen bg-background">
