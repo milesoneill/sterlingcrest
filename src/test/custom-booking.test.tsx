@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import BookingCalendar from '@/components/BookingCalendar';
 import { calendarDays, adjacentMonth } from '@/lib/custom-booking';
+vi.mock('@/lib/booking-attribution',()=>({bookingAttribution:()=>({}),trackBookingEvent:vi.fn()}));
 vi.mock('@/lib/custom-booking', async (original) => { const actual = await original<typeof import('@/lib/custom-booking')>(); return { ...actual, easternDate: (date?: Date) => date ? actual.easternDate(date) : '2026-10-18' }; });
 const start='2026-10-19T13:00:00.000Z';
 function install(response:unknown={booked:true,start}) {

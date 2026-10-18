@@ -14,6 +14,7 @@ import SeoMdxPage from "./pages/SeoMdxPage.tsx";
 import ResourcesIndex from "./pages/ResourcesIndex.tsx";
 import InsuranceIndex from "./pages/InsuranceIndex.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import BookingAttribution from './components/BookingAttribution';
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ export const AppContent = () => (
       <Sonner />
       <>
         <RouteMetadata />
+        <BookingAttribution />
         <ScrollToTop />
         <Routes>
           {Object.entries(routeRedirects).map(([from, to]) => <Route key={from} path={from} element={<Navigate to={to} replace />} />)}

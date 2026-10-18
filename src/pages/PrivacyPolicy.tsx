@@ -73,6 +73,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="font-serif text-2xl text-foreground mb-4">7. Cookies and Tracking Technologies</h2>
             <p>Our website may use cookies, web beacons, and similar tracking technologies to enhance your experience, analyze usage patterns, and deliver targeted content. You can control cookie settings through your browser preferences.</p>
+            <p className="mt-3">To understand which guides help visitors book consultations, we use a random browser session identifier and record recognized traffic sources, public page paths, and booking steps. We exclude contact details, consultation reasons, full referring URLs, and URL query strings from these usage events. This measurement respects Global Privacy Control and Do Not Track browser settings. Usage events are retained for up to 90 days. When you book, the information you provide and the guide source may be saved in our private CRM to prepare for your requested consultation.</p>
           </section>
 
           <section>

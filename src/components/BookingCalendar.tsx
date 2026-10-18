@@ -14,6 +14,7 @@ import {
   type Availability,
 } from "@/lib/custom-booking";
 import { contactPhone, contactPhoneHref } from "@/lib/contact";
+import { bookingAttribution, trackBookingEvent } from '@/lib/booking-attribution';
 
 const fieldClass =
   "mt-1.5 block w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2 text-[15px] text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-muted/40";
@@ -112,6 +113,7 @@ export default function BookingCalendar() {
       phone: String(form.get("phone") ?? "").trim(),
       email: String(form.get("email") ?? "").trim(),
       reason: String(form.get("reason") ?? "").trim(),
+      attribution: bookingAttribution(),
     };
     // Disabled controls are omitted from FormData. Pending retries retain the
     // exact original payload and request ID, including after network timeouts.
@@ -145,9 +147,11 @@ export default function BookingCalendar() {
           value.error || "We could not confirm your booking. Please try again.",
         );
       }
+      if(value.booked!==true || typeof value.start!=='string')throw new SyntaxError('Confirmation unavailable. Keep this page open and retry.');
       setBooked({ start: value.start, email: payload.email });
       setPending(false);
     } catch (reason) {
+      trackBookingEvent('booking_error');
       if (reason instanceof TypeError || reason instanceof SyntaxError)
         setPending(true);
       setError(
@@ -303,6 +307,7 @@ export default function BookingCalendar() {
                   aria-pressed={slot === start}
                   onClick={() => {
                     setSlot(start);
+                    trackBookingEvent('time_selected');
                     setError("");
                   }}
                   className={`rounded-[6px] border px-1 py-2.5 text-[13px] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary ${slot === start ? "border-secondary bg-secondary text-white shadow-sm" : "border-[#b6bdc7] bg-white text-foreground hover:border-primary hover:bg-primary/5"}`}
