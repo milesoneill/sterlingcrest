@@ -34,7 +34,7 @@ const LocationPage = ({ page }: { page: SeoPage }) => {
           title={frontmatter.title}
         />
 
-        <GuideIntro aeoAnswer={aeoAnswer} className="pt-12 md:pt-16" />
+        <GuideIntro aeoAnswer={aeoAnswer} className="pt-12 md:pt-16" consultationCta={frontmatter.consultationCta} />
 
         <section className="pb-16 md:pb-20">
           <div className="container max-w-3xl mx-auto px-6">
@@ -45,8 +45,8 @@ const LocationPage = ({ page }: { page: SeoPage }) => {
 
         <FaqSection faq={faq} />
         <ConsultCta
-          heading={`Final expense help for families in ${place}.`}
-          body="Sterling Crest serves clients nationwide. Schedule a complimentary consultation to talk through coverage — no local office visit required."
+          heading={frontmatter.closingCta?.heading ?? `Final expense help for families in ${place}.`}
+          body={frontmatter.closingCta?.body ?? "Sterling Crest serves clients nationwide. Schedule a complimentary consultation to talk through coverage — no local office visit required."}
         />
         <Disclosures items={frontmatter.disclosures} />
       </article>
