@@ -93,9 +93,9 @@ export async function POST(request: Request) {
     const input = JSON.parse(raw);
     if (
       input.website ||
-      !Number.isFinite(input.formStartedAt) ||
+      (input.action!=='track' && (!Number.isFinite(input.formStartedAt) ||
       Date.now() - input.formStartedAt < 2500 ||
-      Date.now() - input.formStartedAt > 2 * 3600_000
+      Date.now() - input.formStartedAt > 2 * 3600_000))
     )
       return reply({ error: "Please refresh the form and try again." }, 400);
     const bot = await checkBotId({ advancedOptions: { checkLevel: "basic" } });
@@ -114,6 +114,7 @@ export async function POST(request: Request) {
     const clientHash = createHmac("sha256", secret)
       .update(`booking-client:${ip}`)
       .digest("hex");
+    if(input.action==='track') return await bridge({action:'track',name:input.name,path:input.path,attribution:input.attribution});
     return await bridge({
       action: "book",
       requestId: input.requestId,
@@ -124,6 +125,7 @@ export async function POST(request: Request) {
       email: input.email,
       reason: input.reason,
       clientHash,
+      attribution: input.attribution,
     });
   } catch {
     console.error("website-booking submission unavailable");
