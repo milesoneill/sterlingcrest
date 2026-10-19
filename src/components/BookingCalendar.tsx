@@ -15,6 +15,7 @@ import {
 } from "@/lib/custom-booking";
 import { contactPhone, contactPhoneHref } from "@/lib/contact";
 import { bookingAttribution, trackBookingEvent } from '@/lib/booking-attribution';
+import { bookingConsentDisclosure, bookingConsentVersion } from '@/lib/booking-consent';
 
 const fieldClass =
   "mt-1.5 block w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2 text-[15px] text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-muted/40";
@@ -113,6 +114,11 @@ export default function BookingCalendar() {
       phone: String(form.get("phone") ?? "").trim(),
       email: String(form.get("email") ?? "").trim(),
       reason: String(form.get("reason") ?? "").trim(),
+      smsConsent: {
+        service: form.get("serviceTexts") === "on",
+        marketing: form.get("marketingTexts") === "on",
+        version: bookingConsentVersion,
+      },
       attribution: bookingAttribution(),
     };
     // Disabled controls are omitted from FormData. Pending retries retain the
@@ -400,6 +406,27 @@ export default function BookingCalendar() {
                 className={`${fieldClass} min-h-[80px] resize-y`}
               />
             </label>
+            <div role="group" aria-labelledby="booking-text-preferences" className="!mt-6 border-t border-[#e4e2df] pt-5">
+              <h4 id="booking-text-preferences" className="flex flex-wrap items-center gap-3 font-sans text-sm font-semibold text-foreground">
+                Stay in touch, your way
+                <span className="bg-[#f2ede2] px-2 py-1 text-[9px] font-medium uppercase tracking-widest text-[#89713e]">Optional</span>
+              </h4>
+              <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">Choose which texts, if any, you’d like to receive.</p>
+              <label className="mt-4 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-muted-foreground">
+                <input type="checkbox" name="serviceTexts" className="mt-1 h-[18px] w-[18px] shrink-0 accent-[#9c8045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
+                <span>I agree to receive <strong className="font-semibold text-foreground/80">service text messages</strong> from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about my consultation, appointment reminders, and policy-related support.</span>
+              </label>
+              <label className="mt-4 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-muted-foreground">
+                <input type="checkbox" name="marketingTexts" className="mt-1 h-[18px] w-[18px] shrink-0 accent-[#9c8045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
+                <span>I agree to receive <strong className="font-semibold text-foreground/80">marketing text messages</strong>, including automated texts, from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about insurance products and offers.</span>
+              </label>
+              <p className="mt-5 text-xs leading-relaxed text-muted-foreground">{bookingConsentDisclosure}</p>
+              <p className="mt-3 flex items-center gap-3 text-xs text-foreground/80">
+                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Privacy Policy</a>
+                <span aria-hidden="true">·</span>
+                <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Terms of Service</a>
+              </p>
+            </div>
             <div
               aria-hidden="true"
               className="absolute -left-[10000px] h-0 w-0 overflow-hidden"

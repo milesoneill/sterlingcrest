@@ -44,15 +44,13 @@ const PrivacyPolicy = () => {
 
           <section>
             <h2 className="font-serif text-2xl text-foreground mb-4">4. SMS/Text Messaging Consent</h2>
-            <p>By providing your phone number and submitting a form or engaging with our chat widget, you consent to receive SMS/text messages from O'Neill Capital Inc. (DBA Sterling Crest Financial). These messages may include:</p>
+            <p>Providing your phone number, submitting a form, booking a consultation, or using our chat widget does not by itself give permission to send you SMS/text messages. On our booking form, you may separately choose whether to receive service texts or marketing texts from Sterling Crest Financial Group. Both choices are optional and unchecked by default. We record the choices you submit and the consent wording shown at that time.</p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
-              <li>Responses to your inquiries</li>
-              <li>Appointment reminders and confirmations</li>
-              <li>Service updates and policy information</li>
-              <li>Promotional offers and marketing messages</li>
+              <li><strong className="text-foreground">Service texts, if selected:</strong> Messages about your consultation, appointment reminders, and policy-related support.</li>
+              <li><strong className="text-foreground">Marketing texts, if separately selected:</strong> Messages about insurance products and offers, including automated texts.</li>
             </ul>
             <p className="mt-3"><strong className="text-foreground">Message frequency may vary.</strong> Message and data rates may apply. You may opt out at any time by replying STOP to any message. Reply HELP for assistance. Your consent to receive text messages is not a condition of purchasing any goods or services.</p>
-            <p className="mt-3">We will not share your phone number or opt-in data with third parties for marketing purposes. Your information will only be shared with service providers necessary to deliver our communications (e.g., our messaging platform provider).</p>
+            <p className="mt-3">You can book a consultation without agreeing to either type of text message. Mobile information and SMS opt-in consent will not be shared with third parties or affiliates for their marketing or promotional purposes. Information may be shared with service providers only as necessary to deliver our communications.</p>
           </section>
 
           <section>

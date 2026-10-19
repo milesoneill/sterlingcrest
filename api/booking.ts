@@ -124,6 +124,7 @@ export async function POST(request: Request) {
       phone: input.phone,
       email: input.email,
       reason: input.reason,
+      smsConsent: input.smsConsent,
       clientHash,
       attribution: input.attribution,
     });

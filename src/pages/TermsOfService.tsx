@@ -37,13 +37,13 @@ const TermsOfService = () => {
 
           <section>
             <h2 className="font-serif text-2xl text-foreground mb-4">4. Communications and Consent</h2>
-            <p>By submitting your contact information through our website forms, chat widget, or other communication channels, you expressly consent to receive communications from O'Neill Capital Inc. (DBA Sterling Crest Financial), including:</p>
+            <p>When you request a consultation, O'Neill Capital Inc. (DBA Sterling Crest Financial) may contact you to fulfill that request. Providing contact information, submitting a form, or using our chat widget does not by itself provide SMS marketing or service-text consent.</p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
-              <li><strong className="text-foreground">Phone Calls:</strong> You consent to receive phone calls at the number provided, including calls made using automated dialing technology.</li>
-              <li><strong className="text-foreground">SMS/Text Messages:</strong> You consent to receive text messages at the number provided. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.</li>
-              <li><strong className="text-foreground">Emails:</strong> You consent to receive emails regarding your inquiry, our services, and promotional content.</li>
+              <li><strong className="text-foreground">Phone Calls:</strong> When you book a phone consultation, we will call you at the number provided for that consultation.</li>
+              <li><strong className="text-foreground">SMS/Text Messages:</strong> Our booking form offers separate, optional, unchecked choices for service texts about your consultation, appointment reminders, and policy-related support, and marketing texts about insurance products and offers, including automated texts. Selecting one does not select the other. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.</li>
+              <li><strong className="text-foreground">Emails:</strong> If you provide an email address, we may send your calendar invitation and respond to your requested consultation.</li>
             </ul>
-            <p className="mt-3">Your consent to receive communications is not a condition of purchasing any product or service. You may revoke consent at any time by contacting us or following the opt-out instructions in any communication.</p>
+            <p className="mt-3">SMS consent is not a condition of purchase or booking. You can book without selecting either SMS checkbox. Mobile information and SMS opt-in consent will not be shared with third parties or affiliates for their marketing or promotional purposes. You may revoke consent by replying STOP or contacting us.</p>
           </section>
 
           <section>
