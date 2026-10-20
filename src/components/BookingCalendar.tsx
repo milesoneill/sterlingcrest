@@ -301,7 +301,7 @@ export default function BookingCalendar() {
               })}
             </p>
             <div
-              className="grid max-h-[94px] grid-cols-3 gap-2.5 overflow-y-auto pr-1"
+              className="grid max-h-[250px] grid-cols-3 gap-2.5 overflow-y-auto pr-1 md:max-h-[350px]"
               role="group"
               aria-label="Available times"
             >
