@@ -105,6 +105,8 @@
 .eg-sources a svg { flex-shrink:0 }
 .eg-sources li+li { margin-top:10px }
 .eg-sources p.eg-disclosure { margin-top:22px; padding-top:22px; border-top:1px solid var(--eg-line) }
+.eg-disclosures { margin-top:24px; border-top:1px solid var(--eg-line); padding-top:24px }
+.eg-disclosures p { font-size:16px; line-height:1.8; color:#4c5a64; margin-bottom:16px }
 .eg-related { border-top:1px solid var(--eg-line); background:#eeeee6; padding:46px 0 56px }
 .eg-related-heading { display:flex; justify-content:space-between; gap:26px; align-items:end; margin-bottom:28px }
 .eg-related-heading h2 { font-size:34px; line-height:1.35; letter-spacing:-.02em }

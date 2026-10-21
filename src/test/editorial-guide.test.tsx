@@ -11,9 +11,9 @@ it('gives the selected guide a working six-item checklist with accessible labels
 it('connects every section link to content, preserves six FAQ answers and makes the example table keyboard accessible',()=>{
  const {container}=show();const toc=screen.getByRole('navigation',{name:'Article sections'});
  for(const link of within(toc).getAllByRole('link'))expect(container.querySelector(link.getAttribute('href')!)).not.toBeNull();
- expect(container.querySelectorAll('.eg-faq details')).toHaveLength(6);expect(screen.getByRole('region',{name:/Example quote notes/})).toHaveAttribute('tabindex','0');
+ expect(container.querySelectorAll('.eg-faq details')).toHaveLength(6);expect(screen.getByRole('region',{name:/Example planning notes/})).toHaveAttribute('tabindex','0');
  const faqSchema=quote.frontmatter.schema?.find((s:unknown)=>typeof s==='object'&&s!==null&&'@type' in s&&s['@type']==='FAQPage') as {'mainEntity':{name:string}[]};expect(faqSchema.mainEntity.map(q=>q.name)).toEqual(quote.faq.map(f=>f.question));
 });
-it('keeps the other live guides on their existing layout',()=>{
- const other=getSeoPageByPath('/resources/prepare-final-expense-insurance-application')!;expect(other.frontmatter.guideLayout).toBeUndefined();const {container}=show(other);expect(container.querySelector('.editorial-guide')).toBeNull();expect(screen.getByRole('heading',{level:1})).toHaveTextContent(other.frontmatter.title);
+it('uses the approved readable layout for other articles without rewriting their content',()=>{
+ const other=getSeoPageByPath('/resources/prepare-final-expense-insurance-application')!;expect(other.frontmatter.guideLayout).toBeUndefined();const {container}=show(other);expect(container.querySelector('.editorial-guide')).not.toBeNull();expect(screen.getAllByRole('link',{name:'Schedule a consultation'})).toHaveLength(2);expect(screen.getByRole('heading',{level:1})).toHaveTextContent(other.frontmatter.title);
 });
