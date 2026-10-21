@@ -1,3 +1,4 @@
+import EditorialGuidePage from "./EditorialGuidePage";
 import { MarkdownBody } from "@/lib/markdown";
 import { guideHeroImage, type SeoPage } from "@/lib/seo-content";
 import {
@@ -13,6 +14,7 @@ import {
 const BlogPage = ({ page }: { page: SeoPage }) => {
   const { frontmatter, body, aeoAnswer, faq } = page;
   const hero = guideHeroImage(page);
+  if (frontmatter.guideLayout === "editorial") return <EditorialGuidePage page={page} />;
 
   return (
     <SeoChrome page={page}>

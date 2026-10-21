@@ -4,6 +4,9 @@ export type SeoConsultationCta = { heading: string; body: string };
 
 export type SeoFrontmatter = {
   title: string;
+  guideLayout?: "editorial";
+  summary?: string;
+  updatedAt?: string;
   slug: string;
   description?: string;
   canonical?: string;
@@ -69,6 +72,9 @@ function parseFrontmatter(block: string): SeoFrontmatter {
   const template = String(data.template ?? "blog-page");
   return {
     title,
+    guideLayout: data.guideLayout === "editorial" ? "editorial" : undefined,
+    summary: typeof data.summary === "string" ? data.summary : undefined,
+    updatedAt: typeof data.updatedAt === "string" && !Number.isNaN(Date.parse(data.updatedAt)) ? data.updatedAt : undefined,
     slug,
     description: data.description ? String(data.description) : undefined,
     canonical: data.canonical ? String(data.canonical) : undefined,
