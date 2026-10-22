@@ -188,3 +188,23 @@
   .eg-faq details:not([open])>p { display:block }
   .eg-checklist-foot { display:none }
 }
+
+/* Owner-approved article reading sizes: October 21, 2026. */
+.editorial-guide { font-size:18px }
+.eg-deck { font-size:20px }
+.eg-answer>.aeo-answer { font-size:18px }
+.eg-inline-help p,.eg-consult>p:not(.eg-eyebrow) { font-size:18px }
+.eg-section-copy p,.eg-section-copy li { font-size:18px!important }
+.eg-checklist-top>span:first-child,.eg-check,.eg-table-wrap table { font-size:18px }
+.eg-faq summary { font-size:20px }
+.eg-faq details p,.eg-related-card p { font-size:18px }
+@media(max-width:600px) {
+  .editorial-guide { font-size:17px }
+  .eg-deck { font-size:18px }
+  .eg-answer>.aeo-answer { font-size:17px }
+  .eg-inline-help p,.eg-consult>p:not(.eg-eyebrow) { font-size:17px }
+  .eg-section-copy p,.eg-section-copy li { font-size:17px!important }
+  .eg-checklist-top>span:first-child,.eg-check,.eg-table-wrap table { font-size:17px }
+  .eg-faq summary { font-size:19px }
+  .eg-faq details p,.eg-related-card p { font-size:17px }
+}
