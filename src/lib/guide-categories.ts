@@ -9,27 +9,27 @@ export const GUIDE_CATEGORIES = [
   {
     id: "choosing-coverage",
     title: "Choosing Coverage",
-    description: "Explore insurance, compare options, and know what to ask.",
+    description: "Compare options and know what to ask.",
   },
   {
     id: "health-eligibility",
     title: "Health & Eligibility",
-    description: "Learn how health questions can affect your options.",
+    description: "Learn how health can affect your options.",
   },
   {
     id: "managing-policy",
     title: "Managing Your Policy",
-    description: "Keep payments, beneficiaries, and policy details up to date.",
+    description: "Keep your coverage details up to date.",
   },
   {
     id: "claims-family",
     title: "Claims & Family Support",
-    description: "Find practical steps for claims and records after a loss.",
+    description: "Find clear next steps after a loss.",
   },
   {
     id: "state-guides",
     title: "State Guides",
-    description: "Browse insurance guidance for your state.",
+    description: "Explore guidance for your state.",
   },
 ] as const;
 
