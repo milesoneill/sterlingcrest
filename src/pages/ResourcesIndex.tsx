@@ -66,7 +66,7 @@ const ResourcesIndex = () => {
             aria-hidden="true"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-[70%_center]"
+            className="absolute inset-0 w-full h-full object-cover object-[70%_42%]"
           />
           <div className="guides-hero-shade" />
           <div className="guides-hero-inner">
