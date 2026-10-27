@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 import {
   parseFaqMarkdown,
   parseSeoMdx,
@@ -158,7 +160,13 @@ describe("resolveGuideImage", () => {
     const pages = listGuideIndexPages();
     expect(pages.length).toBeGreaterThan(1);
     for (const page of pages) {
-      expect(guideHeroImage(page)).toMatch(/^https:\/\/images\.unsplash\.com\//);
+      const image = guideHeroImage(page);
+      if (image.startsWith("/images/")) {
+        expect(image).toMatch(/^\/images\/[\w.-]+\.(?:jpe?g|png|webp|avif)$/i);
+        expect(existsSync(resolve("public", image.slice(1))), image).toBe(true);
+      } else {
+        expect(image).toMatch(/^https:\/\/images\.unsplash\.com\//);
+      }
     }
   });
 
