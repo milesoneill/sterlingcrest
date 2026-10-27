@@ -9,6 +9,7 @@
 }
 
 .guide-topics-intro { margin-bottom: 1.7rem; }
+#guide-topics-heading { scroll-margin-top: 8rem; }
 .guide-topic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .guide-topic-card {
   position: relative;
