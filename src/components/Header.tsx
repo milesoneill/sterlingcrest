@@ -10,12 +10,13 @@ const navLinks = [
   { label: "Book", href: "/book" },
 ];
 
-const Header = () => {
+const Header = ({ variant = "default" }: { variant?: "default" | "guides" }) => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const useLightStyle = scrolled || !isHome;
+  const isGuidesHeader = variant === "guides";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -59,13 +60,16 @@ const Header = () => {
 
           {/* Right cluster: desktop nav + menu square */}
           <div className="flex items-stretch gap-0">
-            <nav className="hidden md:flex items-center gap-10 pr-8">
+            <nav aria-label="Main navigation" className={`hidden md:flex items-center gap-10 ${isGuidesHeader ? "pr-10" : "pr-8"}`}>
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`text-xs tracking-[0.25em] uppercase font-sans hover:text-primary transition-colors duration-200 ${
-                    useLightStyle ? "text-foreground/70" : "text-white/80"
+                  aria-current={isGuidesHeader && link.href === "/resources" ? "page" : undefined}
+                  className={`relative py-3 text-xs tracking-[0.25em] uppercase font-sans hover:text-primary transition-colors duration-200 ${
+                    isGuidesHeader && link.href === "/resources"
+                      ? "text-foreground font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+                      : useLightStyle ? "text-foreground/70" : "text-white/80"
                   }`}
                 >
                   {link.label}
@@ -78,7 +82,7 @@ const Header = () => {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((o) => !o)}
-              className="flex items-center justify-center w-16 h-24 bg-secondary text-secondary-foreground hover:bg-navy-light transition-colors"
+              className={`flex items-center justify-center w-16 h-24 bg-secondary text-secondary-foreground hover:bg-navy-light transition-colors ${isGuidesHeader ? "md:hidden" : ""}`}
             >
               {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -88,6 +92,7 @@ const Header = () => {
 
       {/* Slide-down panel (all breakpoints) */}
       <div
+        aria-hidden={!menuOpen}
         className={`overflow-hidden transition-[max-height] duration-300 ease-in-out backdrop-blur-md ${
           menuOpen ? "max-h-[32rem]" : "max-h-0"
         } ${
@@ -101,6 +106,7 @@ const Header = () => {
             <a
               key={link.label}
               href={link.href}
+              tabIndex={menuOpen ? undefined : -1}
               onClick={() => setMenuOpen(false)}
               className={`py-3 text-sm tracking-[0.3em] uppercase font-sans hover:text-primary border-b last:border-b-0 transition-colors ${
                 useLightStyle

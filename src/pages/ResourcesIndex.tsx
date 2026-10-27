@@ -1,18 +1,6 @@
 import { useMemo, useRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import {
-  ArrowRight,
-  Check,
-  FileCheck2,
-  HeartPulse,
-  HandHeart,
-  MapPin,
-  Search,
-  SearchX,
-  ShieldCheck,
-  Wallet,
-  X,
-} from "lucide-react";
+import { ArrowRight, Search, SearchX, X } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { guidesIndexHeroImage } from "@/lib/images";
@@ -25,15 +13,6 @@ import {
   type GuideCategoryId,
 } from "@/lib/guide-categories";
 import "./resources-index.css";
-
-const topicIcons = {
-  "funeral-costs": Wallet,
-  "choosing-coverage": ShieldCheck,
-  "health-eligibility": HeartPulse,
-  "managing-policy": FileCheck2,
-  "claims-family": HandHeart,
-  "state-guides": MapPin,
-};
 
 const ResourcesIndex = () => {
   const pages = useMemo(() => listGuideIndexPages(), []);
@@ -48,13 +27,17 @@ const ResourcesIndex = () => {
   const filteredPages = filterGuides(pages, { category, query });
   const hasFilters = category !== "all" || query.trim().length > 0;
 
+  function scrollToResults() {
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    resultsRef.current?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+
   function chooseCategory(next: GuideCategoryId | "all") {
     const params = new URLSearchParams(searchParams);
     if (next === "all") params.delete("category");
     else params.set("category", next);
     setSearchParams(params);
-    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-    resultsRef.current?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    scrollToResults();
   }
 
   function updateQuery(next: string) {
@@ -73,53 +56,101 @@ const ResourcesIndex = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header variant="guides" />
 
-      <section className="relative pt-24 md:pt-28">
-        <div className="relative min-h-[360px] md:min-h-[440px] flex items-end overflow-hidden">
+      <section className="guides-hero">
+        <div className="guides-hero-scene">
           <img
             src={guidesIndexHeroImage}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-[70%_center]"
+            className="absolute inset-0 w-full h-full object-cover object-[70%_42%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/35" />
-          <div className="container max-w-4xl mx-auto px-6 pb-12 md:pb-16 relative z-10">
-            <p className="text-primary text-[0.7rem] tracking-[0.45em] uppercase font-sans mb-4">
+          <div className="guides-hero-shade" />
+          <div className="guides-hero-inner">
+            <p className="guides-hero-eyebrow">
               Resources
             </p>
-            <h1 className="font-serif text-3xl md:text-5xl text-white leading-tight">
+            <h1 className="guides-hero-title font-serif">
               Guides for Families
             </h1>
-            <div className="gold-underline w-16 mt-6 mb-6" />
-            <p className="text-base md:text-lg text-white/75 font-sans leading-relaxed max-w-2xl">
-              Educational articles on life insurance, financial protection, and
-              the decisions that help families plan with confidence — including
-              state-specific location guides. When you&apos;re ready, a
-              complimentary consultation is the next step.
+            <div className="guides-hero-rule" />
+            <p className="guides-hero-subtitle">
+              Clear answers for your family’s next step.
             </p>
           </div>
         </div>
       </section>
 
-      <main className="py-12 md:py-16">
-        <div className="container max-w-4xl mx-auto px-6">
+      <main className="guides-main">
+        <div className="guides-container">
           <section aria-labelledby="guide-topics-heading" className="guide-topics">
             <div className="guide-topics-intro">
               <p className="guide-eyebrow">A little clarity, one topic at a time</p>
-              <h2 id="guide-topics-heading" className="font-serif text-2xl md:text-3xl">
+              <h2 id="guide-topics-heading" className="guide-topics-title font-serif">
                 What would you like help with?
               </h2>
-              <p className="mt-3 text-muted-foreground leading-relaxed">
-                Choose a topic to explore, or search for a question below.
+              <p className="guide-topics-subtitle">
+                Explore a topic or find an answer.
               </p>
             </div>
 
+            <div className="guide-browse-tools">
+              <button
+                type="button"
+                className={`guide-all-button${category === "all" ? " is-selected" : ""}`}
+                aria-pressed={category === "all"}
+                aria-controls="guide-results"
+                onClick={() => chooseCategory("all")}
+              >
+                All Guides
+                <span aria-hidden="true">·</span>
+                <span>{pages.length}</span>
+              </button>
+
+              <form className="guide-search-form" role="search" onSubmit={(event) => {
+                event.preventDefault();
+                scrollToResults();
+              }}>
+                <label htmlFor="guide-search" className="sr-only">
+                  {selectedTopic ? `Search in ${selectedTopic.title}` : "Search all guides"}
+                </label>
+                <div className="guide-search-field">
+                  <Search size={19} strokeWidth={1.7} aria-hidden="true" />
+                  <input
+                    id="guide-search"
+                    type="search"
+                    value={query}
+                    onChange={(event) => updateQuery(event.target.value)}
+                    placeholder={selectedTopic ? "Search this topic…" : "Search guides…"}
+                    autoComplete="off"
+                    aria-controls="guide-results"
+                  />
+                  {query && (
+                    <button type="button" onClick={() => updateQuery("")} aria-label="Clear search">
+                      <X size={18} strokeWidth={1.7} aria-hidden="true" />
+                    </button>
+                  )}
+                </div>
+              </form>
+            </div>
+
+            {query.trim() && (
+              <div className="guide-search-feedback">
+                <p>{filteredPages.length} {filteredPages.length === 1 ? "guide" : "guides"} found</p>
+                <a href="#guide-results" onClick={(event) => {
+                  event.preventDefault();
+                  scrollToResults();
+                }}>
+                  View results <ArrowRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            )}
+
             <div className="guide-topic-grid" aria-label="Guide topics">
               {GUIDE_CATEGORIES.map((topic) => {
-                const Icon = topicIcons[topic.id];
                 const selected = category === topic.id;
                 return (
                   <button
@@ -131,62 +162,33 @@ const ResourcesIndex = () => {
                     aria-label={`${topic.title}, ${counts[topic.id]} guides`}
                     onClick={() => chooseCategory(topic.id)}
                   >
-                    <span className="guide-topic-icon" aria-hidden="true">
-                      <Icon size={23} strokeWidth={1.55} />
+                    <span className="guide-topic-photo" aria-hidden="true">
+                      <img
+                        src={`/images/guide-topics/${topic.id}.webp`}
+                        alt=""
+                        width={800}
+                        height={480}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </span>
-                    <span className="guide-topic-copy">
-                      <span className="guide-topic-title font-serif">{topic.title}</span>
-                      <span className="guide-topic-description">{topic.description}</span>
-                    </span>
-                    <span className="guide-topic-footer">
-                      <span>{counts[topic.id]} {counts[topic.id] === 1 ? "guide" : "guides"}</span>
-                      {selected ? (
-                        <Check size={17} strokeWidth={1.8} aria-hidden="true" />
-                      ) : (
-                        <ArrowRight size={17} strokeWidth={1.6} aria-hidden="true" />
-                      )}
+                    <span className="guide-topic-body">
+                      <span className="guide-topic-copy">
+                        <span className="guide-topic-title font-serif">{topic.title}</span>
+                        <span className="guide-topic-description">{topic.description}</span>
+                      </span>
+                      <span className="guide-topic-footer">
+                        <span>{counts[topic.id]} {counts[topic.id] === 1 ? "guide" : "guides"}</span>
+                        <span className="guide-topic-action">
+                          Explore guides <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
+                        </span>
+                      </span>
                     </span>
                   </button>
                 );
               })}
             </div>
           </section>
-
-          <div className="guide-browse-tools">
-            <button
-              type="button"
-              className={`guide-all-button${category === "all" ? " is-selected" : ""}`}
-              aria-pressed={category === "all"}
-              aria-controls="guide-results"
-              onClick={() => chooseCategory("all")}
-            >
-              All Guides
-              <span>{pages.length}</span>
-            </button>
-
-            <form className="guide-search-form" role="search" onSubmit={(event) => event.preventDefault()}>
-              <label htmlFor="guide-search" className="guide-search-label">
-                {selectedTopic ? `Search in ${selectedTopic.title}` : "Search all guides"}
-              </label>
-              <div className="guide-search-field">
-                <Search size={19} strokeWidth={1.7} aria-hidden="true" />
-                <input
-                  id="guide-search"
-                  type="search"
-                  value={query}
-                  onChange={(event) => updateQuery(event.target.value)}
-                  placeholder={selectedTopic ? "Search this topic…" : "Try cremation, payments, or diabetes…"}
-                  autoComplete="off"
-                  aria-controls="guide-results"
-                />
-                {query && (
-                  <button type="button" onClick={() => updateQuery("")} aria-label="Clear search">
-                    <X size={18} strokeWidth={1.7} aria-hidden="true" />
-                  </button>
-                )}
-              </div>
-            </form>
-          </div>
 
           <section ref={resultsRef} id="guide-results" className="guide-results" aria-labelledby="guide-results-heading">
             <div className="guide-results-heading">
