@@ -116,7 +116,8 @@ export async function POST(request: Request) {
       .digest("hex");
     if(input.action==='track') return await bridge({action:'track',name:input.name,path:input.path,attribution:input.attribution});
     return await bridge({
-      action: "book",
+      action: input.action === "inquiry" ? "inquiry" : "book",
+      inquiryId: input.inquiryId,
       requestId: input.requestId,
       start: input.start,
       firstName: input.firstName,
