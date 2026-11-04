@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 type Block =
   | { type: "heading"; text: string }
   | { type: "paragraph"; text: string }
-  | { type: "list"; items: string[] };
+  | { type: "list"; items: string[]; ordered?: boolean; start?: number };
 
 export function splitMarkdownBlocks(markdown: string): Block[] {
   const blocks: Block[] = [];
@@ -25,12 +25,21 @@ export function splitMarkdownBlocks(markdown: string): Block[] {
       });
       continue;
     }
+    if (lines.every((l) => /^\d{1,9}\.\s+/.test(l.trim()))) {
+      blocks.push({
+        type: "list",
+        ordered: true,
+        start: Number(lines[0].trim().match(/^(\d+)\./)![1]),
+        items: lines.map((l) => l.trim().replace(/^\d{1,9}\.\s+/, "")),
+      });
+      continue;
+    }
     blocks.push({ type: "paragraph", text: trimmed.replace(/\n/g, " ") });
   }
   return blocks;
 }
 
-function Inline({ text }: { text: string }) {
+export function Inline({ text }: { text: string }) {
   const parts: ReactNode[] = [];
   const re = /(\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)]+)\))/g;
   let last = 0;
@@ -93,17 +102,11 @@ export function MarkdownBody({ markdown }: { markdown: string }) {
           );
         }
         if (block.type === "list") {
-          return (
-            <ul
-              key={i}
-              className="list-disc pl-6 space-y-2 text-base md:text-lg leading-relaxed text-muted-foreground font-sans"
-            >
-              {block.items.map((item) => (
-                <li key={item}>
-                  <Inline text={item} />
-                </li>
-              ))}
-            </ul>
+          const items = block.items.map((item, index) => <li key={index}><Inline text={item} /></li>);
+          return block.ordered ? (
+            <ol key={i} start={block.start} className="list-decimal pl-6 space-y-2 text-base md:text-lg leading-relaxed text-muted-foreground font-sans">{items}</ol>
+          ) : (
+            <ul key={i} className="list-disc pl-6 space-y-2 text-base md:text-lg leading-relaxed text-muted-foreground font-sans">{items}</ul>
           );
         }
         return (

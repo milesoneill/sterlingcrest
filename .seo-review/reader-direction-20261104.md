@@ -18,3 +18,10 @@ All articles remain unpublished and await owner review. This revision does not a
 ## Short-answer placement — owner clarification
 
 The short answer must answer the question or promise in the headline directly. Put supporting definitions and terminology in the article body at first relevant use. A definition is appropriate in the short answer when the headline itself asks what a term means. Do not turn a comparison or decision summary into a glossary.
+## Consultation flow and reader aids — owner clarification
+
+Restore light, natural guidance toward a consultation throughout the batch. Each article should first answer and explain the topic, then offer one relevant body invitation with a concrete reason a conversation could help that reader. Retain the existing top and bottom consultation options without turning every section into a pitch.
+
+Use short bullet lists, numbered steps, concise comparisons and charts when they clarify a real decision. Keep the substantive conversational explanations and define unfamiliar terms in the body. Do not add a chart just for decoration or invent numbers to populate one. Hypothetical figures must remain visibly labeled and must not imply actual pricing, a forecast, a quote or a policy guarantee. Comparisons must preserve contract qualifications. Tables and charts must wrap or scroll accessibly on mobile with visible values and notes.
+
+The current batch remains 18 Final Expense and 12 Mortgage Protection articles, unpublished pending owner review.
