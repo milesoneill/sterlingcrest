@@ -3,7 +3,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Search, SearchX, X } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { guidesIndexHeroImage } from "@/lib/images";
 import { guideHeroImage, listGuideIndexPages } from "@/lib/seo-content";
 import {
   GUIDE_CATEGORIES,
@@ -58,7 +57,7 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
   const searchLabel = selectedTopic ? `Search in ${selectedTopic.title}` : currentCollection ? `Search ${currentCollection.label} guides` : "Search all guides";
   const browseLabel = currentCollection ? `Browse all ${currentCollection.label} guides` : "Browse all guides";
   const resultsTitle = selectedTopic?.title ?? (collection === "mortgage-protection" ? "Explore Mortgage Protection" : allResultsLabel);
-  const heroImage = collection === "mortgage-protection" ? COLLECTIONS[1].image : guidesIndexHeroImage;
+  const heroTitle = currentCollection?.title ?? "Guides for Families";
 
   function scrollToResults() {
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
@@ -90,19 +89,23 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
   return (
     <div className="guides-page min-h-screen bg-background">
       <Header variant="guides" />
-      <div className="guides-hero">
+      <main>
+      <header className="guides-hero" aria-labelledby="guide-page-heading">
         <div className="guides-hero-scene">
-          <img src={heroImage} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="guides-hero-image" />
+          <img src="/images/guide-collections/family-guides-hero.jpg" alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="guides-hero-image" />
           <div className="guides-hero-shade" />
-          <div className="guides-hero-inner"><p className="guides-hero-subtitle">Clear answers for your family’s next step.</p></div>
+          <div className="guides-hero-inner">
+            <p className="guides-hero-eyebrow">Sterling Crest Guides</p>
+            <h1 id="guide-page-heading" className="guides-hero-title font-serif">{heroTitle}</h1>
+            <p className="guides-hero-subtitle">Clear answers for your family’s next step.</p>
+          </div>
         </div>
-      </div>
-      <main className="guides-main">
+      </header>
+      <div className="guides-main">
         <div className="guides-container">
           {currentCollection && <Link to="/resources" className="guide-back-link"><ArrowLeft size={18} aria-hidden="true" /> Back to all guides</Link>}
           <section aria-labelledby="guide-page-heading" className="guide-intro">
             <div className="guide-topics-intro">
-              <h1 id="guide-page-heading" className="guide-page-title font-serif">{currentCollection?.title ?? "What would you like help with?"}</h1>
               <p className="guide-page-subtitle">{collection === "final-expense" ? "Clear answers about final expenses, coverage, and planning for your family." : collection === "mortgage-protection" ? "Understand your options for protecting your family’s home." : "Choose a guide collection to get started."}</p>
               {currentCollection && <p className="guide-collection-total">{scopedPages.length} {scopedPages.length === 1 ? "guide" : "guides"}</p>}
             </div>
@@ -183,6 +186,7 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
             </div>}
           </section>
         </div>
+      </div>
       </main>
       <Footer />
     </div>
