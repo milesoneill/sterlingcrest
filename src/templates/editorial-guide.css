@@ -83,6 +83,17 @@
 .eg-table-wrap tbody th { font-weight:600; width:25%; color:#263e4d }
 .eg-table-wrap td { color:var(--eg-muted) }
 .eg-table-wrap tbody tr:last-child>* { border-bottom:0 }
+.eg-chart { max-width:100%; min-width:0; margin:26px 0; padding:24px; border:1px solid #cbd0c4; border-top:3px solid #bca36b; border-radius:3px; background:#faf9f3 }
+.eg-chart-title { display:block; font-size:21px; line-height:1.5; color:#172c3f }
+.eg-section-copy .eg-chart-description { margin:8px 0 0; font-size:16px!important; line-height:1.65!important }
+.eg-chart-axis { display:flex; justify-content:space-between; gap:16px; margin:22px 0 14px; font-size:14px; line-height:1.5; color:#465660 }
+.eg-section-copy .eg-chart-values { list-style:none; padding:0; margin:0 }
+.eg-chart-row+.eg-chart-row { margin-top:18px }
+.eg-chart-label { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px 16px; font-size:17px; line-height:1.6; overflow-wrap:anywhere }
+.eg-chart-label strong { white-space:nowrap; font-variant-numeric:tabular-nums }
+.eg-chart-track { height:16px; margin-top:7px; background:#e8e7de; border-left:1px solid #77818a }
+.eg-chart-bar { display:block; height:100%; background:#24475d }
+.eg-section-copy .eg-chart-note { margin:22px 0 0; padding-top:14px; border-top:1px solid #d8d8ce; font-size:15px!important; line-height:1.65!important }
 .eg-note { border-left:3px solid #bca36b; background:#f0eee4; padding:22px; margin:26px 0 }
 .eg-note>span { display:block; font-size:16px; font-weight:600; color:#76551e; margin-bottom:10px }
 .eg-faq { margin-top:50px; padding-top:36px; border-top:1px solid var(--eg-line); scroll-margin-top:125px }
@@ -163,6 +174,9 @@
   .eg-section-copy p.eg-checklist-foot { padding:16px 18px!important }
   .eg-table-wrap table { font-size:18px }
   .eg-table-wrap th,.eg-table-wrap td { padding:16px }
+  .eg-chart { padding:20px 16px }
+  .eg-chart-title { font-size:20px }
+  .eg-chart-label { font-size:16px }
   .eg-faq h2 { font-size:32px }
   .eg-faq summary { font-size:20px; padding:22px 0 }
   .eg-faq details p { font-size:18px; padding-right:0 }
@@ -208,3 +222,4 @@
   .eg-faq summary { font-size:19px }
   .eg-faq details p,.eg-related-card p { font-size:17px }
 }
+

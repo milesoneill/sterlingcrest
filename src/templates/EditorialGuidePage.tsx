@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, ChevronDown, Clock3, MessageCircle, ListChecks } from "lucide-react";
 import { guideHeroImage, getSeoPageByPath, type SeoPage } from "@/lib/seo-content";
-import { MarkdownBody } from "@/lib/markdown";
+import { Inline, MarkdownBody } from "@/lib/markdown";
+import GuideChart from "@/components/GuideChart";
+import { parseGuideChart, splitGuideBlocks } from "@/lib/guide-chart";
 import { SeoChrome } from "./seo-shared";
 import "./editorial-guide.css";
 import { editorialSections } from "@/lib/editorial-guide";
@@ -10,12 +12,18 @@ import { editorialSections } from "@/lib/editorial-guide";
 function PlainInline({ text }: { text: string }) {
   return <>{text.split(/(\*\*[^*]+\*\*)/g).map((part, i) => part.startsWith("**") ? <strong key={i}>{part.slice(2, -2)}</strong> : part)}</>;
 }
-function GuideBlocks({ markdown }: { markdown: string }) {
-  return <>{markdown.split(/\n{2,}/).filter(Boolean).map((block, index) => {
+export function GuideBlocks({ markdown }: { markdown: string }) {
+  return <>{splitGuideBlocks(markdown).map(({ type, content: block }, index) => {
+    if (type === "chart") {
+      const chart = parseGuideChart(block);
+      return chart ? <GuideChart key={index} chart={chart} /> : null;
+    }
     if (block.startsWith("|")) {
       const rows = block.split("\n").map(row => row.split("|").slice(1, -1).map(cell => cell.trim()));
-      const [head, , ...body] = rows;
-      return <div className="eg-table-wrap" key={index} tabIndex={0} role="region" aria-label="Example planning notes, horizontally scrollable"><table><caption>Planning example — for illustration only</caption><thead><tr>{head.map(h => <th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{body.map((row, r) => <tr key={r}>{row.map((cell, c) => c === 0 ? <th scope="row" key={c}>{cell}</th> : <td key={c}>{cell}</td>)}</tr>)}</tbody></table></div>;
+      const [head, separator, ...body] = rows;
+      if (head.length > 0 && separator?.length === head.length && separator.every(cell => /^:?-{3,}:?$/.test(cell)) && body.every(row => row.length === head.length)) {
+        return <div className="eg-table-wrap" key={index} tabIndex={0} role="region" aria-label="Article information, horizontally scrollable"><table><caption>At a glance</caption><thead><tr>{head.map((h, c) => <th scope="col" key={c}><Inline text={h} /></th>)}</tr></thead><tbody>{body.map((row, r) => <tr key={r}>{row.map((cell, c) => c === 0 ? <th scope="row" key={c}><Inline text={cell} /></th> : <td key={c}><Inline text={cell} /></td>)}</tr>)}</tbody></table></div>;
+      }
     }
     if (block.startsWith("> ")) return <aside className="eg-note" key={index}><span>Keep in mind</span><MarkdownBody markdown={block.replace(/^>\s?/gm, "")} /></aside>;
     return <MarkdownBody key={index} markdown={block} />;
@@ -71,3 +79,4 @@ export default function EditorialGuidePage({ page }: { page: SeoPage }) {
     <section className="eg-related"><div className="eg-shell"><div className="eg-related-heading"><div><p className="eg-eyebrow">Keep learning</p><h2>A little more clarity for your next step.</h2></div><Link to="/resources">All guides <ArrowRight size={14} aria-hidden="true" /></Link></div><div className="eg-related-grid">{related.map(item => <Link to={item.href} className="eg-related-card" key={item.href}><span>Related guide</span><h3>{item.page!.frontmatter.title}</h3><p>{item.page!.frontmatter.description}</p><span className="eg-read-guide">Read the guide <ArrowRight size={15} aria-hidden="true" /></span></Link>)}</div></div></section>
   </article></SeoChrome>;
 }
+
