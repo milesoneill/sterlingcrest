@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
+  Phone, Handshake, UserRound,
   ChevronLeft,
   ChevronRight,
   CheckCircle2,
@@ -18,7 +19,7 @@ import { bookingAttribution, trackBookingEvent } from '@/lib/booking-attribution
 import { bookingConsentDisclosure, bookingConsentVersion } from '@/lib/booking-consent';
 
 const fieldClass =
-  "mt-1.5 block w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2 text-[15px] text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-muted/40";
+  "mt-1.5 block w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2 text-[16px] text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-muted/40";
 const today = easternDate();
 function Step({
   number,
@@ -37,6 +38,11 @@ function Step({
   );
 }
 export default function BookingCalendar() {
+  const [step,setStep] = useState(1);
+  const [savedDetails,setSavedDetails] = useState<{firstName:string;lastName:string;phone:string;email:string;reason:string;smsConsent:{service:boolean;marketing:boolean;version:string};attribution:ReturnType<typeof bookingAttribution>} | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  useEffect(()=>{if(step===2)stageRef.current?.focus();},[step]);
+  const inquiryRequest = useRef<string | null>(null);
   const [month, setMonth] = useState(today.slice(0, 7)),
     [availability, setAvailability] = useState<Availability | null>(null);
   const [day, setDay] = useState(""),
@@ -53,6 +59,7 @@ export default function BookingCalendar() {
     attempt = useRef<{ key: string; id: string } | null>(null),
     successRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if(step!==2)return;
     const controller = new AbortController();
     setLoading(true);
     setError("");
@@ -92,7 +99,7 @@ export default function BookingCalendar() {
         if (!controller.signal.aborted) setLoading(false);
       });
     return () => controller.abort();
-  }, [month, refresh]);
+  }, [month, refresh, step]);
   useEffect(() => {
     if (booked) successRef.current?.focus();
   }, [booked]);
@@ -105,7 +112,7 @@ export default function BookingCalendar() {
   );
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!slot || submitting) return;
+    if (submitting || (step===2 && !slot)) return;
     const form = new FormData(event.currentTarget);
     const details = {
       start: slot,
@@ -121,12 +128,25 @@ export default function BookingCalendar() {
       },
       attribution: bookingAttribution(),
     };
+    if(step===1){
+      if(!inquiryRequest.current)inquiryRequest.current=crypto.randomUUID();
+      setSubmitting(true);setError("");
+      try{
+        const response=await fetch('/api/booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...details,action:'inquiry',requestId:inquiryRequest.current,formStartedAt:began.current,website:String(form.get('website')??'')})});
+        const value=await response.json();
+        if(!response.ok || value.saved!==true || value.inquiryId!==inquiryRequest.current)throw new Error(value.error||'Your inquiry could not be confirmed. Please try again.');
+        setSavedDetails(details);setStep(2);
+      }catch(reason){setError(reason instanceof Error?reason.message:'Please try again.');}
+      finally{setSubmitting(false);}
+      return;
+    }
+    const bookingDetails={...savedDetails,start:slot,inquiryId:inquiryRequest.current};
     // Disabled controls are omitted from FormData. Pending retries retain the
     // exact original payload and request ID, including after network timeouts.
-    const key = JSON.stringify(details);
+    const key = JSON.stringify(bookingDetails);
     if (!attempt.current || (!pending && attempt.current.key !== key))
       attempt.current = { key, id: crypto.randomUUID() };
-    const payload = pending ? JSON.parse(attempt.current.key) : details;
+    const payload = pending ? JSON.parse(attempt.current.key) : bookingDetails;
     setSubmitting(true);
     setError("");
     try {
@@ -154,7 +174,7 @@ export default function BookingCalendar() {
         );
       }
       if(value.booked!==true || typeof value.start!=='string')throw new SyntaxError('Confirmation unavailable. Keep this page open and retry.');
-      setBooked({ start: value.start, email: payload.email });
+      setBooked({ start: value.start, email: payload.email ?? "" });
       setPending(false);
     } catch (reason) {
       trackBookingEvent('booking_error');
@@ -207,13 +227,112 @@ export default function BookingCalendar() {
       </div>
     );
   return (
-    <div className="booking-card grid bg-white md:grid-cols-2">
-      <section
-        className="min-w-0 px-6 py-6 sm:px-8"
-        aria-label="Choose an appointment time"
-      >
-        <Step number={1}>Choose a time</Step>
-        <div className="mb-5 flex items-center justify-between">
+    <div className="booking-card bg-white">
+      <ol aria-label="Booking progress" className="flex items-center justify-center gap-5 border-b p-5 text-base font-serif"><li aria-current={step===1?'step':undefined}><span className="inline-flex rounded-full bg-[#ae9457] text-white w-10 h-10 items-center justify-center mr-3">{step===2?'✓':'1'}</span>Your details</li><li aria-hidden="true" className="w-16 border-t"/><li aria-current={step===2?'step':undefined}><span className={`inline-flex rounded-full border w-10 h-10 items-center justify-center mr-3 ${step===2?'bg-[#ae9457] text-white':''}`}>2</span>Choose a time</li></ol>
+      {step===2 && <div ref={stageRef} tabIndex={-1} role="status" className="m-5 rounded-md bg-[#eef0e8] p-4"><h3 className="font-serif text-xl">✓ Your inquiry has been received</h3><p className="text-sm mt-1">Choose a time below to finish booking your consultation.</p></div>}
+      <div className="grid md:grid-cols-[.75fr_1.5fr] gap-6 p-6 sm:p-8">
+        <aside className="md:border-r md:pr-6">
+          {step===1 ? <><p className="text-xs uppercase tracking-widest text-primary mb-4">A conversation, at your pace</p><h3 className="font-serif text-2xl mb-3">Let’s start with you.</h3><p className="text-muted-foreground text-base">Tell us a little about what you’d like help with. Next, you can choose a time that works for you.</p></> : <><div className="flex justify-between"><h3 className="font-serif text-2xl">Your details</h3><button type="button" disabled={locked} onClick={()=>setStep(1)} className="underline text-primary text-sm">Edit</button></div><p className="mt-5 font-medium">{savedDetails?.firstName} {savedDetails?.lastName}</p><p className="mt-2">{savedDetails?.phone}</p>{savedDetails?.reason && <p className="mt-5 text-base"><span className="block text-sm">Reason</span>{savedDetails.reason}</p>}</>}
+          <ul className="space-y-5 my-8 text-base"><li className="flex items-center gap-4"><Phone size={25} aria-hidden="true"/>15-minute phone consultation</li><li className="flex items-center gap-4"><Handshake size={25} aria-hidden="true"/>Complimentary · No obligation</li><li className="flex items-center gap-4"><UserRound size={25} aria-hidden="true"/>{step===1?'Speak with a licensed specialist.':'We’ll call the number you provided.'}</li></ul><p className="text-sm">Prefer to call? <a href={contactPhoneHref} className="underline text-primary">{contactPhone}</a></p>
+        </aside>
+        <section className="min-w-0" aria-label={step===1?'Your contact details':'Choose an appointment time'}>
+        <form onSubmit={submit}>
+          <div hidden={step!==1}><h3 className="font-serif text-2xl mb-1">Your details</h3><p className="text-sm text-muted-foreground mb-5">First name and phone number are required.</p>
+          <fieldset disabled={locked} className="space-y-3">
+            <div className="grid grid-cols-2 gap-4">
+              <label className="block text-[13px]" htmlFor="booking-first">
+                First name
+                <input
+                  id="booking-first"
+                  name="firstName"
+                  autoComplete="given-name"
+                  maxLength={80}
+                  required
+                  className={fieldClass}
+                />
+              </label>
+              <label className="block text-[13px]" htmlFor="booking-last">
+                Last name <span className="text-muted-foreground">(optional)</span>
+                <input
+                  id="booking-last"
+                  name="lastName"
+                  autoComplete="family-name"
+                  maxLength={80}
+                  className={fieldClass}
+                />
+              </label>
+            </div>
+            <label className="block text-[13px]" htmlFor="booking-phone">
+              Phone number
+              <input
+                id="booking-phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                maxLength={40}
+                required
+                className={fieldClass}
+              />
+            </label>
+            <label className="block text-[13px]" htmlFor="booking-email">
+              Email <span className="text-muted-foreground">(optional)</span>
+              <input
+                id="booking-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                maxLength={254}
+                className={fieldClass}
+              />
+            </label>
+            <label className="block text-[13px]" htmlFor="booking-reason">
+              <span className="flex justify-between">
+                Reason
+                <span className="text-xs text-muted-foreground">Optional</span>
+              </span>
+              <textarea
+                id="booking-reason"
+                name="reason"
+                maxLength={1000}
+                rows={3}
+                className={`${fieldClass} min-h-[80px] resize-y`}
+              />
+            </label>
+            <details className="!mt-5 rounded-md border p-4"><summary className="cursor-pointer text-sm font-medium">Text message preferences (optional)</summary><div role="group" aria-labelledby="booking-text-preferences" className="pt-4">
+              <h4 id="booking-text-preferences" className="flex flex-wrap items-center gap-3 font-sans text-sm font-semibold text-foreground">
+                Stay in touch, your way
+                <span className="bg-[#f2ede2] px-2 py-1 text-[9px] font-medium uppercase tracking-widest text-[#89713e]">Optional</span>
+              </h4>
+              <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">Choose which texts, if any, you’d like to receive.</p>
+              <label className="mt-4 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-muted-foreground">
+                <input type="checkbox" name="serviceTexts" className="mt-1 h-[18px] w-[18px] shrink-0 accent-[#9c8045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
+                <span>I agree to receive <strong className="font-semibold text-foreground/80">service text messages</strong> from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about my consultation, appointment reminders, and policy-related support.</span>
+              </label>
+              <label className="mt-4 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-muted-foreground">
+                <input type="checkbox" name="marketingTexts" className="mt-1 h-[18px] w-[18px] shrink-0 accent-[#9c8045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
+                <span>I agree to receive <strong className="font-semibold text-foreground/80">marketing text messages</strong>, including automated texts, from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about insurance products and offers.</span>
+              </label>
+              <p className="mt-5 text-xs leading-relaxed text-muted-foreground">{bookingConsentDisclosure}</p>
+
+            </div></details>              <p className="mt-3 flex items-center gap-3 text-xs text-foreground/80">
+                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Privacy Policy</a>
+                <span aria-hidden="true">·</span>
+                <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Terms of Service</a>
+              </p>
+            <div
+              aria-hidden="true"
+              className="absolute -left-[10000px] h-0 w-0 overflow-hidden"
+            >
+              <label>
+                Website
+                <input name="website" tabIndex={-1} autoComplete="off" />
+              </label>
+            </div>
+          </fieldset>
+          <p className="text-sm text-muted-foreground rounded-md bg-[#f5f2e9] p-3 mt-5">By continuing, you’re sending your inquiry to Sterling Crest Financial Group. We may call you about your inquiry, even if you don’t book a time.</p>
+          </div>
+          <div hidden={step!==2}><h3 className="font-serif text-2xl">Choose a time</h3><p className="text-sm text-muted-foreground mb-5">All times shown in Eastern Time.</p>
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-5"><div><div className="mb-5 flex items-center justify-between">
           <button
             type="button"
             aria-label="Previous month"
@@ -283,7 +402,7 @@ export default function BookingCalendar() {
             );
           })}
         </div>
-        {loading ? (
+        </div><div>{loading ? (
           <p
             className="mt-6 flex items-center gap-2 text-sm text-muted-foreground"
             role="status"
@@ -301,7 +420,7 @@ export default function BookingCalendar() {
               })}
             </p>
             <div
-              className="grid max-h-[250px] grid-cols-3 gap-2.5 overflow-y-auto pr-1 md:max-h-[350px]"
+              className="grid max-h-[250px] grid-cols-2 gap-2.5 overflow-y-auto pr-1 md:max-h-[350px]"
               role="group"
               aria-label="Available times"
             >
@@ -338,105 +457,8 @@ export default function BookingCalendar() {
         )}
         <p className="mt-4 text-xs text-muted-foreground">
           Eastern Time · Scroll for more times
-        </p>
-      </section>
-      <section
-        className="min-w-0 border-t border-[#e4e2df] px-6 py-6 sm:px-8 md:my-6 md:border-l md:border-t-0 md:py-1"
-        aria-label="Your contact details"
-      >
-        <Step number={2}>Your details</Step>
-        <form onSubmit={submit}>
-          <fieldset disabled={locked} className="space-y-3">
-            <div className="grid grid-cols-2 gap-4">
-              <label className="block text-[13px]" htmlFor="booking-first">
-                First name
-                <input
-                  id="booking-first"
-                  name="firstName"
-                  autoComplete="given-name"
-                  maxLength={80}
-                  required
-                  className={fieldClass}
-                />
-              </label>
-              <label className="block text-[13px]" htmlFor="booking-last">
-                Last name <span className="text-muted-foreground">(optional)</span>
-                <input
-                  id="booking-last"
-                  name="lastName"
-                  autoComplete="family-name"
-                  maxLength={80}
-                  className={fieldClass}
-                />
-              </label>
-            </div>
-            <label className="block text-[13px]" htmlFor="booking-phone">
-              Phone number
-              <input
-                id="booking-phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                maxLength={40}
-                required
-                className={fieldClass}
-              />
-            </label>
-            <label className="block text-[13px]" htmlFor="booking-email">
-              Email <span className="text-muted-foreground">(optional)</span>
-              <input
-                id="booking-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                maxLength={254}
-                className={fieldClass}
-              />
-            </label>
-            <label className="block text-[13px]" htmlFor="booking-reason">
-              <span className="flex justify-between">
-                Reason
-                <span className="text-xs text-muted-foreground">Optional</span>
-              </span>
-              <textarea
-                id="booking-reason"
-                name="reason"
-                maxLength={1000}
-                rows={3}
-                className={`${fieldClass} min-h-[80px] resize-y`}
-              />
-            </label>
-            <div role="group" aria-labelledby="booking-text-preferences" className="!mt-6 border-t border-[#e4e2df] pt-5">
-              <h4 id="booking-text-preferences" className="flex flex-wrap items-center gap-3 font-sans text-sm font-semibold text-foreground">
-                Stay in touch, your way
-                <span className="bg-[#f2ede2] px-2 py-1 text-[9px] font-medium uppercase tracking-widest text-[#89713e]">Optional</span>
-              </h4>
-              <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">Choose which texts, if any, you’d like to receive.</p>
-              <label className="mt-4 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-muted-foreground">
-                <input type="checkbox" name="serviceTexts" className="mt-1 h-[18px] w-[18px] shrink-0 accent-[#9c8045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
-                <span>I agree to receive <strong className="font-semibold text-foreground/80">service text messages</strong> from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about my consultation, appointment reminders, and policy-related support.</span>
-              </label>
-              <label className="mt-4 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-muted-foreground">
-                <input type="checkbox" name="marketingTexts" className="mt-1 h-[18px] w-[18px] shrink-0 accent-[#9c8045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
-                <span>I agree to receive <strong className="font-semibold text-foreground/80">marketing text messages</strong>, including automated texts, from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about insurance products and offers.</span>
-              </label>
-              <p className="mt-5 text-xs leading-relaxed text-muted-foreground">{bookingConsentDisclosure}</p>
-              <p className="mt-3 flex items-center gap-3 text-xs text-foreground/80">
-                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Privacy Policy</a>
-                <span aria-hidden="true">·</span>
-                <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Terms of Service</a>
-              </p>
-            </div>
-            <div
-              aria-hidden="true"
-              className="absolute -left-[10000px] h-0 w-0 overflow-hidden"
-            >
-              <label>
-                Website
-                <input name="website" tabIndex={-1} autoComplete="off" />
-              </label>
-            </div>
-          </fieldset>
+        </p></div></div>
+{slot && <p className="border-t pt-4 mt-5 text-base">{dateLabel(easternDate(new Date(slot)),{weekday:'long',month:'long',day:'numeric'})} at {timeLabel(slot)} Eastern<br/><span className="text-sm text-muted-foreground">15-minute phone consultation</span></p>}</div>
           {error && (
             <p
               role="alert"
@@ -450,30 +472,32 @@ export default function BookingCalendar() {
           )}
           <button
             type="submit"
-            disabled={!slot || submitting || loading}
-            className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ad9153] via-[#b69b5b] to-[#a88b4d] px-4 py-3 font-serif text-lg text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-55"
+            disabled={submitting || (step===2 && (!slot || loading))}
+            className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#0c2031] px-4 py-3 font-serif text-lg text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-55"
           >
             {submitting ? (
               <>
                 <LoaderCircle className="h-4 w-4 animate-spin" />
-                Confirming…
+                {step===1 ? "Sending inquiry…" : "Confirming…"}
               </>
             ) : pending ? (
               "Check booking again"
             ) : (
-              "Book consultation"
+              step===1 ? "Continue to available times →" : "Confirm appointment →"
             )}
           </button>
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            We’ll call you at the number you provide.
+            {step===1 ? "Next: choose a time for your phone consultation." : "Your appointment is booked after you confirm."}
           </p>
-          {!slot && !loading && day && (
+          {step===2 && <button type="button" disabled={locked} onClick={()=>{setStep(1);setError("");}} className="text-sm underline text-primary mt-5">← Back to your details</button>}
+          {step===2 && !slot && !loading && day && (
             <p className="mt-2 text-center text-xs text-muted-foreground">
               Select a time to continue.
             </p>
           )}
         </form>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
