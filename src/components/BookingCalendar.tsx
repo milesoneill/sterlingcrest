@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
+  Phone, Handshake, UserRound,
   ChevronLeft,
   ChevronRight,
   CheckCircle2,
@@ -232,7 +233,7 @@ export default function BookingCalendar() {
       <div className="grid md:grid-cols-[.75fr_1.5fr] gap-6 p-6 sm:p-8">
         <aside className="md:border-r md:pr-6">
           {step===1 ? <><p className="text-xs uppercase tracking-widest text-primary mb-4">A conversation, at your pace</p><h3 className="font-serif text-2xl mb-3">Let’s start with you.</h3><p className="text-muted-foreground text-base">Tell us a little about what you’d like help with. Next, you can choose a time that works for you.</p></> : <><div className="flex justify-between"><h3 className="font-serif text-2xl">Your details</h3><button type="button" disabled={locked} onClick={()=>setStep(1)} className="underline text-primary text-sm">Edit</button></div><p className="mt-5 font-medium">{savedDetails?.firstName} {savedDetails?.lastName}</p><p className="mt-2">{savedDetails?.phone}</p>{savedDetails?.reason && <p className="mt-5 text-base"><span className="block text-sm">Reason</span>{savedDetails.reason}</p>}</>}
-          <ul className="space-y-5 my-8 text-base"><li>◷ 15-minute phone consultation</li><li>✓ Complimentary · No obligation</li><li>{step===1?'Speak with a licensed specialist.':'We’ll call the number you provided.'}</li></ul><p className="text-sm">Prefer to call? <a href={contactPhoneHref} className="underline text-primary">{contactPhone}</a></p>
+          <ul className="space-y-5 my-8 text-base"><li className="flex items-center gap-4"><Phone size={25} aria-hidden="true"/>15-minute phone consultation</li><li className="flex items-center gap-4"><Handshake size={25} aria-hidden="true"/>Complimentary · No obligation</li><li className="flex items-center gap-4"><UserRound size={25} aria-hidden="true"/>{step===1?'Speak with a licensed specialist.':'We’ll call the number you provided.'}</li></ul><p className="text-sm">Prefer to call? <a href={contactPhoneHref} className="underline text-primary">{contactPhone}</a></p>
         </aside>
         <section className="min-w-0" aria-label={step===1?'Your contact details':'Choose an appointment time'}>
         <form onSubmit={submit}>
@@ -312,12 +313,12 @@ export default function BookingCalendar() {
                 <span>I agree to receive <strong className="font-semibold text-foreground/80">marketing text messages</strong>, including automated texts, from <strong className="font-semibold text-foreground/80">Sterling Crest Financial Group</strong> about insurance products and offers.</span>
               </label>
               <p className="mt-5 text-xs leading-relaxed text-muted-foreground">{bookingConsentDisclosure}</p>
-              <p className="mt-3 flex items-center gap-3 text-xs text-foreground/80">
+
+            </div></details>              <p className="mt-3 flex items-center gap-3 text-xs text-foreground/80">
                 <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Privacy Policy</a>
                 <span aria-hidden="true">·</span>
                 <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Terms of Service</a>
               </p>
-            </div></details>
             <div
               aria-hidden="true"
               className="absolute -left-[10000px] h-0 w-0 overflow-hidden"
