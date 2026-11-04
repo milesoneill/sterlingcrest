@@ -1,6 +1,6 @@
 {
   "batchId": "weekly-20261104",
-  "revision": 2,
+  "revision": 3,
   "status": "unpublished-awaiting-owner-review",
   "publicationAuthorized": false,
   "replacesDraftCommit": "05b16d4f9b6ec2cce21f35baf3b52194e608cc83",
@@ -1251,7 +1251,7 @@
         "slug": "mortgage-protection-vs-pmi",
         "title": "Mortgage Protection vs. PMI: What Are You Actually Paying For?",
         "category": "mortgage-protection",
-        "wordCount": 1518,
+        "wordCount": 1514,
         "estimatedGrade": 9.2,
         "descriptionLength": 151,
         "issues": [],
@@ -1286,14 +1286,15 @@
           "verified": true,
           "notes": "Official source page and license checked. Final CDN URL loaded at 1600px in the browser during initial batch review, including all three replacements. Image choice and URL are unchanged in this prose revision."
         },
-        "mdxSha256": "716a00157c36be3933b6207241803184c4b96292893d1dcb81fa5dd008a0ba34",
+        "mdxSha256": "edd9e9731bde82a3a0dd6ac13f90d7aa7a1c0a40fdc4b94f3049d6d6756ed624",
         "reviewNotes": {
           "claims": "Substantive rewrite following owner feedback. PMI, conventional loan, premium, default, foreclosure, life insurance, death benefit and beneficiary are explained before relying on them. Foreclosure is a possible later consequence, not an instant result of one missed payment. Distinguishes individual term used for housing needs from lender-linked credit life. Household numbers are made up and not quotes or claim predictions. No guaranteed loan, cancellation, disability/job-loss benefit, carrier availability or service-area claim. Defines down payment, premium and servicer. Uses one coherent Alex/Jamie example comparing missed payments, a covered death under individual life, and a debt-directed arrangement. No universal default-to-foreclosure timeline. Defines claim as request for payment and rider as optional policy addition. Conventional loan definition precisely excludes federal insurance/guarantees.",
           "sources": "CFPB, NAIC and OCC sources rechecked November 4, 2026. New direct CFPB links support conventional loan/servicer definitions and default/foreclosure explanation. The separate CFPB foreclosure page was also checked; no universal legal-process timeline is stated. Contains five sources because the additional mortgage definitions need direct support.",
           "distinctness": "Foundational consumer comparison of PMI and life insurance, with the reason for the loan charge and an example of why payout recipient matters. Not a PMI cancellation procedure or an insurer comparison.",
           "humanReviewTriggers": [
             "Any specific PMI cancellation advice, current loan requirement, mortgage protection product comparison, beneficiary/assignment restriction, or promise to change a loan payment needs review against the actual loan and policy."
-          ]
+          ],
+          "headlineAnswerRevision": "Owner requested that the short answer directly answer what the payments buy. Replaced the definition-led summary with the lender-loss versus covered-death comparison; spelled out PMI in the article body. Other substantive explanations and qualifications are unchanged."
         },
         "status": "draft-awaiting-owner-review"
       },
@@ -1939,6 +1940,20 @@
       ],
       "sourceAndArithmeticChecks": "Previously checked official Nationwide/OCC/NAIC/New York Life/Northwestern/NYLAARP sources remain relevant. Fresh spot-checks confirmed current NAIC beneficiary definitions, CFPB payoff-versus-balance explanation, and CFPB mortgage key terms for conventional loan, escrow, equity, PMI and foreclosure. Verified the original 156000 gap, 48000 support fund, 24-minus-20-year gap, and 160000-minus-90000 benefit gap. No premium or acceptance prediction found.",
       "limits": "Editorial and reader-understanding review only; not licensed, legal, underwriting or actual-contract clearance. Existing humanReviewTriggers remain and all articles are unpublished pending owner approval."
+    },
+    {
+      "kind": "targeted-headline-answer-review",
+      "revision": 3,
+      "slug": "mortgage-protection-vs-pmi",
+      "reviewedAt": "2026-11-04T16:44:35.300896+00:00",
+      "previousArticleJsonSha256": "c6cf8a0817d7f26c00dd32fc698acc540dd1909dc0543b15a28340d3afaab383",
+      "articleJsonSha256": "c8603dbd4f0c2ecac9dc617c106ace698789718a84f857f6c40ef4ce20d0898b",
+      "mdxSha256": "edd9e9731bde82a3a0dd6ac13f90d7aa7a1c0a40fdc4b94f3049d6d6756ed624",
+      "scope": "Read the revised short answer against the headline and existing source-backed explanation; verified the only body edit spells out PMI at first mention. Existing terms, sources, CTAs and qualifications retained.",
+      "headlineQuestion": "What are you actually paying for?",
+      "finding": "The summary now directly explains what each payment buys and who the protection helps. Definitions remain in the article.",
+      "licensedSignoff": false,
+      "publicationAuthorized": false
     }
   ],
   "drafts": [
@@ -4268,11 +4283,11 @@
       "category": "mortgage-protection",
       "targetKeyword": "mortgage protection vs PMI",
       "description": "Understand what PMI pays for, why it appears on some home loans, and how mortgage protection life insurance can help your family after a covered death.",
-      "quickAnswer": "PMI stands for private mortgage insurance. You usually pay for it on a conventional home loan, meaning one not insured or guaranteed by the federal government, when you make a smaller down payment. It protects the lender, the company lending you money, against losses if you stop making required payments. Life insurance used for mortgage protection instead pays after a covered death, with the recipient determined by the policy.",
+      "quickAnswer": "With PMI, you’re paying to protect your lender against losses if you don’t repay your mortgage. With mortgage protection life insurance, you’re paying for coverage that can help with the home loan after a covered death. Depending on the policy, the payout goes to your chosen beneficiary or toward the loan balance. They cover different risks, so one does not replace the other.",
       "sections": [
         {
           "heading": "What PMI means when you buy a home",
-          "body": "Private mortgage insurance is usually part of a conventional mortgage when your down payment is below 20 percent of the purchase price. Your down payment is the money you put toward the purchase yourself instead of borrowing. A [conventional mortgage](https://www.consumerfinance.gov/consumer-tools/mortgages/answers/key-terms/) is a home loan not insured or guaranteed by the federal government. Other loan programs have their own insurance or guarantee arrangements, so you should not assume every charge called mortgage insurance follows the same rules.\n\nWith PMI, the lender arranges insurance with a private company and you generally pay the cost. That can feel backward: why are you paying for insurance that protects someone else? A smaller down payment means you are borrowing more of the home's price, leaving the lender with more money at risk. PMI helps cover that lending risk. It can make a mortgage available with a smaller down payment, but it adds to your cost rather than buying your family life insurance.\n\nThe insurance cost is called a premium. You may see a monthly PMI premium included in your mortgage payment, though some arrangements use a charge at closing or both upfront and monthly charges. The [Consumer Financial Protection Bureau explains these payment options](https://www.consumerfinance.gov/ask-cfpb/what-is-private-mortgage-insurance-en-122/). Your loan documents show which arrangement applies to you."
+          "body": "Private mortgage insurance, or PMI, is usually part of a conventional mortgage when your down payment is below 20 percent of the purchase price. Your down payment is the money you put toward the purchase yourself instead of borrowing. A [conventional mortgage](https://www.consumerfinance.gov/consumer-tools/mortgages/answers/key-terms/) is a home loan not insured or guaranteed by the federal government. Other loan programs have their own insurance or guarantee arrangements, so you should not assume every charge called mortgage insurance follows the same rules.\n\nWith PMI, the lender arranges insurance with a private company and you generally pay the cost. That can feel backward: why are you paying for insurance that protects someone else? A smaller down payment means you are borrowing more of the home's price, leaving the lender with more money at risk. PMI helps cover that lending risk. It can make a mortgage available with a smaller down payment, but it adds to your cost rather than buying your family life insurance.\n\nThe insurance cost is called a premium. You may see a monthly PMI premium included in your mortgage payment, though some arrangements use a charge at closing or both upfront and monthly charges. The [Consumer Financial Protection Bureau explains these payment options](https://www.consumerfinance.gov/ask-cfpb/what-is-private-mortgage-insurance-en-122/). Your loan documents show which arrangement applies to you."
         },
         {
           "heading": "The event PMI covers is a loan problem",
@@ -4348,7 +4363,8 @@
         "distinctness": "Foundational consumer comparison of PMI and life insurance, with the reason for the loan charge and an example of why payout recipient matters. Not a PMI cancellation procedure or an insurer comparison.",
         "humanReviewTriggers": [
           "Any specific PMI cancellation advice, current loan requirement, mortgage protection product comparison, beneficiary/assignment restriction, or promise to change a loan payment needs review against the actual loan and policy."
-        ]
+        ],
+        "headlineAnswerRevision": "Owner requested that the short answer directly answer what the payments buy. Replaced the definition-led summary with the lender-loss versus covered-death comparison; spelled out PMI in the article body. Other substantive explanations and qualifications are unchanged."
       }
     },
     {
@@ -4517,5 +4533,14 @@
         ]
       }
     }
-  ]
+  ],
+  "targetedRevisionScope": "PMI comparison short answer now answers the headline; definitions are retained in the article body. Other29articles audited and need no changes.",
+  "headlineAnswerAudit": {
+    "reviewed": 29,
+    "excluded": [
+      "mortgage-protection-vs-pmi"
+    ],
+    "changes": [],
+    "conclusion": "No additional material headline/short-answer mismatches found. The remaining answers supply the requested takeaway; definitions are appropriate where the headline asks about a meaning or role."
+  }
 }

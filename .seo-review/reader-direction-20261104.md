@@ -14,3 +14,7 @@ Apply this direction throughout the existing 18 Final Expense / 12 Mortgage Prot
 - Re-read each complete revision for conversational flow and factual support. Prior reviews apply only to the old bytes. Re-review new article, CTA, source and MDX content before any release.
 
 All articles remain unpublished and await owner review. This revision does not authorize publication or enable daily automation.
+
+## Short-answer placement — owner clarification
+
+The short answer must answer the question or promise in the headline directly. Put supporting definitions and terminology in the article body at first relevant use. A definition is appropriate in the short answer when the headline itself asks what a term means. Do not turn a comparison or decision summary into a glossary.
