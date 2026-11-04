@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { listGuideIndexPages, type SeoPage } from "../lib/seo-content";
-import { GUIDE_CATEGORIES, categoryCounts, filterGuides, guideCategory } from "../lib/guide-categories";
+import { GUIDE_CATEGORIES, categoryCounts, filterGuides, guideCategory, guideCollection } from "../lib/guide-categories";
 
 const guides = listGuideIndexPages();
 const guide = (slug: string): SeoPage => {
@@ -10,17 +10,20 @@ const guide = (slug: string): SeoPage => {
 };
 
 describe("Guide browsing categories", () => {
-  it("gives every indexed guide exactly one category and keeps every article link", () => {
+  it("partitions the Final Expense library into topics without filing Mortgage Protection into those folders", () => {
+    const finalExpenseGuides = guides.filter((page) => guideCollection(page) === "final-expense");
     const counts = categoryCounts(guides);
     const grouped = GUIDE_CATEGORIES.flatMap(({ id }) => {
       const selected = filterGuides(guides, { category: id });
       expect(counts[id]).toBe(selected.length);
       return selected;
     });
-    expect(grouped.length).toBe(guides.length);
-    expect(new Set(grouped.map((page) => page.path)).size).toBe(guides.length);
-    expect(grouped.map((page) => page.path).sort()).toEqual(guides.map((page) => page.path).sort());
-    expect(Object.values(counts).reduce((sum, count) => sum + count, 0)).toBe(guides.length);
+    expect(grouped.length).toBe(97);
+    expect(new Set(grouped.map((page) => page.path)).size).toBe(finalExpenseGuides.length);
+    expect(grouped.map((page) => page.path).sort()).toEqual(finalExpenseGuides.map((page) => page.path).sort());
+    expect(counts).toEqual({ "funeral-costs": 18, "choosing-coverage": 43, "health-eligibility": 7, "managing-policy": 22, "claims-family": 5, "state-guides": 2 });
+    expect(Object.values(counts).reduce((sum, count) => sum + count, 0)).toBe(finalExpenseGuides.length);
+    expect(guides.filter((page) => guideCollection(page) === "mortgage-protection").every((page) => guideCategory(page) === null)).toBe(true);
     expect(filterGuides(guides)).toEqual(guides);
   });
 

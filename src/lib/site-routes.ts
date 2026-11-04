@@ -3,4 +3,4 @@ export const routeRedirects: Record<string, string> = {
   "/locations": "/resources",
   "/locations/final-expense-insurance-in-florida": "/locations/final-expense-insurance-florida",
 };
-export const staticRoutes = ["/", "/book", "/resources", "/insurance", "/privacy-policy", "/terms-of-service"];
+export const staticRoutes = ["/", "/book", "/resources", "/resources/final-expense", "/resources/mortgage-protection", "/insurance", "/privacy-policy", "/terms-of-service"];

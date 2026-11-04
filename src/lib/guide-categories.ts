@@ -1,4 +1,7 @@
 import type { SeoPage } from "./seo-content";
+import type { SeoContentPillar } from "./parse-seo-mdx";
+
+export type GuideCollectionId = SeoContentPillar;
 
 export const GUIDE_CATEGORIES = [
   {
@@ -133,7 +136,32 @@ const categoryBySlug = new Map<string, GuideCategoryId>(
 const normalize = (text: string): string =>
   text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-export function guideCategory(page: SeoPage): GuideCategoryId {
+/** Use approved article metadata first; older guides retain a stable fallback. */
+export function guideCollection(page: SeoPage): GuideCollectionId {
+  if (page.frontmatter.contentPillar === "final-expense" || page.frontmatter.contentPillar === "mortgage-protection") {
+    return page.frontmatter.contentPillar;
+  }
+  // Classify the article's subject, not its body links or source citations.
+  const identity = normalize([
+    page.frontmatter.slug,
+    page.frontmatter.title,
+    page.frontmatter.targetKeyword,
+    page.frontmatter.primaryQuestion,
+  ].filter(Boolean).join(" ")).replace(/[-_]/g, " ");
+  return /\b(?:mortgage|pmi|mpi)\b|\bhome loan\b/.test(identity)
+    ? "mortgage-protection"
+    : "final-expense";
+}
+
+export function collectionCounts(pages: readonly SeoPage[]): Record<GuideCollectionId, number> {
+  const counts: Record<GuideCollectionId, number> = { "final-expense": 0, "mortgage-protection": 0 };
+  for (const page of pages) counts[guideCollection(page)] += 1;
+  return counts;
+}
+
+/** The existing six topics belong to Final Expense; Mortgage Protection has its own collection. */
+export function guideCategory(page: SeoPage): GuideCategoryId | null {
+  if (guideCollection(page) === "mortgage-protection") return null;
   // Location/condition templates describe intent more reliably than keywords
   // such as "cost" appearing in a health or state guide's title.
   if (page.frontmatter.template === "location-page" || page.path.startsWith("/locations/")) {
@@ -163,7 +191,10 @@ export function guideCategory(page: SeoPage): GuideCategoryId {
 
 export function categoryCounts(pages: readonly SeoPage[]): Record<GuideCategoryId, number> {
   const counts = Object.fromEntries(GUIDE_CATEGORIES.map(({ id }) => [id, 0])) as Record<GuideCategoryId, number>;
-  for (const page of pages) counts[guideCategory(page)] += 1;
+  for (const page of pages) {
+    const category = guideCategory(page);
+    if (category) counts[category] += 1;
+  }
   return counts;
 }
 
@@ -178,10 +209,15 @@ function searchWords(page: SeoPage): string[] {
 
 export function filterGuides<T extends SeoPage>(
   pages: readonly T[],
-  { category = "all", query = "" }: { category?: GuideCategorySelection; query?: string } = {},
+  { collection, category = "all", query = "" }: {
+    collection?: GuideCollectionId;
+    category?: GuideCategorySelection;
+    query?: string;
+  } = {},
 ): T[] {
   const queryWords = normalize(query).split(/[^a-z0-9]+/).filter(Boolean);
   return pages.filter((page) => {
+    if (collection && guideCollection(page) !== collection) return false;
     if (category !== "all" && guideCategory(page) !== category) return false;
     if (queryWords.length === 0) return true;
     const words = searchWords(page);

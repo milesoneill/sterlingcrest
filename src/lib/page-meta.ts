@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { SITE_ORIGIN } from "./site-routes";
-export function usePageMeta(opts: { title: string; description?: string; canonical?: string; noindex?: boolean }) {
+export function usePageMeta(opts: { title: string; description?: string; canonical?: string; noindex?: boolean; isArticle?: boolean }) {
   const { pathname } = useLocation();
   useEffect(() => {
     const title = opts.title.includes("Sterling Crest") ? opts.title : `${opts.title} | Sterling Crest Financial Group`;
@@ -16,11 +16,11 @@ export function usePageMeta(opts: { title: string; description?: string; canonic
     setMeta("og:description", opts.description ?? "", "property");
     setMeta("og:title", title, "property"); setMeta("twitter:title", title);
     setMeta("og:url", canonical, "property");
-    setMeta("og:type", /\/(resources|locations|insurance)\/.+/.test(pathname) ? "article" : "website", "property");
+    setMeta("og:type", opts.isArticle ? "article" : "website", "property");
     let link = document.querySelector('link[rel="canonical"]');
     if (!link) { link = document.createElement("link"); link.setAttribute("rel", "canonical"); document.head.appendChild(link); }
     link.setAttribute("href", canonical);
     if (opts.noindex) setMeta("robots", "noindex, follow");
     else document.querySelector('meta[name="robots"]')?.remove();
-  }, [opts.title, opts.description, opts.canonical, opts.noindex, pathname]);
+  }, [opts.title, opts.description, opts.canonical, opts.noindex, opts.isArticle, pathname]);
 }

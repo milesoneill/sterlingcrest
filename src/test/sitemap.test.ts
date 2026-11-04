@@ -4,6 +4,16 @@ import { services } from "@/lib/services";
 import { renderSitemap, sitemapUrls, SITE_ORIGIN } from "../../scripts/sitemap";
 
 describe("build sitemap", () => {
+  it("includes both new collection pages once while preserving every published article URL", () => {
+    const pages = listSeoPages();
+    const urls = sitemapUrls(pages.map(page => page.frontmatter), services.map(service => service.slug));
+    for (const path of ["/resources/final-expense", "/resources/mortgage-protection"]) {
+      expect(urls.filter((url) => url === `${SITE_ORIGIN}${path}`)).toHaveLength(1);
+    }
+    for (const page of pages) expect(urls).toContain(`${SITE_ORIGIN}${page.path}`);
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+
   it("includes every published guide and service, and discovers a newly published guide", () => {
     const pages = listSeoPages();
     const urls = sitemapUrls(pages.map(page => page.frontmatter), services.map(service => service.slug));

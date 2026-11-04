@@ -24,7 +24,7 @@ for (const route of [...routes, "/404"]) {
     `<meta property="og:title" content="${escape(meta.title)}">`,
     `<meta property="og:description" content="${escape(meta.description)}">`,
     `<meta property="og:url" content="${escape(meta.canonical)}">`,
-    `<meta property="og:type" content="${route.includes("/resources/") || route.includes("/locations/") || route.includes("/insurance/") ? "article" : "website"}">`,
+    `<meta property="og:type" content="${meta.isArticle ? "article" : "website"}">`,
     `<meta name="twitter:title" content="${escape(meta.title)}">`,
     `<meta name="twitter:description" content="${escape(meta.description)}">`,
     ...(fingerprint ? [`<meta name="seo-content-sha256" content="${fingerprint}">`] : []),
