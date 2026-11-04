@@ -1,6 +1,7 @@
 export type SeoSource = { label: string; url: string };
 export type SeoFaq = { question: string; answer: string };
 export type SeoConsultationCta = { heading: string; body: string };
+export type SeoContentPillar = "final-expense" | "mortgage-protection";
 
 export type SeoFrontmatter = {
   title: string;
@@ -14,6 +15,8 @@ export type SeoFrontmatter = {
   lane?: string;
   targetState?: string | null;
   targetKeyword?: string;
+  /** Explicit guide collection; unknown values fall back to identity-based classification. */
+  contentPillar?: SeoContentPillar;
   briefId?: string;
   primaryQuestion?: string;
   schema?: unknown[];
@@ -82,6 +85,9 @@ function parseFrontmatter(block: string): SeoFrontmatter {
     lane: data.lane ? String(data.lane) : undefined,
     targetState: (data.targetState as string | null | undefined) ?? null,
     targetKeyword: data.targetKeyword ? String(data.targetKeyword) : undefined,
+    contentPillar: data.contentPillar === "final-expense" || data.contentPillar === "mortgage-protection"
+      ? data.contentPillar
+      : undefined,
     briefId: data.briefId ? String(data.briefId) : undefined,
     primaryQuestion: data.primaryQuestion ? String(data.primaryQuestion) : undefined,
     // Editorial guides do not accept user-submitted answers. QAPage is for

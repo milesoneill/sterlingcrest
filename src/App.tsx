@@ -40,6 +40,8 @@ export const AppContent = () => (
           <Route path="/book" element={<Book />} />
           <Route path="/services/:slug" element={<ServicePage />} />
           <Route path="/resources" element={<ResourcesIndex />} />
+          <Route path="/resources/final-expense" element={<ResourcesIndex collection="final-expense" />} />
+          <Route path="/resources/mortgage-protection" element={<ResourcesIndex collection="mortgage-protection" />} />
           <Route path="/resources/:slug" element={<SeoMdxPage />} />
           <Route path="/insurance" element={<InsuranceIndex />} />
           <Route path="/insurance/:slug" element={<SeoMdxPage />} />

@@ -1,0 +1,324 @@
+{
+  "kind": "approved-guides-collection-implementation",
+  "baseCommit": "eb8fd84e4457b2d4b4dc912ef48c45a4aed42493",
+  "ownerAuthorizedDeployment": true,
+  "scope": "Two collection cards above the full guide library; separate searchable Final Expense and Mortgage Protection collection pages; six optional Final Expense topic filters; existing article URLs and content preserved.",
+  "partition": {
+    "all": 109,
+    "final-expense": 97,
+    "mortgage-protection": 12
+  },
+  "files": [
+    {
+      "path": "public/images/guide-collections/mortgage-protection.webp",
+      "sha256": "b6f7e1abbe9527334081d43c9db9162291f4facc2cbd3cc976a62c3766c9b863",
+      "gitBlobSha": "9916dcaaa11e53db0d40f0342d376b8e534b8215"
+    },
+    {
+      "path": "scripts/prerender.mjs",
+      "sha256": "abedb550c586216467b0787bd688b4d10a138114fd35f5284d2fd78748082ce5",
+      "gitBlobSha": "8c53615741f81abf2efa12e7b60f90f7d2c2b513"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "aeb403bcbe4bd21263428c775d33dc23e77041721620ae10131e4eecfc86077f",
+      "gitBlobSha": "3477412bd704b58ffe97d25060f410dfe581f47d"
+    },
+    {
+      "path": "src/test/guide-categories.test.ts",
+      "sha256": "026abc3c6665718f8c5c6b89d627cac99c3f3af00ad49832d9ffea01521eac91",
+      "gitBlobSha": "f0e143055e3b19c6c9e228f9712e5a49c2d375f5"
+    },
+    {
+      "path": "src/test/sitemap.test.ts",
+      "sha256": "ae7a52d28db5b428aa0a958cd15d0483b4017b37f29b9c79989fd07956fcd567",
+      "gitBlobSha": "924ea859c75a6d04ba0d0402842627366e36edb4"
+    },
+    {
+      "path": "src/test/guide-collections.test.ts",
+      "sha256": "55478ad334413c7d6d4e6c3ed5f543d0aa47d70ccdfc713f832854019b1f90f4",
+      "gitBlobSha": "62181a035cf889001557ca961f2b986f973a8f54"
+    },
+    {
+      "path": "src/test/resources-index.test.tsx",
+      "sha256": "f883746082d84d3d404766ede4789d857a00ed5db727b4372f3a520d4c08fe0f",
+      "gitBlobSha": "25a7f5d40cda81dcec00c6a397fcb4e8e722cf26"
+    },
+    {
+      "path": "src/test/guide-collection-routes.test.tsx",
+      "sha256": "44295c51fe40036b049501409a26de604d09635a491af8c5910bcb9f04066a06",
+      "gitBlobSha": "8e1f9ec22ad553cf77b60b19da2422d1c3416b2e"
+    },
+    {
+      "path": "src/lib/route-meta.ts",
+      "sha256": "124d5aceb0a21bf67ff66df91b4c3d44ee798c469ed40c41f6a59749859d1f4b",
+      "gitBlobSha": "89a17f5dddb24ca2284f1da2d3d20e0f316201d0"
+    },
+    {
+      "path": "src/lib/site-routes.ts",
+      "sha256": "a18c7fdaaa0de5a7c266d8ebc31b580de499cf56af2e14d2f83bae5baf49909b",
+      "gitBlobSha": "a6035639166ebba58c3b15c87cb5251ec93b44e1"
+    },
+    {
+      "path": "src/lib/page-meta.ts",
+      "sha256": "e716a2ad1204cc0e71870cd80f3d250aa3d6c6a1df728d858ded459aca0739ad",
+      "gitBlobSha": "d3875f7296e2a79cfc7d2fe41e0c6969b1c1f69d"
+    },
+    {
+      "path": "src/lib/guide-categories.ts",
+      "sha256": "1befb372091407765272d45bdf28577da5982f5aa3bb998bab8a1571dc703aa1",
+      "gitBlobSha": "ad9d39c1c07e3231c149cf7dfc7ebc2ba379fe4c"
+    },
+    {
+      "path": "src/lib/parse-seo-mdx.ts",
+      "sha256": "56614b24b649f15572fc5b9287dcec0ca92fdb12dbb87deffc91b3007c668aa2",
+      "gitBlobSha": "ddc012459d4979370c7f3c62bbb92b2cbd37bc97"
+    },
+    {
+      "path": "src/pages/ResourcesIndex.tsx",
+      "sha256": "f6904196c8382af0f8c05ed8b95a9b50df952204d352e6f6c3f060984f59e5ea",
+      "gitBlobSha": "c082a032178d9e542d861720f483742b2fe28003"
+    },
+    {
+      "path": "src/pages/resources-index.css",
+      "sha256": "dc5b09e154756e4532173525bea52854cb6095fa27b0bb74329a3e5d938d9579",
+      "gitBlobSha": "f8f4a3214978a3b83cd5486e2c88d3d08e1bc870"
+    }
+  ],
+  "uiReview": {
+    "status": "complete-frozen-for-browser-review",
+    "scope": "UI only; no article content, remote, route, metadata or asset changes by this agent.",
+    "files": [
+      {
+        "path": "src/pages/ResourcesIndex.tsx",
+        "sha256": "f6904196c8382af0f8c05ed8b95a9b50df952204d352e6f6c3f060984f59e5ea"
+      },
+      {
+        "path": "src/pages/resources-index.css",
+        "sha256": "dc5b09e154756e4532173525bea52854cb6095fa27b0bb74329a3e5d938d9579"
+      }
+    ],
+    "designReview": "Inspected all three approved mockup images. Root retains two matching stacked photo-left/text-right collection cards, followed by the mixed article grid. FE retains six optional photo-topic cards and all scoped articles. MP shows direct scoped article cards. Thin branded hero and one main-body h1 on each view.",
+    "dataAndNavigation": "All counts derive from current guide data. Scope-specific search, reset/empty-state labels, contextual root product labels, collection backlinks, q/category URL state and browser back retained. Existing valid root category URLs remain usable; MP ignores stale category.",
+    "responsiveAndAccessibility": "Three-column grids become two then one column. Feature photos move above copy on phones. Link/button semantics, labelled search, aria-pressed filters, live result count, visible focus rings and reduced-motion handling are present. Image dimensions are stable; article images lazy-load.",
+    "checks": {
+      "targetedTests": "7 ResourcesIndex browsing tests passed after final UI corrections.",
+      "lint": "ESLint ResourcesIndex.tsx passed with no errors or warnings.",
+      "typescript": "Full tsc remains blocked only by existing missing BotID modules and CatalogPhoto.url errors; no errors in ResourcesIndex.tsx.",
+      "reactReview": "Applied React review after changes: stable memoized data, no added effects/fetches/dependencies, static collection definitions, derived state from URL, safe rendered text and valid heading/list markup.",
+      "browser": "Root owns deployed desktop/mobile visual review."
+    }
+  },
+  "routingReview": {
+    "status": "classifier-parser-routes-tested-frozen",
+    "ownerAgent": "write_mp_b",
+    "baseCommit": "eb8fd84e4457b2d4b4dc912ef48c45a4aed42493",
+    "files": [
+      {
+        "path": "src/lib/guide-categories.ts",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/src/lib/guide-categories.ts",
+        "sourceGitBlobSha": "1e1c2ce9ee337f167b5a6a761c2ec3938b8a9ebf",
+        "sha256": "1befb372091407765272d45bdf28577da5982f5aa3bb998bab8a1571dc703aa1",
+        "gitBlobSha": "ad9d39c1c07e3231c149cf7dfc7ebc2ba379fe4c"
+      },
+      {
+        "path": "src/lib/parse-seo-mdx.ts",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/src/lib/parse-seo-mdx.ts",
+        "sourceGitBlobSha": "7a80bf15a993f5c5c63f86cffd1a6eb91c4c95d9",
+        "sha256": "56614b24b649f15572fc5b9287dcec0ca92fdb12dbb87deffc91b3007c668aa2",
+        "gitBlobSha": "ddc012459d4979370c7f3c62bbb92b2cbd37bc97"
+      },
+      {
+        "path": "src/App.tsx",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/src/App.tsx",
+        "sourceGitBlobSha": "bb2add25609a728a4d793ec4ec3014d9bfbe8475",
+        "sha256": "aeb403bcbe4bd21263428c775d33dc23e77041721620ae10131e4eecfc86077f",
+        "gitBlobSha": "3477412bd704b58ffe97d25060f410dfe581f47d"
+      },
+      {
+        "path": "src/lib/site-routes.ts",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/src/lib/site-routes.ts",
+        "sourceGitBlobSha": "8e85afa7c58f368f18961e8eeae7f98ec171699a",
+        "sha256": "a18c7fdaaa0de5a7c266d8ebc31b580de499cf56af2e14d2f83bae5baf49909b",
+        "gitBlobSha": "a6035639166ebba58c3b15c87cb5251ec93b44e1"
+      },
+      {
+        "path": "src/lib/route-meta.ts",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/src/lib/route-meta.ts",
+        "sourceGitBlobSha": "e8bbbdb2b06fb5f911e66a973b0b1496583007bd",
+        "sha256": "124d5aceb0a21bf67ff66df91b4c3d44ee798c469ed40c41f6a59749859d1f4b",
+        "gitBlobSha": "89a17f5dddb24ca2284f1da2d3d20e0f316201d0"
+      },
+      {
+        "path": "src/lib/page-meta.ts",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/src/lib/page-meta.ts",
+        "sourceGitBlobSha": "a03cf7fb5eded5f6c41741c4a7b28512f503a60e",
+        "sha256": "e716a2ad1204cc0e71870cd80f3d250aa3d6c6a1df728d858ded459aca0739ad",
+        "gitBlobSha": "d3875f7296e2a79cfc7d2fe41e0c6969b1c1f69d"
+      },
+      {
+        "path": "scripts/prerender.mjs",
+        "file": "/tmp/sterling-guides-collections-20261104/repo/scripts/prerender.mjs",
+        "sourceGitBlobSha": "7474d7960b845332b485046835652f121b7a3a9d",
+        "sha256": "abedb550c586216467b0787bd688b4d10a138114fd35f5284d2fd78748082ce5",
+        "gitBlobSha": "8c53615741f81abf2efa12e7b60f90f7d2c2b513"
+      }
+    ],
+    "api": {
+      "GuideCollectionId": [
+        "final-expense",
+        "mortgage-protection"
+      ],
+      "guideCollection": "Validated explicit contentPillar wins; legacy fallback checks slug/title/targetKeyword/primaryQuestion for mortgage,PMI,MPI,home loan. Body links/sources do not affect collection.",
+      "collectionCounts": "Record<GuideCollectionId,number>",
+      "guideCategory": "GuideCategoryId|null; Mortgage Protection returns null, six existing FE categories unchanged.",
+      "filterGuides": "Optional collection intersects existing category/query; no mutation. UI passes all category for MP route to ignore stale FE query."
+    },
+    "verifiedPartition": {
+      "all": 109,
+      "final-expense": 97,
+      "mortgage-protection": 12,
+      "feCategoryCounts": {
+        "funeral-costs": 18,
+        "choosing-coverage": 43,
+        "health-eligibility": 7,
+        "managing-policy": 22,
+        "claims-family": 5,
+        "state-guides": 2
+      }
+    },
+    "routes": [
+      "/resources/final-expense",
+      "/resources/mortgage-protection"
+    ],
+    "seo": "Static routes precede dynamic resource slug route. Both routes receive title/description/self canonical and noindex=false. staticRoutes drives entry-server prerender and sitemap without sitemap.ts changes. routeMeta.isArticle uses actual MDX lookup, and both client usePageMeta and prerender use the shared flag so collection pages remain website through hydration and MDX articles remain article.",
+    "validation": "Actual current MDX parsing and category partition checked with the existing TypeScript compiler; all MDX bytes remain identical to verified baseline. Focused automated tests owned separately by write_fe_b; UI files owned by article_visual_renderer.",
+    "mutations": "Only the seven assigned classifier/parser/route/metadata/prerender files listed; no MDX/content, native database or remote changes.",
+    "hydrationFix": "Independent route tests found the client still classified by URL prefix. Replaced that heuristic with routeMeta.isArticle in page-meta.ts and prerender; added flag to hook dependencies. No unrelated BotID or baseline type issues changed.",
+    "independentTests": "write_fe_b confirms all13 affected route/UI tests pass after the hydration fix: both collection routes keep og:type=website, existing MDX article remains article, and self-canonical/noindex behavior is correct. Other focused classifier/parser/sitemap/count cases passed in the preceding run; no further functional finding."
+  },
+  "independentReview": {
+    "reviewer": "ChatGPT/Codex write_fe_b",
+    "reviewedAt": "2026-11-04T19:02:16.786229+00:00",
+    "status": "pass-frozen-source-and-targeted-tests-ready-for-preview",
+    "baseCommit": "eb8fd84e4457b2d4b4dc912ef48c45a4aed42493",
+    "scope": "Authored/updated tests only under src/test. Read-only independent final review of frozen ResourcesIndex/CSS and classifier/parser/App/routes/metadata/prerender source. No application edits, dependencies, remotes or deployment by reviewer.",
+    "testFiles": [
+      {
+        "path": "src/test/resources-index.test.tsx",
+        "sha256": "f883746082d84d3d404766ede4789d857a00ed5db727b4372f3a520d4c08fe0f",
+        "gitBlobSha": "25a7f5d40cda81dcec00c6a397fcb4e8e722cf26"
+      },
+      {
+        "path": "src/test/guide-categories.test.ts",
+        "sha256": "026abc3c6665718f8c5c6b89d627cac99c3f3af00ad49832d9ffea01521eac91",
+        "gitBlobSha": "f0e143055e3b19c6c9e228f9712e5a49c2d375f5"
+      },
+      {
+        "path": "src/test/guide-collections.test.ts",
+        "sha256": "55478ad334413c7d6d4e6c3ed5f543d0aa47d70ccdfc713f832854019b1f90f4",
+        "gitBlobSha": "62181a035cf889001557ca961f2b986f973a8f54"
+      },
+      {
+        "path": "src/test/guide-collection-routes.test.tsx",
+        "sha256": "44295c51fe40036b049501409a26de604d09635a491af8c5910bcb9f04066a06",
+        "gitBlobSha": "8e1f9ec22ad553cf77b60b19da2422d1c3416b2e"
+      },
+      {
+        "path": "src/test/sitemap.test.ts",
+        "sha256": "ae7a52d28db5b428aa0a958cd15d0483b4017b37f29b9c79989fd07956fcd567",
+        "gitBlobSha": "924ea859c75a6d04ba0d0402842627366e36edb4"
+      }
+    ],
+    "reviewedFrozenAppFiles": [
+      {
+        "path": "src/pages/ResourcesIndex.tsx",
+        "sha256": "f6904196c8382af0f8c05ed8b95a9b50df952204d352e6f6c3f060984f59e5ea",
+        "gitBlobSha": "c082a032178d9e542d861720f483742b2fe28003"
+      },
+      {
+        "path": "src/pages/resources-index.css",
+        "sha256": "dc5b09e154756e4532173525bea52854cb6095fa27b0bb74329a3e5d938d9579",
+        "gitBlobSha": "f8f4a3214978a3b83cd5486e2c88d3d08e1bc870"
+      },
+      {
+        "path": "src/lib/guide-categories.ts",
+        "sha256": "1befb372091407765272d45bdf28577da5982f5aa3bb998bab8a1571dc703aa1",
+        "gitBlobSha": "ad9d39c1c07e3231c149cf7dfc7ebc2ba379fe4c"
+      },
+      {
+        "path": "src/lib/parse-seo-mdx.ts",
+        "sha256": "56614b24b649f15572fc5b9287dcec0ca92fdb12dbb87deffc91b3007c668aa2",
+        "gitBlobSha": "ddc012459d4979370c7f3c62bbb92b2cbd37bc97"
+      },
+      {
+        "path": "src/App.tsx",
+        "sha256": "aeb403bcbe4bd21263428c775d33dc23e77041721620ae10131e4eecfc86077f",
+        "gitBlobSha": "3477412bd704b58ffe97d25060f410dfe581f47d"
+      },
+      {
+        "path": "src/lib/site-routes.ts",
+        "sha256": "a18c7fdaaa0de5a7c266d8ebc31b580de499cf56af2e14d2f83bae5baf49909b",
+        "gitBlobSha": "a6035639166ebba58c3b15c87cb5251ec93b44e1"
+      },
+      {
+        "path": "src/lib/route-meta.ts",
+        "sha256": "124d5aceb0a21bf67ff66df91b4c3d44ee798c469ed40c41f6a59749859d1f4b",
+        "gitBlobSha": "89a17f5dddb24ca2284f1da2d3d20e0f316201d0"
+      },
+      {
+        "path": "src/lib/page-meta.ts",
+        "sha256": "e716a2ad1204cc0e71870cd80f3d250aa3d6c6a1df728d858ded459aca0739ad",
+        "gitBlobSha": "d3875f7296e2a79cfc7d2fe41e0c6969b1c1f69d"
+      },
+      {
+        "path": "scripts/prerender.mjs",
+        "sha256": "abedb550c586216467b0787bd688b4d10a138114fd35f5284d2fd78748082ce5",
+        "gitBlobSha": "8c53615741f81abf2efa12e7b60f90f7d2c2b513"
+      }
+    ],
+    "testEvidence": {
+      "command": "npm test -- src/test/resources-index.test.tsx src/test/guide-collections.test.ts src/test/guide-categories.test.ts src/test/guide-collection-routes.test.tsx src/test/route-meta.test.tsx src/test/sitemap.test.ts src/test/seo-content.test.ts",
+      "result": "PASS:44tests in7files after all app files froze.",
+      "counts": {
+        "resourcesIndex": 8,
+        "guideCollections": 4,
+        "guideCategories": 7,
+        "collectionRoutes": 3,
+        "routeMetadata": 2,
+        "sitemap": 3,
+        "existingSeoContent": 17
+      },
+      "lintCommand": "./node_modules/.bin/eslint src/test/resources-index.test.tsx src/test/guide-categories.test.ts src/test/guide-collections.test.ts src/test/guide-collection-routes.test.tsx src/test/sitemap.test.ts",
+      "lintResult": "PASS with no output/errors for all5owned test files."
+    },
+    "coverage": [
+      "Root shows both collection links before the article grid and keeps all109unique published article links; links/back navigation select and return from the scoped collections.",
+      "Final Expense has97guides and six mutually exclusive topic counts18/43/7/22/5/2; all topic controls filter to expected article links and reset within FE.",
+      "Mortgage Protection has12guides, no FE topic controls, scoped search and scoped empty recovery; stale FE category query cannot hide MP articles.",
+      "Shared insurance searches remain scoped in FE/MP; root searches cover both products. Case/whitespace-tolerant search, query URLs, clear-search preserving topic, reset, empty states, browser-back history and legacy root category URLs work.",
+      "Validated contentPillar metadata wins; legacy/future title/identity fallback remains browsable and incidental body mentions do not reclassify products.",
+      "Real AppContent resolves both new routes as collections rather than dynamic MDX articles. Self canonicals omit query data, noindex=false, and og:type=website remains correct after hydration; existing article route/canonical/type remain intact.",
+      "Sitemap includes both new URLs exactly once and retains all published guide/service URLs. Static routes drive prerendering; existing article paths/MDX are preserved."
+    ],
+    "independentSourceReview": {
+      "ui": "Collection-specific state is derived from current props/search params; MP deliberately ignores category, category changes push history and query edits replace it. Stable article keys and local memoized catalogue keep navigation predictable. Semantic links/buttons/search labels, live result status, visible keyboard focus and reduced-motion behavior are present. CSS provides three/two/one-column grids and readable narrow layouts.",
+      "routing": "Validated pillar metadata and FE-only categories correctly partition109into97/12. filterGuides intersects collection/category/query without mutating the catalogue. Specific collection routes precede the dynamic article route, metadata is based on actual page identity, and sitemap/prerender inherit the new static routes.",
+      "contentIdentity": "All111MDX files are byte-identical to baseline;109non-redirect guide cards remain available. No article content or public article URL was changed."
+    },
+    "resolvedFindings": [
+      {
+        "issue": "New collection pages initially switched to og:type=article after client hydration because the old client hook used a /resources/:slug regex.",
+        "fixOwner": "write_mp_b",
+        "resolution": "routeMeta now exposes actual MDX identity via isArticle; client and prerender share that value. Both collection routes and an existing article pass regression tests."
+      }
+    ],
+    "openFindings": [],
+    "limitations": [
+      "This is source and jsdom behavior verification, not desktop/mobile screenshot or binary-photo review; root owns preview visual and asset verification.",
+      "No full production build or full-source typecheck was claimed by this reviewer. Root reports six known baseline full-source TypeScript errors, including missing local BotID modules and existing catalogue-photo typing; unrelated dependencies/source were not patched.",
+      "Focused runs emit existing React18 fetchPriority/React Router future notices and environment deprecation/Browserslist notices; they do not fail the targeted tests."
+    ]
+  },
+  "browserValidation": "Performed against the deployment before production release; see final PR release evidence."
+}
