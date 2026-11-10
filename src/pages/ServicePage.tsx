@@ -16,6 +16,7 @@ const ServicePage = () => {
   }
 
   const Icon = service.icon;
+  const consultationButtonClass = "group inline-flex max-w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-sans text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-gold-light sm:px-10";
 
   return (
     <div className="min-h-screen bg-background">
@@ -30,7 +31,7 @@ const ServicePage = () => {
             aria-hidden="true"
             fetchPriority="high"
             decoding="async"
-            className={`absolute inset-0 w-full h-full object-cover ${service.heroImage ? "object-[72%_center] md:object-center" : ""}`}
+            className={`absolute inset-0 w-full h-full object-cover${service.heroImage ? " object-[72%_center] md:object-center" : ""}`}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/55" />
           <div className="container max-w-4xl mx-auto px-6 pb-12 md:pb-16 relative z-10">
@@ -68,7 +69,7 @@ const ServicePage = () => {
             <div className="mt-8 text-center">
               <Link
                 to={scheduleConsultationHref}
-                className="group inline-flex max-w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-sans text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-gold-light sm:px-10"
+                className={consultationButtonClass}
               >
                 Schedule a Consultation
                 <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -158,10 +159,10 @@ const ServicePage = () => {
           </p>
           <Link
             to={scheduleConsultationHref}
-            className="group inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground text-xs tracking-[0.25em] uppercase font-sans hover:opacity-90 transition-all duration-300"
+            className={service.relatedGuides ? consultationButtonClass : "group inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground text-xs tracking-[0.25em] uppercase font-sans hover:opacity-90 transition-all duration-300"}
           >
             Schedule a Consultation
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className={service.relatedGuides ? "h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" : "w-4 h-4 group-hover:translate-x-1 transition-transform"} />
           </Link>
         </div>
       </section>
