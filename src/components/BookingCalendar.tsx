@@ -228,10 +228,24 @@ export default function BookingCalendar() {
     );
   return (
     <div className="booking-card bg-white">
-      <ol aria-label="Booking progress" className="flex items-center justify-center gap-5 border-b p-5 text-base font-serif"><li aria-current={step===1?'step':undefined}><span className="inline-flex rounded-full bg-[#ae9457] text-white w-10 h-10 items-center justify-center mr-3">{step===2?'✓':'1'}</span>Your details</li><li aria-hidden="true" className="w-16 border-t"/><li aria-current={step===2?'step':undefined}><span className={`inline-flex rounded-full border w-10 h-10 items-center justify-center mr-3 ${step===2?'bg-[#ae9457] text-white':''}`}>2</span>Choose a time</li></ol>
+      <ol aria-label="Booking progress" className="flex items-center justify-center gap-2 border-b p-3 font-serif text-sm sm:gap-5 sm:p-5 sm:text-base">
+        <li aria-current={step === 1 ? "step" : undefined} className="flex shrink-0 items-center gap-2">
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#ae9457] text-white sm:h-10 sm:w-10">
+            {step === 2 ? "✓" : "1"}
+          </span>
+          Your details
+        </li>
+        <li aria-hidden="true" className="w-5 shrink border-t sm:w-16" />
+        <li aria-current={step === 2 ? "step" : undefined} className="flex shrink-0 items-center gap-2">
+          <span className={`inline-flex h-7 w-7 items-center justify-center rounded-full border sm:h-10 sm:w-10 ${step === 2 ? "bg-[#ae9457] text-white" : ""}`}>
+            2
+          </span>
+          Choose a time
+        </li>
+      </ol>
       {step===2 && <div ref={stageRef} tabIndex={-1} role="status" className="m-5 rounded-md bg-[#eef0e8] p-4"><h3 className="font-serif text-xl">✓ Your inquiry has been received</h3><p className="text-sm mt-1">Choose a time below to finish booking your consultation.</p></div>}
-      <div className="grid md:grid-cols-[.75fr_1.5fr] gap-6 p-6 sm:p-8">
-        <aside className="md:border-r md:pr-6">
+      <div className="grid gap-6 p-4 sm:p-8 md:grid-cols-[.75fr_1.5fr]">
+        <aside className={`md:border-r md:pr-6 ${step === 1 ? "hidden md:block" : ""}`}>
           {step===1 ? <><p className="text-xs uppercase tracking-widest text-primary mb-4">A conversation, at your pace</p><h3 className="font-serif text-2xl mb-3">Let’s start with you.</h3><p className="text-muted-foreground text-base">Tell us a little about what you’d like help with. Next, you can choose a time that works for you.</p></> : <><div className="flex justify-between"><h3 className="font-serif text-2xl">Your details</h3><button type="button" disabled={locked} onClick={()=>setStep(1)} className="underline text-primary text-sm">Edit</button></div><p className="mt-5 font-medium">{savedDetails?.firstName} {savedDetails?.lastName}</p><p className="mt-2">{savedDetails?.phone}</p>{savedDetails?.reason && <p className="mt-5 text-base"><span className="block text-sm">Reason</span>{savedDetails.reason}</p>}</>}
           <ul className="space-y-5 my-8 text-base"><li className="flex items-center gap-4"><Phone size={25} aria-hidden="true"/>15-minute phone consultation</li><li className="flex items-center gap-4"><Handshake size={25} aria-hidden="true"/>Complimentary · No obligation</li><li className="flex items-center gap-4"><UserRound size={25} aria-hidden="true"/>{step===1?'Speak with a licensed specialist.':'We’ll call the number you provided.'}</li></ul><p className="text-sm">Prefer to call? <a href={contactPhoneHref} className="underline text-primary">{contactPhone}</a></p>
         </aside>
@@ -239,7 +253,7 @@ export default function BookingCalendar() {
         <form onSubmit={submit}>
           <div hidden={step!==1}><h3 className="font-serif text-2xl mb-1">Your details</h3><p className="text-sm text-muted-foreground mb-5">First name and phone number are required.</p>
           <fieldset disabled={locked} className="space-y-3">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               <label className="block text-[13px]" htmlFor="booking-first">
                 First name
                 <input
@@ -251,6 +265,20 @@ export default function BookingCalendar() {
                   className={fieldClass}
                 />
               </label>
+              <label className="block text-[13px]" htmlFor="booking-phone">
+                Phone number
+                <input
+                  id="booking-phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  maxLength={40}
+                  required
+                  className={fieldClass}
+                />
+              </label>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               <label className="block text-[13px]" htmlFor="booking-last">
                 Last name <span className="text-muted-foreground">(optional)</span>
                 <input
@@ -261,30 +289,18 @@ export default function BookingCalendar() {
                   className={fieldClass}
                 />
               </label>
+              <label className="block text-[13px]" htmlFor="booking-email">
+                Email <span className="text-muted-foreground">(optional)</span>
+                <input
+                  id="booking-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  maxLength={254}
+                  className={fieldClass}
+                />
+              </label>
             </div>
-            <label className="block text-[13px]" htmlFor="booking-phone">
-              Phone number
-              <input
-                id="booking-phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                maxLength={40}
-                required
-                className={fieldClass}
-              />
-            </label>
-            <label className="block text-[13px]" htmlFor="booking-email">
-              Email <span className="text-muted-foreground">(optional)</span>
-              <input
-                id="booking-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                maxLength={254}
-                className={fieldClass}
-              />
-            </label>
             <label className="block text-[13px]" htmlFor="booking-reason">
               <span className="flex justify-between">
                 Reason
@@ -483,7 +499,7 @@ export default function BookingCalendar() {
             ) : pending ? (
               "Check booking again"
             ) : (
-              step===1 ? "Continue to available times →" : "Confirm appointment →"
+              step===1 ? "Send inquiry and choose a time →" : "Confirm appointment →"
             )}
           </button>
           <p className="mt-3 text-center text-xs text-muted-foreground">
