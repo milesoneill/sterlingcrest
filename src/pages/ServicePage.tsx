@@ -25,12 +25,12 @@ const ServicePage = () => {
       <section className="relative pt-24 md:pt-28">
         <div className="relative min-h-[320px] md:min-h-[380px] flex items-end overflow-hidden">
           <img
-            src={serviceImages[service.slug]}
+            src={service.heroImage ?? serviceImages[service.slug]}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover ${service.heroImage ? "object-[72%_center] md:object-center" : ""}`}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/55" />
           <div className="container max-w-4xl mx-auto px-6 pb-12 md:pb-16 relative z-10">
@@ -64,6 +64,20 @@ const ServicePage = () => {
           <p className="text-base md:text-lg leading-relaxed text-muted-foreground font-sans">
             {service.intro}
           </p>
+          {service.relatedGuides && (
+            <div className="mt-8 text-center">
+              <Link
+                to={scheduleConsultationHref}
+                className="group inline-flex max-w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-sans text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-gold-light sm:px-10"
+              >
+                Schedule a Consultation
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                Complimentary · 15-minute phone call · No obligation
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -104,6 +118,35 @@ const ServicePage = () => {
         </div>
       </section>
 
+      {service.relatedGuides && (
+        <section className="bg-muted/40 py-16 md:py-20" aria-labelledby="service-guides-heading">
+          <div className={`container mx-auto px-6 ${service.relatedGuides.layout === "inline" ? "max-w-5xl" : "max-w-3xl"}`}>
+            <h2 id="service-guides-heading" className="mb-4 font-serif text-2xl text-foreground md:text-3xl">
+              {service.relatedGuides.heading}
+            </h2>
+            <div className="gold-underline mb-8 w-16" />
+            {service.relatedGuides.description && (
+              <p className="mb-6 font-sans text-base leading-relaxed text-muted-foreground">
+                {service.relatedGuides.description}
+              </p>
+            )}
+            <ul className={service.relatedGuides.layout === "inline" ? "flex flex-col gap-5 md:flex-row md:flex-wrap md:gap-x-8" : "space-y-4"}>
+              {service.relatedGuides.links.map((guide) => (
+                <li key={guide.href}>
+                  <Link
+                    to={guide.href}
+                    className="inline-flex min-h-11 items-center gap-2 font-sans text-sm text-foreground underline decoration-primary/60 underline-offset-4 transition-colors hover:text-primary"
+                  >
+                    {guide.title}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* CTA */}
       <section className="py-16 md:py-20 bg-secondary text-secondary-foreground">
         <div className="container max-w-3xl mx-auto px-6 text-center">
@@ -111,8 +154,7 @@ const ServicePage = () => {
             Ready to explore {service.title.toLowerCase()}?
           </h2>
           <p className="text-white/70 font-sans mb-10 max-w-xl mx-auto">
-            Schedule a complimentary consultation to discuss your goals and find
-            the protection that's right for you and your family.
+            {service.consultationCopy ?? "Schedule a complimentary consultation to discuss your goals and find the protection that's right for you and your family."}
           </p>
           <Link
             to={scheduleConsultationHref}

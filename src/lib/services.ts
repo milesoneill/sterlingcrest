@@ -23,6 +23,14 @@ export type Service = {
   whyBody: string;
   benefits: ServiceBenefit[];
   cardDescription: string;
+  heroImage?: string;
+  consultationCopy?: string;
+  relatedGuides?: {
+    heading: string;
+    description?: string;
+    layout: "inline" | "stack";
+    links: { title: string; href: string }[];
+  };
 };
 
 export const services: Service[] = [
@@ -60,6 +68,18 @@ export const services: Service[] = [
     ],
     cardDescription:
       "Cover end-of-life costs so your loved ones aren't left with the burden.",
+    heroImage: "/images/final-expense-family-at-home.jpg",
+    consultationCopy:
+      "Schedule a complimentary consultation to discuss your goals and coverage questions.",
+    relatedGuides: {
+      heading: "Helpful Final Expense Guides",
+      layout: "inline",
+      links: [
+        { title: "Funeral Expenses Checklist", href: "/resources/funeral-expenses-checklist" },
+        { title: "How Much Final Expense Insurance Do I Need?", href: "/resources/how-much-final-expense-insurance-do-i-need" },
+        { title: "Waiting Periods: What to Check", href: "/resources/final-expense-insurance-waiting-period" },
+      ],
+    },
   },
   {
     slug: "mortgage-protection",
@@ -67,7 +87,7 @@ export const services: Service[] = [
     title: "Mortgage Protection",
     tagline: "Helping Safeguard the Home You've Worked Hard to Build",
     intro:
-      "For many families, a home represents far more than a financial asset—it represents security, stability, and years of hard work. Mortgage protection solutions are designed to help ensure that loved ones have financial support should the unexpected occur.",
+      "For many families, a home represents security, stability, and years of hard work. Mortgage protection life insurance can help your family manage housing costs after a covered death. We help you review your mortgage, existing life insurance, and budget so you can compare options with confidence.",
     whyHeading: "Why Homeowners Consider Mortgage Protection",
     whyBody:
       "A mortgage is often one of the largest financial commitments a family will ever undertake. Having a plan in place can help protect loved ones from the burden of ongoing housing expenses during a difficult transition.",
@@ -78,23 +98,35 @@ export const services: Service[] = [
           "Provides financial support that can help preserve housing stability for your family.",
       },
       {
-        title: "Income Protection Strategies",
+        title: "Support Your Family",
         description:
-          "Can help replace lost income and support ongoing financial obligations.",
+          "A life insurance benefit can help your named beneficiary manage ongoing household costs.",
       },
       {
         title: "Flexible Coverage Options",
         description:
-          "Solutions can often be tailored to fit your family's goals and budget.",
+          "Compare benefit amounts, policy terms, and premiums around your goals and budget.",
       },
       {
-        title: "Greater Peace of Mind",
+        title: "Plan With Confidence",
         description:
-          "Provides confidence that your loved ones may have additional financial resources available when they need them most.",
+          "Understand who receives the benefit and what the policy covers before you apply.",
       },
     ],
     cardDescription:
       "Keep your family in their home if the unexpected happens.",
+    consultationCopy:
+      "Schedule a complimentary consultation to review your mortgage, coverage options, and goals with a licensed professional.",
+    relatedGuides: {
+      heading: "Helpful Mortgage Protection Guides",
+      description: "Learn more about how mortgage protection works and whether it may be a good fit for your family's needs.",
+      layout: "stack",
+      links: [
+        { title: "How Much Mortgage Protection Do I Need?", href: "/resources/how-much-mortgage-protection-insurance-do-i-need" },
+        { title: "Mortgage Protection vs. PMI", href: "/resources/mortgage-protection-vs-pmi" },
+        { title: "Is Life Insurance Through Work Enough?", href: "/resources/mortgage-protection-employer-life-insurance-gap" },
+      ],
+    },
   },
   {
     slug: "term-life",
