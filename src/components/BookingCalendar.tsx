@@ -17,6 +17,7 @@ import {
 import { contactPhone, contactPhoneHref } from "@/lib/contact";
 import { bookingAttribution, trackBookingEvent } from '@/lib/booking-attribution';
 import { bookingConsentDisclosure, bookingConsentVersion } from '@/lib/booking-consent';
+import { usStates } from '@/lib/us-states';
 
 const fieldClass =
   "mt-1.5 block w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2 text-[16px] text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-muted/40";
@@ -39,7 +40,7 @@ function Step({
 }
 export default function BookingCalendar() {
   const [step,setStep] = useState(1);
-  const [savedDetails,setSavedDetails] = useState<{firstName:string;lastName:string;phone:string;email:string;reason:string;smsConsent:{service:boolean;marketing:boolean;version:string};attribution:ReturnType<typeof bookingAttribution>} | null>(null);
+  const [savedDetails,setSavedDetails] = useState<{firstName:string;lastName:string;phone:string;email:string;state:string;reason:string;smsConsent:{service:boolean;marketing:boolean;version:string};attribution:ReturnType<typeof bookingAttribution>} | null>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   useEffect(()=>{if(step===2)stageRef.current?.focus();},[step]);
   const inquiryRequest = useRef<string | null>(null);
@@ -120,6 +121,7 @@ export default function BookingCalendar() {
       lastName: String(form.get("lastName") ?? "").trim(),
       phone: String(form.get("phone") ?? "").trim(),
       email: String(form.get("email") ?? "").trim(),
+      state: String(form.get("state") ?? "").trim(),
       reason: String(form.get("reason") ?? "").trim(),
       smsConsent: {
         service: form.get("serviceTexts") === "on",
@@ -246,7 +248,7 @@ export default function BookingCalendar() {
       {step===2 && <div ref={stageRef} tabIndex={-1} role="status" className="m-5 rounded-md bg-[#eef0e8] p-4"><h3 className="font-serif text-xl">✓ Your inquiry has been received</h3><p className="text-sm mt-1">Choose a time below to finish booking your consultation.</p></div>}
       <div className="grid gap-6 p-4 sm:p-8 md:grid-cols-[.75fr_1.5fr]">
         <aside className={`md:border-r md:pr-6 ${step === 1 ? "hidden md:block" : ""}`}>
-          {step===1 ? <><p className="text-xs uppercase tracking-widest text-primary mb-4">A conversation, at your pace</p><h3 className="font-serif text-2xl mb-3">Let’s start with you.</h3><p className="text-muted-foreground text-base">Tell us a little about what you’d like help with. Next, you can choose a time that works for you.</p></> : <><div className="flex justify-between"><h3 className="font-serif text-2xl">Your details</h3><button type="button" disabled={locked} onClick={()=>setStep(1)} className="underline text-primary text-sm">Edit</button></div><p className="mt-5 font-medium">{savedDetails?.firstName} {savedDetails?.lastName}</p><p className="mt-2">{savedDetails?.phone}</p>{savedDetails?.reason && <p className="mt-5 text-base"><span className="block text-sm">Reason</span>{savedDetails.reason}</p>}</>}
+          {step===1 ? <><p className="text-xs uppercase tracking-widest text-primary mb-4">A conversation, at your pace</p><h3 className="font-serif text-2xl mb-3">Let’s start with you.</h3><p className="text-muted-foreground text-base">Tell us a little about what you’d like help with. Next, you can choose a time that works for you.</p></> : <><div className="flex justify-between"><h3 className="font-serif text-2xl">Your details</h3><button type="button" disabled={locked} onClick={()=>setStep(1)} className="underline text-primary text-sm">Edit</button></div><p className="mt-5 font-medium">{savedDetails?.firstName} {savedDetails?.lastName}</p><p className="mt-2">{savedDetails?.phone}</p>{savedDetails?.state && <p className="mt-2 text-sm"><span className="text-muted-foreground">State: </span>{usStates.find(([code]) => code === savedDetails.state)?.[1] ?? savedDetails.state}</p>}{savedDetails?.reason && <p className="mt-5 text-base"><span className="block text-sm">Reason</span>{savedDetails.reason}</p>}</>}
           <ul className="space-y-5 my-8 text-base"><li className="flex items-center gap-4"><Phone size={25} aria-hidden="true"/>15-minute phone consultation</li><li className="flex items-center gap-4"><Handshake size={25} aria-hidden="true"/>Complimentary · No obligation</li><li className="flex items-center gap-4"><UserRound size={25} aria-hidden="true"/>{step===1?'Speak with a licensed specialist.':'We’ll call the number you provided.'}</li></ul><p className="text-sm">Prefer to call? <a href={contactPhoneHref} className="underline text-primary">{contactPhone}</a></p>
         </aside>
         <section className="min-w-0" aria-label={step===1?'Your contact details':'Choose an appointment time'}>
@@ -303,6 +305,21 @@ export default function BookingCalendar() {
                 />
               </label>
             </div>
+            <label className="block text-[13px]" htmlFor="booking-state">
+              State <span className="text-muted-foreground">(optional)</span>
+              <select
+                id="booking-state"
+                name="state"
+                autoComplete="address-level1"
+                defaultValue=""
+                className={`${fieldClass} min-h-[42px]`}
+              >
+                <option value="">Select your state</option>
+                {usStates.map(([code, name]) => (
+                  <option key={code} value={code}>{name}</option>
+                ))}
+              </select>
+            </label>
             <label className="block text-[13px]" htmlFor="booking-reason">
               <span className="flex justify-between">
                 Reason
