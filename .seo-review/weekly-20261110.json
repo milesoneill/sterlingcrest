@@ -1,0 +1,927 @@
+{
+  "batchId": "weekly-20261110",
+  "status": "approved-for-publication",
+  "publicationAuthorized": true,
+  "mix": {
+    "final-expense": 18,
+    "mortgage-protection": 12
+  },
+  "websiteBase": "1582b425713181d22c0d2894bf5fa140d96896fb",
+  "featured": [
+    "va-burial-allowance-application",
+    "what-happens-to-mortgage-when-borrower-dies"
+  ],
+  "liveSitemapRoutesCompared": 124,
+  "articles": [
+    {
+      "slug": "do-you-need-a-burial-vault",
+      "title": "Do You Need a Burial Vault? Cemetery Rules and Lower-Cost Options",
+      "pillar": "final-expense",
+      "description": "Learn how a burial vault differs from a grave liner, who sets the rules, and which charges to check before you buy.",
+      "words": 884,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Federal Trade Commission • Complying with the Funeral Rule",
+          "url": "https://www.ftc.gov/business-guidance/resources/complying-funeral-rule"
+        },
+        {
+          "label": "Federal Trade Commission • Funeral costs and pricing checklist",
+          "url": "https://consumer.ftc.gov/articles/funeral-costs-pricing-checklist"
+        },
+        {
+          "label": "National Funeral Directors Association • 2024 report and 2023 national funeral price data",
+          "url": "https://nfda.org/Portals/0/2024_NFDA_Cremation%20and%20Burial%20Report.pdf"
+        }
+      ],
+      "mdxSha256": "733f2bf6e99fb11c55d773256597b3ea347ac86faf33bb03da2a598761e80270",
+      "coverageRevision": true
+    },
+    {
+      "slug": "final-expense-after-hospitalization",
+      "title": "How to Apply for Final Expense Insurance After a Hospital Stay",
+      "pillar": "final-expense",
+      "description": "See how to read recent-care questions, organize a discharge timeline, and compare coverage dates and early benefit limits.",
+      "words": 897,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "NAIC • Accelerated underwriting",
+          "url": "https://content.naic.org/insurance-topics/accelerated-underwriting"
+        },
+        {
+          "label": "New York Department of Financial Services • Life insurance for consumers",
+          "url": "https://www.dfs.ny.gov/consumers/life_insurance"
+        },
+        {
+          "label": "Medicare • Inpatient and outpatient hospital status",
+          "url": "https://www.medicare.gov/coverage/inpatient-hospital-care/inpatient-outpatient-status"
+        }
+      ],
+      "mdxSha256": "986e0474fa54d776ee584c8cd1a5021ef83e9d7b2438d53dc43a14e723d468f0",
+      "coverageRevision": true
+    },
+    {
+      "slug": "final-expense-insurance-after-cancer",
+      "title": "Can You Get Final Expense Insurance After Cancer?",
+      "pillar": "final-expense",
+      "description": "Learn which dates to gather, how to read the insurer’s health questions, and which policy terms to compare when applying after cancer.",
+      "words": 824,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "NAIC • Accelerated underwriting",
+          "url": "https://content.naic.org/insurance-topics/accelerated-underwriting"
+        },
+        {
+          "label": "New York Department of Financial Services • Life insurance for consumers",
+          "url": "https://www.dfs.ny.gov/consumers/life_insurance"
+        }
+      ],
+      "mdxSha256": "4ecc593ba7c5c29f62bcd1285698f1763b0f0e2a0ed8ca6b95b2aa6e90236d0c",
+      "coverageRevision": false
+    },
+    {
+      "slug": "final-expense-vs-term-life-insurance",
+      "title": "Final Expense vs. Term Life Insurance: Which Costs Are You Covering?",
+      "pillar": "final-expense",
+      "description": "Compare how long each policy can last, the expenses it may cover, and what to review if you already have term life insurance.",
+      "words": 826,
+      "sources": 2,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "Washington Office of the Insurance Commissioner • Life insurance guide",
+          "url": "https://www.insurance.wa.gov/sites/default/files/2025-03/life-insurance-guide.pdf"
+        }
+      ],
+      "mdxSha256": "b456ea5f406ee526fc6bd5f1a1efd4f6ccef71028f68ca3189c634b10b6eb6cd",
+      "coverageRevision": false
+    },
+    {
+      "slug": "minor-life-insurance-beneficiary",
+      "title": "What Happens If You Name a Child as a Life Insurance Beneficiary?",
+      "pillar": "final-expense",
+      "description": "See why a direct designation can complicate payment, which questions to ask an insurer, and how to plan separately for funeral costs.",
+      "words": 821,
+      "sources": 2,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "Washington Office of the Insurance Commissioner • Life insurance guide",
+          "url": "https://www.insurance.wa.gov/sites/default/files/2025-03/life-insurance-guide.pdf"
+        }
+      ],
+      "mdxSha256": "e4286e0954647fda96705694a1d1cba8a9935758bc776ba7ac237f7b6a15e36a",
+      "coverageRevision": false
+    },
+    {
+      "slug": "payable-on-death-account-funeral-costs",
+      "title": "Can a Payable-on-Death Bank Account Help Pay for a Funeral?",
+      "pillar": "final-expense",
+      "description": "Understand how a payable-on-death account works, what the bank may ask for, and how to plan for deposits due before funds arrive.",
+      "words": 869,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Federal Deposit Insurance Corporation • Trust accounts and payable-on-death designations",
+          "url": "https://www.fdic.gov/financial-institution-employees-guide-deposit-insurance/trust-accounts"
+        },
+        {
+          "label": "Federal Trade Commission • Funeral costs and pricing checklist",
+          "url": "https://consumer.ftc.gov/articles/funeral-costs-pricing-checklist"
+        },
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        }
+      ],
+      "mdxSha256": "b96a2c787ef2e44538351bc460f3320297e3f81e9a805180606270fe78be0b64",
+      "coverageRevision": true
+    },
+    {
+      "slug": "va-burial-allowance-application",
+      "title": "How to Apply for the VA Burial Allowance in 2026",
+      "pillar": "final-expense",
+      "description": "See the current VA burial allowance amounts, who may apply, which documents to gather, and how to file online or by mail.",
+      "words": 1041,
+      "sources": 3,
+      "featured": true,
+      "sourceLinks": [
+        {
+          "label": "U.S. Department of Veterans Affairs • Burial allowance, rates, and eligibility",
+          "url": "https://www.va.gov/burials-memorials/veterans-burial-allowance/"
+        },
+        {
+          "label": "U.S. Department of Veterans Affairs • Form 21P-530EZ",
+          "url": "https://www.va.gov/forms/21p-530ez/"
+        },
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        }
+      ],
+      "mdxSha256": "3699f0f145fcf71c9b67823d839e83ec28c97b4a237f2e7e522d8d41851df2c4",
+      "coverageRevision": false
+    },
+    {
+      "slug": "va-headstone-private-cemetery",
+      "title": "How to Request a VA Headstone for a Private Cemetery",
+      "pillar": "final-expense",
+      "description": "Compare a VA headstone, marker, or medallion for a private cemetery and learn which form, approvals, and installation costs to check.",
+      "words": 870,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "VA • Veterans headstones and markers",
+          "url": "https://www.va.gov/burials-memorials/memorial-items/headstones-markers/"
+        },
+        {
+          "label": "VA • Form 40-1330",
+          "url": "https://www.va.gov/forms/40-1330/"
+        },
+        {
+          "label": "VA • Medallions for private headstones",
+          "url": "https://www.va.gov/burials-memorials/memorial-items/medallions/"
+        }
+      ],
+      "mdxSha256": "4c03082e1c4de116874151743626c92c7c03eac2ab5b0f58131da49be5bb8f09",
+      "coverageRevision": true
+    },
+    {
+      "slug": "va-pre-need-burial-eligibility",
+      "title": "How to Apply for VA Pre-Need Burial Eligibility",
+      "pillar": "final-expense",
+      "description": "Learn how to submit VA Form 40-10007, gather military records, and share a national cemetery eligibility decision with your family.",
+      "words": 894,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "VA • Pre-need burial eligibility",
+          "url": "https://www.va.gov/burials-memorials/pre-need-eligibility/"
+        },
+        {
+          "label": "VA • How to schedule a burial",
+          "url": "https://www.va.gov/burials-memorials/schedule-a-burial/"
+        },
+        {
+          "label": "VA • Form 40-10007",
+          "url": "https://www.va.gov/forms/40-10007/"
+        },
+        {
+          "label": "VA National Cemetery Administration • Burial and memorial benefits",
+          "url": "https://www.cem.va.gov/burial-memorial-benefits/"
+        }
+      ],
+      "mdxSha256": "11ae2e76f592b84b99ed51c76cbda467e80167bc0813e6c8fbc2a3617c048cae",
+      "coverageRevision": true
+    },
+    {
+      "slug": "vgli-premium-holiday-2026",
+      "title": "VGLI Premium Holiday 2026: Who Qualifies and What to Pay",
+      "pillar": "final-expense",
+      "description": "The VGLI premium holiday runs through January 2027. See what happens to AutoPay, bank bill pay, existing balances, and your February premium.",
+      "words": 850,
+      "sources": 2,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "VA • VGLI Premium Holiday FAQs",
+          "url": "https://benefits.va.gov/INSURANCE/vgli_premium_holiday_faqs.asp"
+        },
+        {
+          "label": "VA • Veterans’ Group Life Insurance",
+          "url": "https://www.va.gov/life-insurance/options-eligibility/vgli/"
+        }
+      ],
+      "mdxSha256": "833f6b20850e7471323eec08d406fc7e4f93e121726f98634a8e0685e65b6cfc",
+      "coverageRevision": false
+    },
+    {
+      "slug": "when-does-final-expense-insurance-start",
+      "title": "When Does Final Expense Insurance Actually Start?",
+      "pillar": "final-expense",
+      "description": "Learn what the application, issue, and effective dates tell you and what to confirm before relying on a new final expense policy.",
+      "words": 826,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "National Association of Insurance Commissioners • Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "New York Department of Financial Services • Individual life application outline",
+          "url": "https://www.dfs.ny.gov/system/files/documents/2024/07/indiv_life_application_outline_20240708.pdf"
+        },
+        {
+          "label": "New York Department of Financial Services • Life insurance information",
+          "url": "https://www.dfs.ny.gov/consumers/life_insurance"
+        }
+      ],
+      "mdxSha256": "2bc0a4ee94e7e1ef8230363a9d5c3a5b7cd94050b12f06b3df9267195f9bfa96",
+      "coverageRevision": false
+    },
+    {
+      "slug": "who-pays-for-funeral-when-money-is-tight",
+      "title": "Who Pays for a Funeral When There Isn’t Enough Money?",
+      "pillar": "final-expense",
+      "description": "See what to check before signing a funeral contract, including estate funds, existing benefits, lower-cost arrangements, and local assistance.",
+      "words": 848,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Federal Trade Commission • Funeral costs and pricing checklist",
+          "url": "https://consumer.ftc.gov/articles/funeral-costs-pricing-checklist"
+        },
+        {
+          "label": "Consumer Financial Protection Bureau • Debts after death",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-happens-to-your-debts-after-you-die-en-1463/"
+        },
+        {
+          "label": "Seminole County • Cremation assistance example",
+          "url": "https://www.seminolecountyfl.gov/departments-services/community-services/community-health/cremation-burial-assistance"
+        }
+      ],
+      "mdxSha256": "a3f7694debd6a6f5ec1933fa5870d1806b0bf404d12585bdd7ef638abe49ba32",
+      "coverageRevision": false
+    },
+    {
+      "slug": "compare-funeral-home-quotes",
+      "title": "How to Compare Two Funeral Home Quotes",
+      "pillar": "final-expense",
+      "description": "Use a line-by-line worksheet to spot differences in two funeral quotes, including excluded cemetery charges and deposits.",
+      "words": 875,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "FTC Funeral Rule",
+          "url": "https://consumer.ftc.gov/articles/ftc-funeral-rule"
+        },
+        {
+          "label": "FTC Funeral Costs and Pricing Checklist",
+          "url": "https://consumer.ftc.gov/articles/funeral-costs-pricing-checklist"
+        },
+        {
+          "label": "FTC Guidance on Complying with the Funeral Rule",
+          "url": "https://www.ftc.gov/business-guidance/resources/complying-funeral-rule"
+        }
+      ],
+      "mdxSha256": "5b514c220a8879fcb0ad779863a35f45a94fd39e1df20a3ea3735a9fbcfd5455",
+      "coverageRevision": true
+    },
+    {
+      "slug": "direct-cremation-vs-cremation-with-service",
+      "title": "Direct Cremation vs. Cremation With a Service",
+      "pillar": "final-expense",
+      "description": "Compare a direct cremation, a viewing before cremation and a memorial afterward. See what families can ask for in each quote.",
+      "words": 966,
+      "sources": 3,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "FTC Funeral Rule",
+          "url": "https://consumer.ftc.gov/articles/ftc-funeral-rule"
+        },
+        {
+          "label": "NFDA 2024 Cremation and Burial Report, including 2023 price-study figures",
+          "url": "https://nfda.org/Portals/0/2024_NFDA_Cremation%20and%20Burial%20Report.pdf"
+        },
+        {
+          "label": "FTC Funeral Costs and Pricing Checklist",
+          "url": "https://consumer.ftc.gov/articles/funeral-costs-pricing-checklist"
+        }
+      ],
+      "mdxSha256": "8347f11d36347686c3599d265b3097d2f6d7b11a7d8f60a6fef0d072abefae37",
+      "coverageRevision": true
+    },
+    {
+      "slug": "funeral-payment-while-insurance-claim-pending",
+      "title": "How to Pay a Funeral Bill While Life Insurance Is Pending",
+      "pillar": "final-expense",
+      "description": "Find out what to ask the funeral home and insurer when a funeral deposit is due before the life insurance claim is paid.",
+      "words": 872,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "FTC Funeral Rule",
+          "url": "https://consumer.ftc.gov/articles/ftc-funeral-rule"
+        },
+        {
+          "label": "NAIC Guide to Life Insurance Beneficiaries",
+          "url": "https://content.naic.org/article/consumer-insight-what-know-about-life-insurance-beneficiaries"
+        },
+        {
+          "label": "Navy Mutual Life Insurance Claims Process",
+          "url": "https://www.navymutual.org/wp-content/uploads/downloadable-forms/LifeInsuranceResourcesDownloadable/What-Happens-When-You-File-a-Life-Insurance-Claim.pdf"
+        },
+        {
+          "label": "Florida Department of Financial Services Assignment of Benefits Definition",
+          "url": "https://myfloridacfo.com/division/consumers/consumerprotections/assignmentofbenefits"
+        }
+      ],
+      "mdxSha256": "4e0e03affa0ef929b45d9e775c7b5d2ac995ea42375fcf77449a8dec695d2951",
+      "coverageRevision": false
+    },
+    {
+      "slug": "green-burial-costs-and-options",
+      "title": "Green Burial Costs and Options",
+      "pillar": "final-expense",
+      "description": "See which costs a green burial can change, which bills still come from the cemetery and how to compare two local options.",
+      "words": 945,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Green Burial Council cemetery map",
+          "url": "https://www.greenburialcouncil.org/cemetery-provider-map/"
+        },
+        {
+          "label": "Green Burial Council conservation burial",
+          "url": "https://www.greenburialcouncil.org/conservation-burial/"
+        },
+        {
+          "label": "Funeral Consumers Alliance green burial guide",
+          "url": "https://www.funerals.org/get-help/green-options/"
+        },
+        {
+          "label": "FTC Funeral Rule",
+          "url": "https://consumer.ftc.gov/articles/ftc-funeral-rule"
+        }
+      ],
+      "mdxSha256": "24d90d5a1db72ac3c2080286eed966549e3e631bd0e8437bf7626c93b0654bff",
+      "coverageRevision": true
+    },
+    {
+      "slug": "medicaid-and-funeral-costs",
+      "title": "Does Medicaid Pay for Funeral or Burial Costs?",
+      "pillar": "final-expense",
+      "description": "Learn how Medicaid medical coverage differs from local funeral assistance and what to ask before signing a funeral contract.",
+      "words": 913,
+      "sources": 5,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CMS Mandatory and Optional Medicaid Benefits",
+          "url": "https://www.medicaid.gov/medicaid/benefits/mandatory-optional-medicaid-benefits"
+        },
+        {
+          "label": "CMS Medicaid Eligibility Policy",
+          "url": "https://www.medicaid.gov/medicaid/eligibility-policy"
+        },
+        {
+          "label": "CMS State Medicaid Contacts",
+          "url": "https://www.medicaid.gov/eligibility"
+        },
+        {
+          "label": "Social Security Administration 2026 Spotlight on Burial Funds",
+          "url": "https://www.ssa.gov/ssi/spotlights/spot-burial-funds.htm"
+        },
+        {
+          "label": "Maryland Department of Human Services Burial Assistance",
+          "url": "https://dhs.maryland.gov/weathering-tough-times/burial-assistance/"
+        }
+      ],
+      "mdxSha256": "300ca46c410c5251c7f3049f8032a2dfe935c62b1d70b27e988dcadfa39745b8",
+      "coverageRevision": true
+    },
+    {
+      "slug": "medicare-and-funeral-costs",
+      "title": "Does Medicare Pay for Funeral Expenses?",
+      "pillar": "final-expense",
+      "description": "See how Medicare hospice coverage differs from funeral bills, which offices to call and where to check for separate assistance.",
+      "words": 894,
+      "sources": 6,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Medicare Original Medicare Coverage",
+          "url": "https://www.medicare.gov/providers-services/original-medicare"
+        },
+        {
+          "label": "Medicare Part A Hospice Coverage",
+          "url": "https://www.medicare.gov/coverage/hospice-care"
+        },
+        {
+          "label": "Social Security Lump-Sum Death Payment",
+          "url": "https://www.ssa.gov/personal-record/when-someone-dies/lump-sum-death-payment"
+        },
+        {
+          "label": "VA Burial Allowance and Transportation Benefits",
+          "url": "https://www.va.gov/burials-memorials/veterans-burial-allowance/"
+        },
+        {
+          "label": "USAGov Agencies to Notify When Someone Dies",
+          "url": "https://www.usa.gov/report-a-death"
+        },
+        {
+          "label": "Humana Medicare Funeral Expenses Overview",
+          "url": "https://www.humana.com/medicare/medicare-resources/are-there-medicare-death-benefits"
+        }
+      ],
+      "mdxSha256": "bef04141f62b041fd9b635722c29a6903e9548977c8fa8b78fc416556de6feaf",
+      "coverageRevision": true
+    },
+    {
+      "slug": "homeowners-insurance-vs-mortgage-protection",
+      "title": "Homeowners Insurance vs. Mortgage Protection Life Insurance",
+      "pillar": "mortgage-protection",
+      "description": "Understand what homeowners insurance covers, what mortgage protection life insurance can pay for, and how to tell which policy is in your closing papers.",
+      "words": 1020,
+      "sources": 6,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · Homeowners insurance and lender requirements",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-homeowners-insurance-why-is-homeowners-insurance-required-en-162/"
+        },
+        {
+          "label": "CFPB · Closing Disclosure explainer",
+          "url": "https://www.consumerfinance.gov/owning-a-home/closing-disclosure/"
+        },
+        {
+          "label": "NAIC · Homeowners insurance consumer guide",
+          "url": "https://content.naic.org/consumer/homeowners-insurance.htm"
+        },
+        {
+          "label": "NAIC · Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "CFPB · How mortgage insurance works",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-mortgage-insurance-and-how-does-it-work-en-1953/"
+        },
+        {
+          "label": "CFPB · How home insurance companies pay claims",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-home-insurance-companies-pay-out-claims-en-1523/"
+        }
+      ],
+      "mdxSha256": "3350544d2fecab1f85e9e87630e5b7c36ff8134c7e90a2789b4868124d2be116",
+      "coverageRevision": false
+    },
+    {
+      "slug": "life-insurance-payout-mortgage-payoff-or-cash",
+      "title": "Should You Use Life Insurance to Pay Off the Mortgage?",
+      "pillar": "mortgage-protection",
+      "description": "Compare a full mortgage payoff with keeping a cash reserve after a life insurance payout. See what to ask the servicer before you decide.",
+      "words": 869,
+      "sources": 5,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · Payoff amount versus current balance",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-payoff-amount-and-is-it-the-same-as-my-current-balance-en-205/"
+        },
+        {
+          "label": "CFPB · Principal and interest versus total monthly payment",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        },
+        {
+          "label": "Fannie Mae · How a mortgage recast works",
+          "url": "https://singlefamily.fanniemae.com/job-aid/loan-delivery/topic/recast_mortgage.htm"
+        },
+        {
+          "label": "CFPB · Building an emergency fund",
+          "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
+        }
+      ],
+      "mdxSha256": "6e35cadb367f2a670c06c02149fbe71187cfdca9e0f7d0eee068d0bbe05291f5",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-adjustable-rate-mortgage-payment",
+      "title": "How an Adjustable-Rate Mortgage Changes Your Protection Plan",
+      "pillar": "mortgage-protection",
+      "description": "When your mortgage rate resets, check the new payment, the remaining balance, and what your family would need to cover the difference on one income.",
+      "words": 822,
+      "sources": 6,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · What to do when your ARM rate changes",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/i-received-notice-of-an-upcoming-rate-change-on-my-adjustable-rate-mortgage-arm-why-did-i-receive-this-and-what-should-i-do-now-en-1843/"
+        },
+        {
+          "label": "CFPB · Understanding an ARM’s index and margin",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/for-an-adjustable-rate-mortgage-arm-what-are-the-index-and-margin-and-how-do-they-work-en-1949/"
+        },
+        {
+          "label": "CFPB · How ARM rate caps work",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-are-rate-caps-with-an-adjustable-rate-mortgage-arm-and-how-do-they-work-en-1951/"
+        },
+        {
+          "label": "CFPB · Principal and interest versus total monthly payment",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        },
+        {
+          "label": "CFPB · Payoff amount versus current balance",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-payoff-amount-and-is-it-the-same-as-my-current-balance-en-205/"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        }
+      ],
+      "mdxSha256": "d9d42c77f840a43def32171051eee71702cdcdcd65e53d67332b5a737899c4d4",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-before-or-after-closing",
+      "title": "Should You Buy Mortgage Protection Before or After Closing?",
+      "pillar": "mortgage-protection",
+      "description": "See what to review before closing, when a life policy starts, and how to decide whether to apply before or after buying a home.",
+      "words": 1054,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · Review documents before closing",
+          "url": "https://www.consumerfinance.gov/owning-a-home/close/review-documents-before-closing/"
+        },
+        {
+          "label": "CFPB · Closing Disclosure explainer",
+          "url": "https://www.consumerfinance.gov/owning-a-home/closing-disclosure/"
+        },
+        {
+          "label": "CFPB · Homeowners insurance and lender requirements",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-homeowners-insurance-why-is-homeowners-insurance-required-en-162/"
+        },
+        {
+          "label": "NAIC · Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        }
+      ],
+      "mdxSha256": "7367989c2f9621db523135c40032119f7d8c13c1a7227b21f1201676db6ecffe",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-employer-life-insurance-gap",
+      "title": "Is Life Insurance Through Work Enough to Protect Your Mortgage?",
+      "pillar": "mortgage-protection",
+      "description": "Compare your employer life insurance with your mortgage needs, check what happens when you change jobs, and see how to calculate any coverage gap.",
+      "words": 866,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Texas Department of Insurance · Life insurance consumer guide",
+          "url": "https://www.tdi.texas.gov/pubs/consumer/cb018.html"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        },
+        {
+          "label": "NAIC · Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "CFPB · Principal and interest versus total monthly payment",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        }
+      ],
+      "mdxSha256": "5b876807235ccd2d51770f7c473e9dc7202e85b26e81d623ccc3fb2e17d82646",
+      "coverageRevision": true
+    },
+    {
+      "slug": "mortgage-protection-heloc-second-mortgage",
+      "title": "Should Mortgage Protection Include a HELOC or Second Mortgage?",
+      "pillar": "mortgage-protection",
+      "description": "See how to count a home equity loan or HELOC when planning mortgage protection, what to ask each lender, and how to handle a balance that keeps changing.",
+      "words": 915,
+      "sources": 5,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · Second mortgages and junior liens",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-second-mortgage-loan-or-junior-lien-en-105/"
+        },
+        {
+          "label": "CFPB · Understanding a HELOC",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-home-equity-line-of-credit-heloc-en-107/"
+        },
+        {
+          "label": "CFPB · Payoff amount versus current balance",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-payoff-amount-and-is-it-the-same-as-my-current-balance-en-205/"
+        },
+        {
+          "label": "CFPB · Principal and interest versus total monthly payment",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        }
+      ],
+      "mdxSha256": "cc10045d5b0b43a32062886730aacad3e3374022b0cc4e7bb2603cbaed11b59b",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-letter-after-closing",
+      "title": "Got a Mortgage Protection Letter After Closing? How to Check It",
+      "pillar": "mortgage-protection",
+      "description": "An official-looking postcard may be a sales offer. Verify the sender, check whether your lender needs anything, and decide whether to compare coverage.",
+      "words": 1046,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · What to expect after closing",
+          "url": "https://www.consumerfinance.gov/owning-a-home/close/after-closing/"
+        },
+        {
+          "label": "CFPB · Mortgage lenders and servicers",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/whats-the-difference-between-a-mortgage-lender-and-a-mortgage-servicer-en-198/"
+        },
+        {
+          "label": "NAIC · Find your state insurance department",
+          "url": "https://content.naic.org/state-insurance-departments"
+        },
+        {
+          "label": "NAIC · Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        }
+      ],
+      "mdxSha256": "0e34c84812c54e32b7fab40406ad7384b1c5bdb591878ba5f85d1eb19b972f34",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-no-medical-exam",
+      "title": "Can You Get Mortgage Protection Without a Medical Exam?",
+      "pillar": "mortgage-protection",
+      "description": "Learn what no-exam mortgage protection life insurance means, how the insurer can still review your health, and which terms to compare before applying.",
+      "words": 928,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "NAIC · Accelerated underwriting for life insurance",
+          "url": "https://content.naic.org/insurance-topics/accelerated-underwriting"
+        },
+        {
+          "label": "NAIC · Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        },
+        {
+          "label": "Texas Department of Insurance · Life insurance consumer guide",
+          "url": "https://www.tdi.texas.gov/pubs/consumer/cb018.html"
+        }
+      ],
+      "mdxSha256": "122ea2981817e1326d14390825cdf4f5ada6df241f0846157a55e2e11ffc40a8",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-term-life-conversion-deadline",
+      "title": "Should You Convert Term Life Insurance If You Still Have a Mortgage?",
+      "pillar": "mortgage-protection",
+      "description": "Check your term life conversion deadline, compare permanent coverage with a new term policy, and see what to do if the mortgage will outlast your policy.",
+      "words": 866,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "Texas Department of Insurance · Life insurance consumer guide",
+          "url": "https://www.tdi.texas.gov/pubs/consumer/cb018.html"
+        },
+        {
+          "label": "New York Department of Financial Services · Life insurance consumer guide",
+          "url": "https://www.dfs.ny.gov/consumers/life_insurance"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        },
+        {
+          "label": "NAIC · Life Insurance Buyer’s Guide",
+          "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
+        }
+      ],
+      "mdxSha256": "91c4660518d612baa8e43cf25f5ce8c13e2873af245b877d6cbefac04da88ca6",
+      "coverageRevision": false
+    },
+    {
+      "slug": "mortgage-protection-unmarried-co-buyers",
+      "title": "Mortgage Protection When You Buy a Home With an Unmarried Partner",
+      "pillar": "mortgage-protection",
+      "description": "Buying a home with a partner or friend? Check the mortgage note, deed and life insurance beneficiaries so you know what happens if one of you dies.",
+      "words": 852,
+      "sources": 4,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "CFPB · Applying for a joint mortgage when unmarried",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/can-two-unmarried-people-apply-jointly-for-a-mortgage-or-a-home-equity-loan-en-357/"
+        },
+        {
+          "label": "CFPB · Buying a home with someone else",
+          "url": "https://www.consumerfinance.gov/archive/blog/making-move-homeownership-your-own-or-someone-else/"
+        },
+        {
+          "label": "CFPB · Principal and interest versus total monthly payment",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        },
+        {
+          "label": "NAIC · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        }
+      ],
+      "mdxSha256": "dd8abe910ba2e57992e25c3caa1ecc717fad249218b609aea9fa1e1449d2c924",
+      "coverageRevision": false
+    },
+    {
+      "slug": "va-loan-vs-veterans-mortgage-life-insurance",
+      "title": "VA Loans vs. Veterans’ Mortgage Life Insurance: What Does Each Cover?",
+      "pillar": "mortgage-protection",
+      "description": "Does a VA loan pay off your mortgage when you die? See how a VA loan guarantee differs from Veterans’ Mortgage Life Insurance and who can apply for VMLI.",
+      "words": 1039,
+      "sources": 5,
+      "featured": false,
+      "sourceLinks": [
+        {
+          "label": "U.S. Department of Veterans Affairs · Veterans’ Mortgage Life Insurance",
+          "url": "https://www.va.gov/life-insurance/options-eligibility/vmli/"
+        },
+        {
+          "label": "U.S. Department of Veterans Affairs · VA-backed purchase loans",
+          "url": "https://www.va.gov/housing-assistance/home-loans/loan-types/purchase-loan/"
+        },
+        {
+          "label": "U.S. Department of Veterans Affairs · Funding fee and closing costs",
+          "url": "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/"
+        },
+        {
+          "label": "Consumer Financial Protection Bureau · Mortgage payoff amount",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-payoff-amount-and-is-it-the-same-as-my-current-balance-en-205/"
+        },
+        {
+          "label": "National Association of Insurance Commissioners · Life insurance consumer guide",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        }
+      ],
+      "mdxSha256": "ef76f5a38d4e80b78bc8ce35ef2e64722d157095a722a1a5e1859aa80b1f0e1b",
+      "coverageRevision": false
+    },
+    {
+      "slug": "what-happens-to-mortgage-when-borrower-dies",
+      "title": "What Happens to a Mortgage When a Borrower Dies?",
+      "pillar": "mortgage-protection",
+      "description": "A mortgage stays in place after a borrower dies. Learn what co-borrowers and heirs can ask the servicer, which documents to gather, and how life insurance can help.",
+      "words": 1140,
+      "sources": 10,
+      "featured": true,
+      "sourceLinks": [
+        {
+          "label": "CFPB · How to get mortgage information on an inherited home",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-i-get-mortgage-information-about-a-home-i-inherited-en-217/"
+        },
+        {
+          "label": "CFPB · Taking over a loan on an inherited home",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/i-recently-inherited-a-house-the-mortgage-lender-said-its-required-to-determine-my-ability-to-repay-before-it-will-let-me-take-over-the-mortgage-loan-is-this-true-en-1939/"
+        },
+        {
+          "label": "CFPB · When a surviving spouse may be responsible for shared debt",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/am-i-responsible-for-my-spouses-debts-after-they-die-en-1467/"
+        },
+        {
+          "label": "CFPB · Mortgage servicer requirements for successors",
+          "url": "https://www.consumerfinance.gov/rules-policy/regulations/1024/38/"
+        },
+        {
+          "label": "CFPB · Find a HUD-approved housing counselor",
+          "url": "https://www.consumerfinance.gov/find-a-housing-counselor/"
+        },
+        {
+          "label": "CFPB · Payoff amount versus current balance",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-payoff-amount-and-is-it-the-same-as-my-current-balance-en-205/"
+        },
+        {
+          "label": "CFPB · Keeping or selling a home with a reverse mortgage",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/with-a-reverse-mortgage-loan-can-my-heirs-keep-or-sell-my-home-after-i-die-en-242/"
+        },
+        {
+          "label": "NAIC · Consumer guide to life insurance",
+          "url": "https://content.naic.org/consumer/life-insurance.htm"
+        },
+        {
+          "label": "CFPB · Mortgage servicing after the death of a loved one",
+          "url": "https://www.consumerfinance.gov/data-research/research-reports/homeowners-face-problems-with-mortgage-companies-after-divorce-or-death-of-a-loved-one/"
+        },
+        {
+          "label": "CFPB · How mortgage escrow works",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-an-escrow-or-impound-account-en-140/"
+        }
+      ],
+      "mdxSha256": "7f4d52a15637a5522e8bdd97caab8af5170fbd3da64c6aaefa7eab3302e7a7ab",
+      "coverageRevision": true
+    }
+  ],
+  "validation": {
+    "prerenderedRoutes": 155,
+    "draftArticlesRendered": 30,
+    "sitemapUrlsInDraftBuild": 154,
+    "websiteTestsPassed": 83,
+    "liveSlugCollisions": 0,
+    "brokenInternalLinks": 0,
+    "contentFingerprintsVerified": 30,
+    "exactCoverageRevisions": 12
+  },
+  "dateSensitiveEditorialNotes": [
+    "Verify VA burial allowance rates for the applicable date of death before publication.",
+    "The VGLI premium holiday is scheduled to end January 31, 2027. Review this guide after the holiday ends."
+  ],
+  "ownerApprovalDate": "2026-11-10",
+  "coverageRevisions": [
+    "compare-funeral-home-quotes",
+    "direct-cremation-vs-cremation-with-service",
+    "do-you-need-a-burial-vault",
+    "final-expense-after-hospitalization",
+    "green-burial-costs-and-options",
+    "medicaid-and-funeral-costs",
+    "medicare-and-funeral-costs",
+    "mortgage-protection-employer-life-insurance-gap",
+    "payable-on-death-account-funeral-costs",
+    "va-headstone-private-cemetery",
+    "va-pre-need-burial-eligibility",
+    "what-happens-to-mortgage-when-borrower-dies"
+  ],
+  "reviewSummary": "Targeted editorial review of the 12 selected revisions. Rechecked official VA burial allowance rates and the VGLI premium holiday dates.",
+  "licensedSignoffRecorded": false,
+  "productionVerificationPlanned": [
+    "Production deployment matches this release commit",
+    "Public sitemap includes every new canonical URL",
+    "Public guides index and representative guide rendering verified"
+  ]
+}

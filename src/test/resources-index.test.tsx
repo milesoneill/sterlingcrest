@@ -46,7 +46,7 @@ beforeAll(() => { Element.prototype.scrollIntoView = vi.fn(); });
 afterEach(() => cleanup());
 
 describe("Guides collection browsing", () => {
-  it("shows both collection links above the complete 109-guide library and lets a reader return to it", () => {
+  it("shows both collection links above the complete 139-guide library and lets a reader return to it", () => {
     showGuides();
     const publishedPaths = listGuideIndexPages().map((page) => page.path).sort();
     const finalExpenseLink = screen.getByRole("link", { name: /Explore Final Expense/ });
@@ -57,30 +57,30 @@ describe("Guides collection browsing", () => {
     expect(finalExpenseLink.compareDocumentPosition(firstArticle) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(mortgageLink.compareDocumentPosition(firstArticle) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(articlePaths().sort()).toEqual(publishedPaths);
-    expect(articlePaths()).toHaveLength(109);
-    expect(new Set(articlePaths()).size).toBe(109);
-    expect(screen.getByRole("button", { name: /^All Guides.*109/ })).toHaveAttribute("aria-pressed", "true");
+    expect(articlePaths()).toHaveLength(139);
+    expect(new Set(articlePaths()).size).toBe(139);
+    expect(screen.getByRole("button", { name: /^All Guides.*139/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("searchbox", { name: "Search all guides" })).toHaveValue("");
     expect(screen.queryByRole("button", { name: /^Funeral Costs & Planning,/ })).not.toBeInTheDocument();
     fireEvent.click(finalExpenseLink);
     expectOnlyCollection("final-expense");
     expect(screen.getByRole("link", { name: "Back to all guides" })).toHaveAttribute("href", "/resources");
     fireEvent.click(screen.getByRole("link", { name: "Back to all guides" }));
-    expect(articlePaths()).toHaveLength(109);
+    expect(articlePaths()).toHaveLength(139);
     fireEvent.click(screen.getByRole("link", { name: /Explore Mortgage Protection/ }));
     expectOnlyCollection("mortgage-protection");
   });
 
-  it("keeps all six topic counts and filters inside the 97-guide Final Expense collection", () => {
+  it("keeps all six topic counts and filters inside the 115-guide Final Expense collection", () => {
     showGuides("/resources/final-expense");
     expectOnlyCollection("final-expense");
     expect(screen.getByRole("searchbox", { name: "Search Final Expense guides" })).toHaveValue("");
     const journeys = [
-      ["Funeral Costs & Planning", 18, "/resources/funeral-flowers-obituary-cost-questions"],
-      ["Choosing Coverage", 43, "/resources/online-burial-insurance-quotes"],
-      ["Health & Eligibility", 7, "/resources/final-expense-insurance-with-diabetes"],
-      ["Managing Your Policy", 22, "/resources/life-insurance-premium-autopay"],
-      ["Claims & Family Support", 5, "/resources/death-certificate-life-insurance-claim"],
+      ["Funeral Costs & Planning", 26, "/resources/funeral-flowers-obituary-cost-questions"],
+      ["Choosing Coverage", 49, "/resources/online-burial-insurance-quotes"],
+      ["Health & Eligibility", 9, "/resources/final-expense-insurance-with-diabetes"],
+      ["Managing Your Policy", 23, "/resources/life-insurance-premium-autopay"],
+      ["Claims & Family Support", 6, "/resources/death-certificate-life-insurance-claim"],
       ["State Guides", 2, "/locations/final-expense-insurance-florida"],
     ] as const;
     for (const [title, count, path] of journeys) {
@@ -110,7 +110,7 @@ describe("Guides collection browsing", () => {
     expect(screen.getByRole("status")).toHaveTextContent("0 guides found");
     fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
     expect(category("Health & Eligibility")).toHaveAttribute("aria-pressed", "true");
-    expect(articlePaths()).toHaveLength(7);
+    expect(articlePaths()).toHaveLength(9);
     expect(articlePaths()).toContain("/resources/final-expense-insurance-with-diabetes");
   });
 
@@ -126,7 +126,7 @@ describe("Guides collection browsing", () => {
     expect(screen.getByRole("searchbox")).toHaveValue("");
   });
 
-  it("searches Mortgage Protection directly, ignores a stale Final Expense category and resets only its 12 guides", () => {
+  it("searches Mortgage Protection directly, ignores a stale Final Expense category and resets only its 24 guides", () => {
     showGuides("/resources/mortgage-protection?category=health-eligibility&q=pmi");
     expect(screen.getByRole("searchbox", { name: "Search Mortgage Protection guides" })).toHaveValue("pmi");
     expect(articlePaths()).toContain("/resources/mortgage-protection-vs-pmi");
@@ -161,11 +161,11 @@ describe("Guides collection browsing", () => {
     expect(articlePaths()).toContain("/resources/funeral-flowers-obituary-cost-questions");
     expect(articlePaths()).not.toContain("/resources/mortgage-protection-vs-pmi");
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
-    expect(articlePaths()).toHaveLength(109);
+    expect(articlePaths()).toHaveLength(139);
     expect(screen.getByTestId("location")).toHaveTextContent(/^\/resources$/);
     view.unmount();
     showGuides("/resources/final-expense?category=unknown-topic");
-    expect(screen.getByRole("button", { name: /^All Final Expense.*97/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /^All Final Expense.*115/ })).toHaveAttribute("aria-pressed", "true");
     expectOnlyCollection("final-expense");
   });
 
@@ -178,7 +178,7 @@ describe("Guides collection browsing", () => {
     fireEvent.change(screen.getByRole("searchbox"), { target: { value: "no-such-subject-zzzz" } });
     expect(articlePaths()).toEqual([]);
     fireEvent.click(screen.getByRole("button", { name: "Browse all guides" }));
-    expect(articlePaths()).toHaveLength(109);
+    expect(articlePaths()).toHaveLength(139);
     expect(screen.getByRole("searchbox")).toHaveValue("");
   });
 });

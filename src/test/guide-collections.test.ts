@@ -12,15 +12,15 @@ const sample = (frontmatter: Partial<SeoPage["frontmatter"]>, body = "A family p
 });
 
 describe("Guide collections", () => {
-  it("keeps all 109 published links and partitions them into 97 Final Expense and 12 Mortgage Protection guides", () => {
+  it("keeps all 139 published links and partitions them into 115 Final Expense and 24 Mortgage Protection guides", () => {
     const counts = collectionCounts(guides);
     const finalExpense = filterGuides(guides, { collection: "final-expense" });
     const mortgage = filterGuides(guides, { collection: "mortgage-protection" });
-    expect(guides).toHaveLength(109);
-    expect(counts).toEqual({ "final-expense": 97, "mortgage-protection": 12 });
-    expect(finalExpense).toHaveLength(97);
-    expect(mortgage).toHaveLength(12);
-    expect(new Set([...finalExpense, ...mortgage].map((page) => page.path)).size).toBe(109);
+    expect(guides).toHaveLength(139);
+    expect(counts).toEqual({ "final-expense": 115, "mortgage-protection": 24 });
+    expect(finalExpense).toHaveLength(115);
+    expect(mortgage).toHaveLength(24);
+    expect(new Set([...finalExpense, ...mortgage].map((page) => page.path)).size).toBe(139);
     expect([...finalExpense, ...mortgage].map((page) => page.path).sort()).toEqual(guides.map((page) => page.path).sort());
     expect(mortgage.map((page) => page.frontmatter.slug)).toContain("mortgage-protection-insurance-beneficiary");
     expect(finalExpense.map((page) => page.frontmatter.slug)).toContain("choose-final-expense-insurance-beneficiary");

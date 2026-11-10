@@ -18,10 +18,10 @@ describe("Guide browsing categories", () => {
       expect(counts[id]).toBe(selected.length);
       return selected;
     });
-    expect(grouped.length).toBe(97);
+    expect(grouped.length).toBe(115);
     expect(new Set(grouped.map((page) => page.path)).size).toBe(finalExpenseGuides.length);
     expect(grouped.map((page) => page.path).sort()).toEqual(finalExpenseGuides.map((page) => page.path).sort());
-    expect(counts).toEqual({ "funeral-costs": 18, "choosing-coverage": 43, "health-eligibility": 7, "managing-policy": 22, "claims-family": 5, "state-guides": 2 });
+    expect(counts).toEqual({ "funeral-costs": 26, "choosing-coverage": 49, "health-eligibility": 9, "managing-policy": 23, "claims-family": 6, "state-guides": 2 });
     expect(Object.values(counts).reduce((sum, count) => sum + count, 0)).toBe(finalExpenseGuides.length);
     expect(guides.filter((page) => guideCollection(page) === "mortgage-protection").every((page) => guideCategory(page) === null)).toBe(true);
     expect(filterGuides(guides)).toEqual(guides);
