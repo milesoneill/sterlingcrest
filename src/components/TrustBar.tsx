@@ -3,7 +3,11 @@ import { ShieldCheck, Users, MapPin, UserRound } from "lucide-react";
 const items = [
   { icon: ShieldCheck, title: "Independent Brokerage", label: "Objective Guidance" },
   { icon: Users, title: "Family Owned", label: "Built on Trust" },
-  { icon: MapPin, title: "Multi-State Service", label: "Serving Nationwide" },
+  {
+    icon: MapPin,
+    title: "Final Expense Service Area",
+    states: ["Florida", "Georgia", "Michigan", "North Carolina", "Ohio", "South Carolina", "Tennessee", "Texas"],
+  },
   { icon: UserRound, title: "Client-First", label: "Your Needs First" },
 ];
 
@@ -22,9 +26,15 @@ const TrustBar = () => {
                 <p className="font-serif text-lg md:text-xl text-white leading-tight">
                   {item.title}
                 </p>
-                <p className="text-[0.65rem] tracking-[0.25em] uppercase font-sans text-white/55 mt-1">
-                  {item.label}
-                </p>
+                {item.states ? (
+                  <p className="mt-1 font-sans text-xs leading-relaxed text-white/75">
+                    {item.states.join(", ")}
+                  </p>
+                ) : (
+                  <p className="text-[0.65rem] tracking-[0.25em] uppercase font-sans text-white/55 mt-1">
+                    {item.label}
+                  </p>
+                )}
               </div>
             </div>
           ))}

@@ -57,9 +57,8 @@ const HeroSection = () => {
             <div className="gold-underline w-16 mt-6 md:mt-8" />
 
             <p className="mt-6 md:mt-8 text-base md:text-lg leading-relaxed text-white/75 font-sans max-w-lg">
-              Thoughtful planning today can create security for generations to
-              come. Whether you're protecting your family, your income, or your
-              legacy, we help you make confident decisions for the future.
+              We’re an independent life insurance brokerage helping families
+              compare final expense and mortgage protection coverage.
             </p>
 
             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4">
