@@ -64,8 +64,9 @@
           "url": "https://www.medicare.gov/coverage/inpatient-hospital-care/inpatient-outpatient-status"
         }
       ],
-      "mdxSha256": "986e0474fa54d776ee584c8cd1a5021ef83e9d7b2438d53dc43a14e723d468f0",
-      "coverageRevision": true
+      "mdxSha256": "fa8313e826d22124cb05e02d26367a54207369318551fd7dcfde2a519499d2aa",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-final-expense-after-hospitalization.jpg"
     },
     {
       "slug": "final-expense-insurance-after-cancer",
@@ -89,8 +90,9 @@
           "url": "https://www.dfs.ny.gov/consumers/life_insurance"
         }
       ],
-      "mdxSha256": "4ecc593ba7c5c29f62bcd1285698f1763b0f0e2a0ed8ca6b95b2aa6e90236d0c",
-      "coverageRevision": false
+      "mdxSha256": "1156797e2464e9a9947275d68d9da44a84aede231df7316ed3ed85caae875e77",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-final-expense-insurance-after-cancer.jpg"
     },
     {
       "slug": "final-expense-vs-term-life-insurance",
@@ -131,8 +133,9 @@
           "url": "https://www.insurance.wa.gov/sites/default/files/2025-03/life-insurance-guide.pdf"
         }
       ],
-      "mdxSha256": "e4286e0954647fda96705694a1d1cba8a9935758bc776ba7ac237f7b6a15e36a",
-      "coverageRevision": false
+      "mdxSha256": "c052a514f3344df0982130f79f807ae20a66f0364bc5f24e338319c2cd86a5a3",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-minor-life-insurance-beneficiary.jpg"
     },
     {
       "slug": "payable-on-death-account-funeral-costs",
@@ -156,8 +159,9 @@
           "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
         }
       ],
-      "mdxSha256": "b96a2c787ef2e44538351bc460f3320297e3f81e9a805180606270fe78be0b64",
-      "coverageRevision": true
+      "mdxSha256": "23bdb4895469a595c5b27c16443bd9da12410b4e611b3ea7a3d0db94d68d3d87",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-payable-on-death-account-funeral-costs.jpg"
     },
     {
       "slug": "va-burial-allowance-application",
@@ -235,8 +239,9 @@
           "url": "https://www.cem.va.gov/burial-memorial-benefits/"
         }
       ],
-      "mdxSha256": "11ae2e76f592b84b99ed51c76cbda467e80167bc0813e6c8fbc2a3617c048cae",
-      "coverageRevision": true
+      "mdxSha256": "eaee125791c1a4f593f7b850d7b565c56996feea2ea36b9ba7830d75d9049c75",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-va-pre-need-burial-eligibility.jpg"
     },
     {
       "slug": "vgli-premium-holiday-2026",
@@ -256,8 +261,9 @@
           "url": "https://www.va.gov/life-insurance/options-eligibility/vgli/"
         }
       ],
-      "mdxSha256": "833f6b20850e7471323eec08d406fc7e4f93e121726f98634a8e0685e65b6cfc",
-      "coverageRevision": false
+      "mdxSha256": "905cde1707d33b6664573237d47c77f04d89c0d84206b36771019625f2b57f46",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-vgli-premium-holiday-2026.jpg"
     },
     {
       "slug": "when-does-final-expense-insurance-start",
@@ -331,8 +337,9 @@
           "url": "https://www.ftc.gov/business-guidance/resources/complying-funeral-rule"
         }
       ],
-      "mdxSha256": "5b514c220a8879fcb0ad779863a35f45a94fd39e1df20a3ea3735a9fbcfd5455",
-      "coverageRevision": true
+      "mdxSha256": "5c0bc8f8a13063c76bddb069d88c6ba2b4b03999d8e115708f14edf847737ba4",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-compare-funeral-home-quotes.jpg"
     },
     {
       "slug": "direct-cremation-vs-cremation-with-service",
@@ -356,8 +363,9 @@
           "url": "https://consumer.ftc.gov/articles/funeral-costs-pricing-checklist"
         }
       ],
-      "mdxSha256": "8347f11d36347686c3599d265b3097d2f6d7b11a7d8f60a6fef0d072abefae37",
-      "coverageRevision": true
+      "mdxSha256": "36fe0db0b21c5574502d14d6eb8798f4bc1aaf84d2b67a5938b0513bfab61b9f",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-direct-cremation-vs-cremation-with-service.jpg"
     },
     {
       "slug": "funeral-payment-while-insurance-claim-pending",
@@ -385,8 +393,9 @@
           "url": "https://myfloridacfo.com/division/consumers/consumerprotections/assignmentofbenefits"
         }
       ],
-      "mdxSha256": "4e0e03affa0ef929b45d9e775c7b5d2ac995ea42375fcf77449a8dec695d2951",
-      "coverageRevision": false
+      "mdxSha256": "650b7355bd2b077b24785450985a5ca4edd43954a0330e1a5af04d974cbb2e63",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-funeral-payment-while-insurance-claim-pending.jpg"
     },
     {
       "slug": "green-burial-costs-and-options",
@@ -414,8 +423,9 @@
           "url": "https://consumer.ftc.gov/articles/ftc-funeral-rule"
         }
       ],
-      "mdxSha256": "24d90d5a1db72ac3c2080286eed966549e3e631bd0e8437bf7626c93b0654bff",
-      "coverageRevision": true
+      "mdxSha256": "1a5632e6d1c31263846bd1aa6868ccb8153b972a9abea871d323cc45c0386e18",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-green-burial-costs-and-options.jpg"
     },
     {
       "slug": "medicaid-and-funeral-costs",
@@ -447,8 +457,9 @@
           "url": "https://dhs.maryland.gov/weathering-tough-times/burial-assistance/"
         }
       ],
-      "mdxSha256": "300ca46c410c5251c7f3049f8032a2dfe935c62b1d70b27e988dcadfa39745b8",
-      "coverageRevision": true
+      "mdxSha256": "b5bb7ae70e408554622b8efc287726e00f479bad07951e4f64a9b3d35004431b",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-medicaid-and-funeral-costs.jpg"
     },
     {
       "slug": "medicare-and-funeral-costs",
@@ -484,8 +495,9 @@
           "url": "https://www.humana.com/medicare/medicare-resources/are-there-medicare-death-benefits"
         }
       ],
-      "mdxSha256": "bef04141f62b041fd9b635722c29a6903e9548977c8fa8b78fc416556de6feaf",
-      "coverageRevision": true
+      "mdxSha256": "52d1f7d5659a2d9ff7f3e65284027f10f461c6d10150386e82fa8fa8ce5bb451",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-medicare-and-funeral-costs.jpg"
     },
     {
       "slug": "homeowners-insurance-vs-mortgage-protection",
@@ -521,8 +533,9 @@
           "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-home-insurance-companies-pay-out-claims-en-1523/"
         }
       ],
-      "mdxSha256": "3350544d2fecab1f85e9e87630e5b7c36ff8134c7e90a2789b4868124d2be116",
-      "coverageRevision": false
+      "mdxSha256": "aeced865e24ef350ef9b70ff6a7da731888cee21cc5dce957b31cd63cbd64bfd",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-homeowners-insurance-vs-mortgage-protection.jpg"
     },
     {
       "slug": "life-insurance-payout-mortgage-payoff-or-cash",
@@ -591,8 +604,9 @@
           "url": "https://content.naic.org/consumer/life-insurance.htm"
         }
       ],
-      "mdxSha256": "d9d42c77f840a43def32171051eee71702cdcdcd65e53d67332b5a737899c4d4",
-      "coverageRevision": false
+      "mdxSha256": "ade5fdb7c1f10f171ddd4a4d41397c52558a41a30e25565654a06d03f8bb7e5e",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-adjustable-rate-mortgage-payment.jpg"
     },
     {
       "slug": "mortgage-protection-before-or-after-closing",
@@ -620,8 +634,9 @@
           "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
         }
       ],
-      "mdxSha256": "7367989c2f9621db523135c40032119f7d8c13c1a7227b21f1201676db6ecffe",
-      "coverageRevision": false
+      "mdxSha256": "f766cf6bfe0e633b77524b3cf1e775e21362df6ce6c1f789c6e0cb4c8e0e0579",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-before-or-after-closing.jpg"
     },
     {
       "slug": "mortgage-protection-employer-life-insurance-gap",
@@ -649,8 +664,9 @@
           "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
         }
       ],
-      "mdxSha256": "5b876807235ccd2d51770f7c473e9dc7202e85b26e81d623ccc3fb2e17d82646",
-      "coverageRevision": true
+      "mdxSha256": "10ea71d59161e4ce806ffd9e94d31248fe30e2764a2da4dc39346a669e0776df",
+      "coverageRevision": true,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-employer-life-insurance-gap.jpg"
     },
     {
       "slug": "mortgage-protection-heloc-second-mortgage",
@@ -682,8 +698,9 @@
           "url": "https://content.naic.org/consumer/life-insurance.htm"
         }
       ],
-      "mdxSha256": "cc10045d5b0b43a32062886730aacad3e3374022b0cc4e7bb2603cbaed11b59b",
-      "coverageRevision": false
+      "mdxSha256": "165ae1488f8af798e015bb7856e0d1d0cc813ee771843e39ba626cf969d4b8b8",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-heloc-second-mortgage.jpg"
     },
     {
       "slug": "mortgage-protection-letter-after-closing",
@@ -711,8 +728,9 @@
           "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
         }
       ],
-      "mdxSha256": "0e34c84812c54e32b7fab40406ad7384b1c5bdb591878ba5f85d1eb19b972f34",
-      "coverageRevision": false
+      "mdxSha256": "61f9d9bb376c397f89943ec2957e02829b2d0228380562257d220b6b36bf029e",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-letter-after-closing.jpg"
     },
     {
       "slug": "mortgage-protection-no-medical-exam",
@@ -740,8 +758,9 @@
           "url": "https://www.tdi.texas.gov/pubs/consumer/cb018.html"
         }
       ],
-      "mdxSha256": "122ea2981817e1326d14390825cdf4f5ada6df241f0846157a55e2e11ffc40a8",
-      "coverageRevision": false
+      "mdxSha256": "cb413ed95157ba8cc18b414e8c6e155afb993fe827157182e580c1bc79a872fe",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-no-medical-exam.jpg"
     },
     {
       "slug": "mortgage-protection-term-life-conversion-deadline",
@@ -769,8 +788,9 @@
           "url": "https://content.naic.org/sites/default/files/publication-lig-lp-consumer-life.pdf"
         }
       ],
-      "mdxSha256": "91c4660518d612baa8e43cf25f5ce8c13e2873af245b877d6cbefac04da88ca6",
-      "coverageRevision": false
+      "mdxSha256": "336b9a1b9c3db4f3a1938d020b81d8cedc3130f52f9de32660d9dfcbb594252b",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-term-life-conversion-deadline.jpg"
     },
     {
       "slug": "mortgage-protection-unmarried-co-buyers",
@@ -798,8 +818,9 @@
           "url": "https://content.naic.org/consumer/life-insurance.htm"
         }
       ],
-      "mdxSha256": "dd8abe910ba2e57992e25c3caa1ecc717fad249218b609aea9fa1e1449d2c924",
-      "coverageRevision": false
+      "mdxSha256": "0bdb9fcb9ddb636073974faf48a7c1d518c4bc9328461602b483de2f5c24655e",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-mortgage-protection-unmarried-co-buyers.jpg"
     },
     {
       "slug": "va-loan-vs-veterans-mortgage-life-insurance",
@@ -831,8 +852,9 @@
           "url": "https://content.naic.org/consumer/life-insurance.htm"
         }
       ],
-      "mdxSha256": "ef76f5a38d4e80b78bc8ce35ef2e64722d157095a722a1a5e1859aa80b1f0e1b",
-      "coverageRevision": false
+      "mdxSha256": "33bb48265bd4f0c3d63f3da1abe87de8430482e087d4172a2db0b1f4ac3f2d66",
+      "coverageRevision": false,
+      "heroImage": "/images/weekly-20261110-va-loan-vs-veterans-mortgage-life-insurance.jpg"
     },
     {
       "slug": "what-happens-to-mortgage-when-borrower-dies",
@@ -923,5 +945,29 @@
     "Production deployment matches this release commit",
     "Public sitemap includes every new canonical URL",
     "Public guides index and representative guide rendering verified"
+  ],
+  "hostedCoverCorrections": [
+    "compare-funeral-home-quotes",
+    "direct-cremation-vs-cremation-with-service",
+    "final-expense-after-hospitalization",
+    "final-expense-insurance-after-cancer",
+    "funeral-payment-while-insurance-claim-pending",
+    "green-burial-costs-and-options",
+    "homeowners-insurance-vs-mortgage-protection",
+    "medicaid-and-funeral-costs",
+    "medicare-and-funeral-costs",
+    "minor-life-insurance-beneficiary",
+    "mortgage-protection-adjustable-rate-mortgage-payment",
+    "mortgage-protection-before-or-after-closing",
+    "mortgage-protection-employer-life-insurance-gap",
+    "mortgage-protection-heloc-second-mortgage",
+    "mortgage-protection-letter-after-closing",
+    "mortgage-protection-no-medical-exam",
+    "mortgage-protection-term-life-conversion-deadline",
+    "mortgage-protection-unmarried-co-buyers",
+    "payable-on-death-account-funeral-costs",
+    "va-loan-vs-veterans-mortgage-life-insurance",
+    "va-pre-need-burial-eligibility",
+    "vgli-premium-holiday-2026"
   ]
 }
