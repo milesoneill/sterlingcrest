@@ -24,11 +24,12 @@ const Book = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="relative overflow-hidden bg-secondary pb-5 pt-28 md:pb-9 md:pt-32">
+        <section className="relative overflow-hidden bg-secondary pb-4 pt-[108px] md:pb-9 md:pt-32">
           <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_35%,hsl(var(--gold)/0.08)_50%,transparent_65%)]" />
           <div className="container relative z-10 mx-auto max-w-6xl px-6">
             <h1 className="font-serif text-2xl leading-[1.12] text-white sm:text-3xl md:text-[46px]">
-              Meet with a Licensed Specialist.
+              <span className="md:hidden">Book your consultation</span>
+              <span className="hidden md:block">Meet with a Licensed Specialist.</span>
               <span className="text-gold-gradient hidden md:block">Plan with confidence.</span>
             </h1>
             <div className="gold-underline mt-3 w-16 md:mt-4" />
@@ -37,7 +38,7 @@ const Book = () => {
         <section id="calendar" className="bg-background px-4 pb-8 pt-5 sm:px-6 md:pt-8">
           <div className="mx-auto max-w-[1000px]">
             <div className="mb-4 text-center md:mb-6">
-              <h2 className="font-serif text-2xl leading-tight text-foreground md:text-[38px]">
+              <h2 className="hidden font-serif leading-tight text-foreground md:block md:text-[38px]">
                 Book your consultation
               </h2>
               <div className="gold-underline mx-auto mt-3 hidden w-14 md:block" />

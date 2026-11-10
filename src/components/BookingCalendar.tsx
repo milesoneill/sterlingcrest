@@ -251,7 +251,9 @@ export default function BookingCalendar() {
         </aside>
         <section className="min-w-0" aria-label={step===1?'Your contact details':'Choose an appointment time'}>
         <form onSubmit={submit}>
-          <div hidden={step!==1}><h3 className="font-serif text-2xl mb-1">Your details</h3><p className="text-sm text-muted-foreground mb-5">First name and phone number are required.</p>
+          <div hidden={step!==1}>
+          <h2 className="sr-only mb-1 font-serif text-2xl md:not-sr-only">Your details</h2>
+          <p className="mb-3 text-sm text-muted-foreground md:mb-5">First name and phone number are required.</p>
           <fieldset disabled={locked} className="space-y-3">
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               <label className="block text-[13px]" htmlFor="booking-first">
