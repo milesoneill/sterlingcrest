@@ -148,7 +148,7 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
             </div>
             <div className="guide-topic-grid" aria-label="Guide topics">
               {topics.map(topic => <button key={topic.id} type="button" className={`guide-topic-card${category === topic.id ? " is-selected" : ""}`} aria-pressed={category === topic.id} aria-controls="guide-results" aria-label={`${topic.title}, ${counts[topic.id]} guides`} onClick={() => chooseCategory(topic.id)}>
-                <span className="guide-topic-photo" aria-hidden="true"><img src={`/images/guide-topics/${topic.id}.webp`} alt="" width={isMortgageProtection ? 429 : 800} height={isMortgageProtection ? 195 : 480} loading="lazy" decoding="async" /></span>
+                <span className="guide-topic-photo" aria-hidden="true"><img src={`/images/guide-topics/${topic.id}.webp`} alt="" width={429} height={195} loading="lazy" decoding="async" /></span>
                 <span className="guide-topic-body">
                   <span className="guide-topic-title font-serif">{topic.title}</span>
                   <span className="guide-topic-description">{topic.description}</span>
