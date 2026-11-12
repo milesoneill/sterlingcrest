@@ -92,7 +92,7 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
       <main>
       <header className="guides-hero" aria-labelledby="guide-page-heading">
         <div className="guides-hero-scene">
-          <img src="/images/guide-collections/family-guides-hero.jpg" alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="guides-hero-image" />
+          <img src="/images/guide-collections/family-guides-overlook.webp" alt="" aria-hidden="true" width={2172} height={724} fetchPriority="high" decoding="async" className="guides-hero-image" />
           <div className="guides-hero-shade" />
           <div className="guides-hero-inner">
             <p className="guides-hero-eyebrow">Sterling Crest Guides</p>
