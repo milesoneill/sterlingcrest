@@ -1,7 +1,23 @@
 .guides-page { color:hsl(var(--foreground)); }
 .guides-hero { padding-top:96px; }
-.guides-hero-scene { position:relative; display:flex; height:240px; align-items:center; overflow:hidden; background:hsl(var(--navy)); }
-.guides-hero-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:75% 28%; }
+.guides-hero-scene {
+  position: relative;
+  display: flex;
+  height: clamp(280px, 20vw, 400px);
+  align-items: center;
+  overflow: hidden;
+  background: hsl(var(--navy));
+}
+.guides-hero-image {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 75% center;
+  mask-image: linear-gradient(90deg, transparent, #000 32%);
+}
 .guides-hero-shade { position:absolute; inset:0; background:linear-gradient(90deg,hsl(var(--navy) / .94),hsl(var(--navy) / .64) 38%,hsl(var(--navy) / .12) 68%,transparent); }
 .guides-hero-inner { position:relative; z-index:1; width:100%; max-width:1140px; margin:0 auto; padding:24px 28px; }
 .guides-hero-eyebrow { margin-bottom:10px; color:hsl(var(--gold-light)); font-size:.6875rem; font-weight:600; letter-spacing:.16em; line-height:1.5; text-transform:uppercase; }
@@ -96,7 +112,12 @@
 @media(max-width:639px) {
   .guides-hero-inner,.guides-container { padding-left:20px; padding-right:20px; }
   .guides-hero-scene { height:200px; }
-  .guides-hero-image { object-position:75% 42%; }
+  .guides-hero-image {
+    inset: 0;
+    width: 100%;
+    object-position: 75% 42%;
+    mask-image: none;
+  }
   .guides-hero-inner { padding-top:20px; padding-bottom:20px; }
   .guides-hero-eyebrow { margin-bottom:8px; font-size:.625rem; }
   .guides-hero-title { max-width:22rem; font-size:1.875rem; line-height:1.12; }
