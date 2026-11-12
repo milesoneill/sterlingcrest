@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { listGuideIndexPages, type SeoPage } from "../lib/seo-content";
-import { GUIDE_CATEGORIES, categoryCounts, filterGuides, guideCategory, guideCollection } from "../lib/guide-categories";
+import { GUIDE_CATEGORIES, MORTGAGE_PROTECTION_CATEGORIES, categoryCounts, filterGuides, guideCategory, guideCollection } from "../lib/guide-categories";
 
 const guides = listGuideIndexPages();
 const guide = (slug: string): SeoPage => {
@@ -21,10 +21,22 @@ describe("Guide browsing categories", () => {
     expect(grouped.length).toBe(115);
     expect(new Set(grouped.map((page) => page.path)).size).toBe(finalExpenseGuides.length);
     expect(grouped.map((page) => page.path).sort()).toEqual(finalExpenseGuides.map((page) => page.path).sort());
-    expect(counts).toEqual({ "funeral-costs": 26, "choosing-coverage": 49, "health-eligibility": 9, "managing-policy": 23, "claims-family": 6, "state-guides": 2 });
-    expect(Object.values(counts).reduce((sum, count) => sum + count, 0)).toBe(finalExpenseGuides.length);
-    expect(guides.filter((page) => guideCollection(page) === "mortgage-protection").every((page) => guideCategory(page) === null)).toBe(true);
+    expect(counts).toMatchObject({ "funeral-costs": 26, "choosing-coverage": 49, "health-eligibility": 9, "managing-policy": 23, "claims-family": 6, "state-guides": 2 });
     expect(filterGuides(guides)).toEqual(guides);
+  });
+
+  it("partitions the Mortgage Protection library into six topics with four guides each", () => {
+    const mortgageGuides = filterGuides(guides, { collection: "mortgage-protection" });
+    const counts = categoryCounts(guides);
+    const grouped = MORTGAGE_PROTECTION_CATEGORIES.flatMap(({ id }) => {
+      const selected = filterGuides(guides, { category: id });
+      expect(counts[id]).toBe(4);
+      expect(selected).toHaveLength(4);
+      return selected;
+    });
+    expect(grouped.map((page) => page.path).sort()).toEqual(mortgageGuides.map((page) => page.path).sort());
+    expect(filterGuides(guides, { collection: "mortgage-protection", category: "loan-policy-changes", query: "heloc" }))
+      .toContain(guide("mortgage-protection-heloc-second-mortgage"));
   });
 
   it("keeps practical funeral budgets separate from insurance prices and policy payments", () => {
@@ -74,5 +86,16 @@ describe("Guide browsing categories", () => {
     expect(guideCategory(future("claim-status", "Checking a Claim"))).toBe("claims-family");
     expect(guideCategory(future("memorial-costs", "Memorial Costs"))).toBe("funeral-costs");
     expect(guideCategory(future("update-your-beneficiary", "Update Your Beneficiary"))).toBe("managing-policy");
+  });
+
+  it("routes future mortgage articles to Mortgage Protection topics", () => {
+    const original = guide("what-is-mortgage-protection-insurance");
+    const future = (slug: string, title: string): SeoPage => ({ ...original, frontmatter: { ...original.frontmatter, slug, title } });
+    expect(guideCategory(future("mortgage-protection-overview", "A Guide to Mortgage Protection"))).toBe("coverage-basics");
+    expect(guideCategory(future("mortgage-coverage-amount", "Choosing a Coverage Amount for Your Mortgage"))).toBe("coverage-amount-cost");
+    expect(guideCategory(future("apply-for-mortgage-protection", "How to Apply for Mortgage Protection"))).toBe("shopping-applying");
+    expect(guideCategory(future("protect-a-mortgage-with-group-life", "Can Group Life Insurance Protect Your Mortgage?"))).toBe("household-coverage");
+    expect(guideCategory(future("refinance-review", "Review Your Coverage After Refinancing"))).toBe("loan-policy-changes");
+    expect(guideCategory(future("mortgage-protection-payout", "When Does a Mortgage Protection Payout Arrive?"))).toBe("payouts-coverage-limits");
   });
 });

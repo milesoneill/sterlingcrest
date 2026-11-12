@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { guideHeroImage, listGuideIndexPages } from "@/lib/seo-content";
 import {
   GUIDE_CATEGORIES,
+  MORTGAGE_PROTECTION_CATEGORIES,
   categoryCounts,
   collectionCounts,
   filterGuides,
@@ -44,8 +45,9 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const resultsRef = useRef<HTMLElement>(null);
   const currentCollection = COLLECTIONS.find(item => item.id === collection);
-  const isFinalExpense = collection === "final-expense";
-  const selectedTopic = collection === "mortgage-protection" ? undefined : GUIDE_CATEGORIES.find(
+  const isMortgageProtection = collection === "mortgage-protection";
+  const topics = isMortgageProtection ? MORTGAGE_PROTECTION_CATEGORIES : GUIDE_CATEGORIES;
+  const selectedTopic = topics.find(
     topic => topic.id === searchParams.get("category"),
   );
   const category = selectedTopic?.id ?? "all";
@@ -139,14 +141,14 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
               </div>
             </article>)}
           </section>}
-          {isFinalExpense && <section className="guide-topics" aria-labelledby="guide-topics-heading">
+          {currentCollection && <section className="guide-topics" aria-labelledby="guide-topics-heading">
             <div className="guide-topics-intro">
               <h2 id="guide-topics-heading" className="guide-topics-title font-serif">Explore a topic</h2>
               <p className="guide-topics-subtitle">Choose a topic to narrow the guides below.</p>
             </div>
             <div className="guide-topic-grid" aria-label="Guide topics">
-              {GUIDE_CATEGORIES.map(topic => <button key={topic.id} type="button" className={`guide-topic-card${category === topic.id ? " is-selected" : ""}`} aria-pressed={category === topic.id} aria-controls="guide-results" aria-label={`${topic.title}, ${counts[topic.id]} guides`} onClick={() => chooseCategory(topic.id)}>
-                <span className="guide-topic-photo" aria-hidden="true"><img src={`/images/guide-topics/${topic.id}.webp`} alt="" width={800} height={480} loading="lazy" decoding="async" /></span>
+              {topics.map(topic => <button key={topic.id} type="button" className={`guide-topic-card${category === topic.id ? " is-selected" : ""}`} aria-pressed={category === topic.id} aria-controls="guide-results" aria-label={`${topic.title}, ${counts[topic.id]} guides`} onClick={() => chooseCategory(topic.id)}>
+                <span className="guide-topic-photo" aria-hidden="true"><img src={`/images/guide-topics/${topic.id}.webp`} alt="" width={isMortgageProtection ? 429 : 800} height={isMortgageProtection ? 195 : 480} loading="lazy" decoding="async" /></span>
                 <span className="guide-topic-body">
                   <span className="guide-topic-title font-serif">{topic.title}</span>
                   <span className="guide-topic-description">{topic.description}</span>
@@ -155,14 +157,14 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
               </button>)}
             </div>
           </section>}
-          <section ref={resultsRef} id="guide-results" className={`guide-results${collection === "mortgage-protection" ? " guide-results-direct" : ""}`} aria-labelledby="guide-results-heading">
+          <section ref={resultsRef} id="guide-results" className="guide-results" aria-labelledby="guide-results-heading">
             <div className="guide-results-heading">
               <div>
                 <h2 id="guide-results-heading" className="font-serif">{resultsTitle}</h2>
                 <p role="status" aria-live="polite" aria-atomic="true">{filteredPages.length} {filteredPages.length === 1 ? "guide" : "guides"}{query.trim() ? ` found for “${query.trim()}”` : collection === "mortgage-protection" ? " to help you understand your options." : " to help you plan your next step."}</p>
               </div>
               {hasFilters && <div className="guide-result-actions">
-                {isFinalExpense && <a className="guide-browse-topics" href="#guide-topics-heading">Browse topics</a>}
+                {currentCollection && <a className="guide-browse-topics" href="#guide-topics-heading">Browse topics</a>}
                 <button type="button" className="guide-reset-button" onClick={clearFilters}>{currentCollection ? allResultsLabel : "Clear filters"}<X size={15} aria-hidden="true" /></button>
               </div>}
             </div>

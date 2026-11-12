@@ -36,12 +36,47 @@ export const GUIDE_CATEGORIES = [
   },
 ] as const;
 
-export type GuideCategoryId = (typeof GUIDE_CATEGORIES)[number]["id"];
+export const MORTGAGE_PROTECTION_CATEGORIES = [
+  {
+    id: "coverage-basics",
+    title: "Coverage Basics",
+    description: "Understand what mortgage protection covers and how it compares.",
+  },
+  {
+    id: "coverage-amount-cost",
+    title: "Coverage Amount & Cost",
+    description: "Estimate how much coverage you need and what affects the price.",
+  },
+  {
+    id: "shopping-applying",
+    title: "Shopping & Applying",
+    description: "Compare quotes and know what to expect when you apply.",
+  },
+  {
+    id: "household-coverage",
+    title: "Protecting Your Household",
+    description: "Plan coverage around your partner, family, and existing life insurance.",
+  },
+  {
+    id: "loan-policy-changes",
+    title: "Loan & Policy Changes",
+    description: "Know when to review coverage after a refinance, move, or loan change.",
+  },
+  {
+    id: "payouts-coverage-limits",
+    title: "Payouts & Coverage Limits",
+    description: "See how benefits are paid and where coverage has limits.",
+  },
+] as const;
+
+type FinalExpenseGuideCategoryId = (typeof GUIDE_CATEGORIES)[number]["id"];
+type MortgageProtectionGuideCategoryId = (typeof MORTGAGE_PROTECTION_CATEGORIES)[number]["id"];
+export type GuideCategoryId = FinalExpenseGuideCategoryId | MortgageProtectionGuideCategoryId;
 export type GuideCategorySelection = GuideCategoryId | "all";
 
 // Give the current library one reviewed home per article. Fallbacks below keep
 // future Factory articles browsable without changing their published URLs.
-const CURATED_GUIDES: Record<Exclude<GuideCategoryId, "state-guides">, readonly string[]> = {
+const CURATED_GUIDES: Record<Exclude<FinalExpenseGuideCategoryId, "state-guides">, readonly string[]> = {
   "funeral-costs": [
     "arrange-funeral-by-phone",
     "casket-price-questions",
@@ -127,9 +162,54 @@ const CURATED_GUIDES: Record<Exclude<GuideCategoryId, "state-guides">, readonly 
   ],
 };
 
-const categoryBySlug = new Map<string, GuideCategoryId>(
+const CURATED_MORTGAGE_GUIDES: Record<MortgageProtectionGuideCategoryId, readonly string[]> = {
+  "coverage-basics": [
+    "what-is-mortgage-protection-insurance",
+    "mortgage-protection-vs-pmi",
+    "homeowners-insurance-vs-mortgage-protection",
+    "va-loan-vs-veterans-mortgage-life-insurance",
+  ],
+  "coverage-amount-cost": [
+    "how-much-mortgage-protection-insurance-do-i-need",
+    "choosing-life-insurance-term-for-mortgage",
+    "mortgage-protection-life-insurance-cost-factors",
+    "level-vs-decreasing-mortgage-protection",
+  ],
+  "shopping-applying": [
+    "mortgage-protection-quote-checklist",
+    "mortgage-protection-no-medical-exam",
+    "mortgage-protection-before-or-after-closing",
+    "mortgage-protection-letter-after-closing",
+  ],
+  "household-coverage": [
+    "mortgage-protection-life-insurance-both-spouses",
+    "mortgage-protection-unmarried-co-buyers",
+    "mortgage-protection-employer-life-insurance-gap",
+    "term-life-insurance-for-mortgage-protection",
+  ],
+  "loan-policy-changes": [
+    "mortgage-protection-adjustable-rate-mortgage-payment",
+    "mortgage-protection-heloc-second-mortgage",
+    "mortgage-protection-after-refinancing-or-moving",
+    "mortgage-protection-term-life-conversion-deadline",
+  ],
+  "payouts-coverage-limits": [
+    "life-insurance-payout-mortgage-payoff-or-cash",
+    "what-happens-to-mortgage-when-borrower-dies",
+    "mortgage-protection-insurance-beneficiary",
+    "mortgage-protection-disability-job-loss",
+  ],
+};
+
+const categoryBySlug = new Map<string, FinalExpenseGuideCategoryId>(
   Object.entries(CURATED_GUIDES).flatMap(([category, slugs]) =>
-    slugs.map((slug) => [slug, category as GuideCategoryId] as const),
+    slugs.map((slug) => [slug, category as FinalExpenseGuideCategoryId] as const),
+  ),
+);
+
+const mortgageCategoryBySlug = new Map<string, MortgageProtectionGuideCategoryId>(
+  Object.entries(CURATED_MORTGAGE_GUIDES).flatMap(([category, slugs]) =>
+    slugs.map((slug) => [slug, category as MortgageProtectionGuideCategoryId] as const),
   ),
 );
 
@@ -159,9 +239,35 @@ export function collectionCounts(pages: readonly SeoPage[]): Record<GuideCollect
   return counts;
 }
 
-/** The existing six topics belong to Final Expense; Mortgage Protection has its own collection. */
-export function guideCategory(page: SeoPage): GuideCategoryId | null {
-  if (guideCollection(page) === "mortgage-protection") return null;
+function guideTopicText(page: SeoPage): string {
+  return normalize(`${page.frontmatter.slug} ${page.frontmatter.title}`).replace(/[-_]/g, " ");
+}
+
+function mortgageGuideCategory(page: SeoPage): MortgageProtectionGuideCategoryId {
+  const curated = mortgageCategoryBySlug.get(page.frontmatter.slug);
+  if (curated) return curated;
+
+  const text = guideTopicText(page);
+  if (/\b(?:payouts?|beneficiar\w*|claims?|after a death|borrower dies|job loss|disability)\b/.test(text)) {
+    return "payouts-coverage-limits";
+  }
+  if (/\b(?:refinanc\w*|moving|heloc|second mortgage|adjustable rate|conversion|convert|policy review)\b/.test(text)) {
+    return "loan-policy-changes";
+  }
+  if (/\b(?:quotes?|apply|applying|applications?|closing|medical exam|underwriting)\b/.test(text)) {
+    return "shopping-applying";
+  }
+  if (/\b(?:costs?|premiums?|budget|coverage amount|how much|term length|decreasing)\b/.test(text)) {
+    return "coverage-amount-cost";
+  }
+  if (/\b(?:spouses?|co borrowers?|partners?|employer|group life|household)\b/.test(text)) {
+    return "household-coverage";
+  }
+  return "coverage-basics";
+}
+
+export function guideCategory(page: SeoPage): GuideCategoryId {
+  if (guideCollection(page) === "mortgage-protection") return mortgageGuideCategory(page);
   // Location/condition templates describe intent more reliably than keywords
   // such as "cost" appearing in a health or state guide's title.
   if (page.frontmatter.template === "location-page" || page.path.startsWith("/locations/")) {
@@ -172,7 +278,7 @@ export function guideCategory(page: SeoPage): GuideCategoryId | null {
   const curated = categoryBySlug.get(page.frontmatter.slug);
   if (curated) return curated;
 
-  const text = normalize(`${page.frontmatter.slug} ${page.frontmatter.title}`).replace(/[-_]/g, " ");
+  const text = guideTopicText(page);
   if (/\b(?:diabetes|copd|afib|stroke|heart disease|cancer|health|eligibility|underwriting|medical)\b/.test(text)) {
     return "health-eligibility";
   }
@@ -190,11 +296,10 @@ export function guideCategory(page: SeoPage): GuideCategoryId | null {
 }
 
 export function categoryCounts(pages: readonly SeoPage[]): Record<GuideCategoryId, number> {
-  const counts = Object.fromEntries(GUIDE_CATEGORIES.map(({ id }) => [id, 0])) as Record<GuideCategoryId, number>;
-  for (const page of pages) {
-    const category = guideCategory(page);
-    if (category) counts[category] += 1;
-  }
+  const counts = Object.fromEntries(
+    [...GUIDE_CATEGORIES, ...MORTGAGE_PROTECTION_CATEGORIES].map(({ id }) => [id, 0]),
+  ) as Record<GuideCategoryId, number>;
+  for (const page of pages) counts[guideCategory(page)] += 1;
   return counts;
 }
 

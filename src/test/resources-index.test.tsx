@@ -126,6 +126,30 @@ describe("Guides collection browsing", () => {
     expect(screen.getByRole("searchbox")).toHaveValue("");
   });
 
+  it("lets readers browse Mortgage Protection topics and share a topic-specific search", () => {
+    const view = showGuides("/resources/mortgage-protection");
+    expect(screen.getByRole("heading", { name: "Explore a topic" })).toBeInTheDocument();
+    expect(screen.getAllByRole("button", { name: /, 4 guides$/ })).toHaveLength(6);
+    fireEvent.click(category("Coverage Basics"));
+    expect(category("Coverage Basics")).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByTestId("location")).toHaveTextContent("/resources/mortgage-protection?category=coverage-basics");
+    expect(articlePaths()).toHaveLength(4);
+    expect(articlePaths()).toContain("/resources/mortgage-protection-vs-pmi");
+    expect(screen.getByRole("link", { name: "Browse topics" })).toHaveAttribute("href", "#guide-topics-heading");
+
+    fireEvent.click(screen.getByRole("button", { name: "All Mortgage Protection 24" }));
+    expect(category("Coverage Basics")).toHaveAttribute("aria-pressed", "false");
+    expectOnlyCollection("mortgage-protection");
+    view.unmount();
+
+    showGuides("/resources/mortgage-protection?category=coverage-basics&q=pmi");
+    expect(screen.getByRole("searchbox", { name: "Search in Coverage Basics" })).toHaveValue("pmi");
+    expect(articlePaths().sort()).toEqual([
+      "/resources/mortgage-protection-vs-pmi",
+      "/resources/what-is-mortgage-protection-insurance",
+    ]);
+  });
+
   it("searches Mortgage Protection directly, ignores a stale Final Expense category and resets only its 24 guides", () => {
     showGuides("/resources/mortgage-protection?category=health-eligibility&q=pmi");
     expect(screen.getByRole("searchbox", { name: "Search Mortgage Protection guides" })).toHaveValue("pmi");
