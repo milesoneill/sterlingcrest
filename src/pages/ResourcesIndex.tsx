@@ -22,7 +22,7 @@ const COLLECTIONS = [
     label: "Final Expense",
     eyebrow: "Planning for your family",
     description: "Clear answers about funeral costs, coverage options, and planning for your family.",
-    image: "/images/guide-topics/choosing-coverage.webp",
+    image: "/images/guide-collections/final-expense-family-planning.webp",
     href: "/resources/final-expense",
   },
   {
@@ -31,7 +31,7 @@ const COLLECTIONS = [
     label: "Mortgage Protection",
     eyebrow: "For homeowners & families",
     description: "Understand mortgage protection, compare coverage, and plan around your family’s needs.",
-    image: "/images/guide-collections/mortgage-protection.webp",
+    image: "/images/guide-collections/mortgage-protection-moving-day.webp",
     href: "/resources/mortgage-protection",
   },
 ] as const;
@@ -129,7 +129,7 @@ const ResourcesIndex = ({ collection }: { collection?: GuideCollectionId }) => {
           </section>
           {!currentCollection && <section className="guide-collections" aria-label="Guide collections">
             {COLLECTIONS.map(item => <article className="guide-collection-card" key={item.id}>
-              <div className="guide-collection-photo"><img src={item.image} alt="" width={1000} height={650} decoding="async" /></div>
+              <div className="guide-collection-photo"><img src={item.image} alt="" width={1440} height={600} decoding="async" /></div>
               <div className="guide-collection-copy">
                 <p className="guide-eyebrow">{item.eyebrow}</p>
                 <h2 className="font-serif">{item.title}</h2>
