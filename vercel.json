@@ -41,6 +41,11 @@
       "source": "/locations/final-expense-insurance-in-florida",
       "destination": "/locations/final-expense-insurance-florida",
       "permanent": true
+    },
+    {
+      "source": "/final-expense-insurance",
+      "destination": "/services/final-expense",
+      "permanent": true
     }
   ]
 }
