@@ -18,6 +18,7 @@ export type Service = {
   icon: LucideIcon;
   title: string;
   tagline: string;
+  heading?: string;
   intro: string;
   whyHeading: string;
   whyBody: string;
@@ -25,6 +26,7 @@ export type Service = {
   cardDescription: string;
   heroImage?: string;
   consultationCopy?: string;
+  consultationIntro?: string;
   relatedGuides?: {
     heading: string;
     description?: string;
@@ -38,6 +40,7 @@ export const services: Service[] = [
     slug: "final-expense",
     icon: Heart,
     title: "Final Expense Insurance",
+    heading: "Final Expense Insurance",
     tagline: "Protect Your Family From Unexpected Financial Burdens",
     intro:
       "Final expense insurance is designed to help families navigate one of life's most difficult moments with greater financial confidence. By helping cover funeral expenses, outstanding medical bills, and other final obligations, this coverage can reduce the financial burden placed on loved ones during an already emotional time.",
@@ -69,6 +72,8 @@ export const services: Service[] = [
     cardDescription:
       "Cover end-of-life costs so your loved ones aren't left with the burden.",
     heroImage: "/images/final-expense-family-at-home.jpg",
+    consultationIntro:
+      "In a complimentary 15-minute call, we’ll discuss the expenses you want to cover, any coverage you already have, and your budget.",
     consultationCopy:
       "Schedule a complimentary consultation to discuss your goals and coverage questions.",
     relatedGuides: {
