@@ -20,7 +20,7 @@ const TermsOfService = () => {
 
           <section>
             <h2 className="font-serif text-2xl text-foreground mb-4">2. Description of Services</h2>
-            <p>O'Neill Capital Inc., doing business as Sterling Crest Financial, is a commercial insurance brokerage that provides insurance consulting, risk assessment, and policy placement services. Our website serves as an informational resource and lead capture platform to connect businesses with our insurance professionals.</p>
+            <p>O’Neill Capital Inc., doing business as Sterling Crest Financial, is an independent insurance brokerage that helps individuals and families explore life and health insurance options. Our services include insurance consultations, plan comparisons, enrollment assistance for ACA Marketplace coverage, and policy support in states where we are licensed.</p>
           </section>
 
           <section>
