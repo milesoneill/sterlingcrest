@@ -47,11 +47,13 @@ const ServicePage = () => {
                 strokeWidth={1.3}
               />
               <div>
-                <p className="text-primary text-[0.7rem] tracking-[0.45em] uppercase font-sans mb-3">
-                  {service.title}
-                </p>
+                {!service.heading && (
+                  <p className="text-primary text-[0.7rem] tracking-[0.45em] uppercase font-sans mb-3">
+                    {service.title}
+                  </p>
+                )}
                 <h1 className="font-serif text-3xl md:text-5xl text-white leading-tight">
-                  {service.tagline}
+                  {service.heading ?? service.tagline}
                 </h1>
               </div>
             </div>
@@ -67,6 +69,11 @@ const ServicePage = () => {
           </p>
           {service.relatedGuides && (
             <div className="mt-8 text-center">
+              {service.consultationIntro && (
+                <p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {service.consultationIntro}
+                </p>
+              )}
               <Link
                 to={scheduleConsultationHref}
                 className={consultationButtonClass}
@@ -75,7 +82,7 @@ const ServicePage = () => {
                 <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                Complimentary · 15-minute phone call · No obligation
+                {service.consultationIntro ? "No obligation" : "Complimentary · 15-minute phone call · No obligation"}
               </p>
             </div>
           )}
